@@ -10,9 +10,6 @@ export default class GDQTotalsElement extends Polymer.Element {
 	@property({type: String})
 	cashTotal = '?';
 
-	@property({type: String})
-	bitsTotal = '?';
-
 	@property({type: Boolean})
 	autoUpdateTotal: boolean;
 

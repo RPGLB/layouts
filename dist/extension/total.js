@@ -8,7 +8,6 @@ const nodecgApiContext = require("./util/nodecg-api-context");
 const urls_1 = require("./urls");
 const nodecg = nodecgApiContext.get();
 const autoUpdateTotal = nodecg.Replicant('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant('bits_total');
 const recordTrackerEnabled = nodecg.Replicant('recordTrackerEnabled');
 const total = nodecg.Replicant('total');
 let disconnectWarningTimeout;
@@ -89,9 +88,6 @@ nodecg.listenFor('setTotal', ({ type, newValue }) => {
             raw: parseFloat(newValue),
             formatted: util_1.formatDollars(newValue, { cents: false })
         };
-    }
-    else if (type === 'bits') {
-        bitsTotal.value = parseInt(newValue, 10);
     }
     else {
         nodecg.log.error('Unexpected "type" sent to setTotal: "%s"', type);
