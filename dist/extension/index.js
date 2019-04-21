@@ -34,7 +34,6 @@ async function init() {
     require('./nowplaying');
     require('./countdown');
     require('./sortable-list');
-    require('./bingosync');
     require('./caspar');
     require('./intermissions');
     require('./setup-timer');
@@ -44,7 +43,7 @@ async function init() {
         setInterval(loginToTracker, 90 * 60 * 1000);
     }
     else {
-        nodecg.log.warn('Tracker credentials not defined in cfg/agdq19-layouts.json; will be unable to access privileged data.');
+        nodecg.log.warn('Tracker credentials not defined in cfg/rpglb19-layouts.json; will be unable to access privileged data.');
     }
     const schedule = require('./schedule');
     if (TRACKER_CREDENTIALS_CONFIGURED) {
@@ -71,34 +70,22 @@ async function init() {
         }
     }
     else {
-        nodecg.log.warn('"twitter" is not defined in cfg/agdq19-layouts.json! ' +
+        nodecg.log.warn('"twitter" is not defined in cfg/rpglb19-layouts.json! ' +
             'Twitter integration will be disabled.');
-    }
-    if (nodecg.bundleConfig.victorOps && nodecg.bundleConfig.victorOps.apiId && nodecg.bundleConfig.victorOps.apiKey) {
-        if (nodecg.bundleConfig.victorOps.enabled) {
-            require('./victor-ops');
-        }
-    }
-    else {
-        nodecg.log.warn('"victorOps" is not defined in cfg/agdq19-layouts.json! ' +
-            'VictorOps integration will be disabled.');
     }
     if (nodecg.bundleConfig.mixer && nodecg.bundleConfig.mixer.address) {
         require('./mixer');
     }
     else {
-        nodecg.log.warn('"mixer" is not defined in cfg/agdq19-layouts.json! ' +
+        nodecg.log.warn('"mixer" is not defined in cfg/rpglb19-layouts.json! ' +
             'Behringer X32 OSC integration will be disabled.');
     }
     if (nodecg.bundleConfig.firebase && Object.keys(nodecg.bundleConfig.firebase).length > 0) {
         require('./interview');
     }
     else {
-        nodecg.log.warn('"firebase" is not defined in cfg/agdq19-layouts.json! ' +
+        nodecg.log.warn('"firebase" is not defined in cfg/rpglb19-layouts.json! ' +
             'The interview question system (Lightning Round) will be disabled.');
-    }
-    if (nodecg.bundleConfig.zabbix && nodecg.bundleConfig.zabbix.enabled) {
-        require('./zabbix');
     }
 }
 // Fetch the login page, and run the response body through cheerio
