@@ -9,13 +9,11 @@ import * as request from 'request-promise-native';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {GDQUrls} from './urls';
 import {TrackerObject, ChildBid, ParentBid} from '../types';
-import {BitsTotal} from '../types/schemas/bits_total';
 
 const nodecg = nodecgApiContext.get();
 const POLL_INTERVAL = 60 * 1000;
 const currentBidsRep = nodecg.Replicant<ParentBid[]>('currentBids', {defaultValue: []});
 const allBidsRep = nodecg.Replicant<ParentBid[]>('allBids', {defaultValue: []});
-const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 
 // Get latest bid data every POLL_INTERVAL milliseconds
 update();
@@ -43,13 +41,7 @@ async function update() {
 		const currentBids = processRawBids(currentBidsJSON);
 		const allBids = processRawBids(allBidsJSON);
 
-		// Bits incentives are always marked as "hidden", so they will never show in "current".
-		// We must manually add them to "current".
 		allBids.forEach(bid => {
-			if (!bid.isBitsChallenge) {
-				return;
-			}
-
 			const bidAlreadyExistsInCurrentBids = currentBids.find(currentBid => currentBid.id === bid.id);
 			if (!bidAlreadyExistsInCurrentBids) {
 				currentBids.unshift(bid);
@@ -91,7 +83,7 @@ function processRawBids(bids: TrackerObject[]) {
 			rawChildBids.push(bid);
 		} else {
 			// Format the bid to clean up unneeded cruft.
-			const formattedParentBid = {
+			const formattedParentBid: ParentBid = {
 				id: bid.pk,
 				name: bid.fields.name,
 				description: bid.fields.shortdescription || `No shortdescription for bid #${bid.pk}`,
@@ -101,9 +93,6 @@ function processRawBids(bids: TrackerObject[]) {
 				speedrun: bid.fields.speedrun__name,
 				speedrunEndtime: Date.parse(bid.fields.speedrun__endtime),
 				public: bid.fields.public,
-
-				// Green Hill Zone Blindfolded or Blindfolded Majora? Then this is a bits challenge.
-				isBitsChallenge: Boolean(bid.pk === 5788 || bid.pk === 5831)
 			} as ParentBid;
 
 			// If this parent bid is not a target, that means it is a donation war that has options.
@@ -115,17 +104,8 @@ function processRawBids(bids: TrackerObject[]) {
 			} else {
 				const goal = parseFloat(bid.fields.goal);
 				formattedParentBid.goalMet = bid.fields.total >= bid.fields.goal;
-				if (formattedParentBid.isBitsChallenge) {
-					formattedParentBid.goal = numeral(goal * 100).format('0,0');
-					formattedParentBid.rawGoal = goal * 100;
-					formattedParentBid.rawTotal = Math.min(bitsTotal.value, formattedParentBid.rawGoal);
-					formattedParentBid.total = numeral(formattedParentBid.rawTotal).format('0,0');
-					formattedParentBid.goalMet = formattedParentBid.rawTotal >= formattedParentBid.rawGoal;
-					formattedParentBid.state = formattedParentBid.goalMet ? 'CLOSED' : 'OPENED';
-				} else {
-					formattedParentBid.goal = numeral(goal).format('$0,0[.]00');
-					formattedParentBid.rawGoal = goal;
-				}
+				formattedParentBid.goal = numeral(goal).format('$0,0[.]00');
+				formattedParentBid.rawGoal = goal;
 			}
 
 			formattedParentBidsById[bid.pk] = formattedParentBid;
