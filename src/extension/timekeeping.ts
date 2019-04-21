@@ -10,8 +10,6 @@ const LS_TIMER_PHASE = {
 // Packages
 import * as clone from 'clone';
 import * as liveSplitCore from 'livesplit-core';
-import gamepad = require('gamepad');
-import * as usbDetect from 'usb-detection';
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
@@ -25,7 +23,6 @@ lsRun.pushSegment(segment);
 const timer = liveSplitCore.Timer.new(lsRun);
 
 const nodecg = nodecgApiContext.get();
-const checklistComplete = nodecg.Replicant<boolean>('checklistComplete');
 const currentRun = nodecg.Replicant<GDQTypes.Run>('currentRun');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
 
@@ -82,69 +79,6 @@ nodecg.listenFor('resumeRunner', (index: number) => {
 	}
 });
 nodecg.listenFor('editTime', editTime);
-
-if (nodecg.bundleConfig.footpedal.enabled) {
-	gamepad.init();
-	usbDetect.startMonitoring();
-
-	// Poll for events
-	setInterval(gamepad.processEvents, 16); // tslint:disable-line no-string-based-set-interval
-
-	// Update the list of gamepads when usb-detection sees a change.
-	usbDetect.on('change', () => {
-		nodecg.log.info('USB devices changed, checking for new gamepads.');
-		gamepad.detectDevices();
-	});
-
-	// Listen for buttonId down event from our target gamepad.
-	gamepad.on('down', (_id, num) => {
-		if (num !== nodecg.bundleConfig.footpedal.buttonId) {
-			return;
-		}
-
-		if (!currentRun.value) {
-			return;
-		}
-
-		if (stopwatch.value.state === GDQTypes.StopwatchStateEnum.RUNNING) {
-			// If this is a race, don't let the pedal finish the timer.
-			if (currentRun.value.runners.length > 1 && !currentRun.value.coop) {
-				nodecg.log.warn('Footpedal was hit to finish the timer, but this is a race so no action will be taken.');
-				return;
-			}
-
-			nodecg.log.info('Footpedal hit, finishing timer.');
-
-			// Finish all runners.
-			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
-				if (!runner) {
-					return;
-				}
-
-				completeRunner({index, forfeit: false});
-			});
-		} else if (stopwatch.value.state === GDQTypes.StopwatchStateEnum.NOT_STARTED) {
-			if (!checklistComplete.value) {
-				nodecg.log.warn('Footpedal was hit to start the timer, but the checklist is not complete so no action will be taken.');
-				return;
-			}
-
-			nodecg.log.info('Footpedal hit, starting timer.');
-			start();
-
-			// Resume all runners.
-			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
-				if (!runner) {
-					return;
-				}
-
-				resumeRunner(index);
-			});
-		} else {
-			nodecg.log.warn('Footpedal was hit in a forbidden stopwatch state (%s), ignoring.', stopwatch.value.state);
-		}
-	});
-}
 
 setInterval(tick, 100); // 10 times per second.
 
