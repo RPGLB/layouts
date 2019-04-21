@@ -121,113 +121,113 @@
     "graphics": [
       {
         "file": "interview_teleprompter.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "interview_dashboard.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "countdown.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "break.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "transition.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "interview.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "standard_1.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "standard_2.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "standard_3.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "standard_4.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "standard_4_ff4fe.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "widescreen_1.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "widescreen_2.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "gba_1.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "gameboy_2.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "ds.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "ds_vertical.html",
-        "width": 1920,
-        "height": 1025
+        "width": 1280,
+        "height": 665
       },
       {
         "file": "omnibar.html",
-        "width": 1920,
+        "width": 1280,
         "height": 55
       },
       {
         "file": "host.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "audio_dashboard.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "producer_dashboard.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "setup_metrics.html",
-        "width": 1920,
-        "height": 1080
+        "width": 1280,
+        "height": 720
       },
       {
         "file": "test_break.html",

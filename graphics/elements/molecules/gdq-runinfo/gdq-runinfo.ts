@@ -1,5 +1,4 @@
 import {Run} from '../../../../src/types';
-import GDQRuninfoCategoryElement from './gdq-runinfo-category';
 import GDQRuninfoMiscElement from './gdq-runinfo-misc';
 
 const {customElement, property} = Polymer.decorators;
@@ -57,7 +56,6 @@ export default class GDQRuninfoElement extends Polymer.Element {
 	fitText() {
 		Polymer.flush();
 		(window as any).textFit(this.$.name, {maxFontSize: this.maxNameSize});
-		(this.$.category as GDQRuninfoCategoryElement).maxTextWidth = this.clientWidth - 76;
 		(this.$.misc as GDQRuninfoMiscElement).maxTextWidth = (this.clientWidth - 124) / 3;
 	}
 
