@@ -13,7 +13,7 @@ Although this bundle is offered under the same license terms, no special effort 
 rpglb19-layouts is provided under the Apache v2 license, which is available to read in the [LICENSE](LICENSE) file.
 
 ## Credits for RPG Limit Break layouts
- - HeroicSpiritGamer
+ - [HeroicSpiritGamer](https://twitter.com/HeroicSpiritGmr)
  - [Ouro](https://ourolen.net/)
  - [Vulajin](https://twitter.com/Vulajin)
 
