@@ -53,7 +53,7 @@ socket.once('connect', () => {
 		if (payload.favorite_events) {
 			payload.favorite_events.forEach(favoriteEvent => {
 				// Discard favorites not made by us.
-				if (favoriteEvent.user.screen_name.toLowerCase() !== 'gamesdonequick') {
+				if (favoriteEvent.user.screen_name.toLowerCase() !== 'rpglimitbreak') {
 					return;
 				}
 
@@ -66,7 +66,7 @@ socket.once('connect', () => {
 		if (payload.tweet_create_events) {
 			payload.tweet_create_events.forEach(tweetCreateEvent => {
 				// Discard tweets not made by us.
-				if (tweetCreateEvent.user.screen_name.toLowerCase() !== 'gamesdonequick') {
+				if (tweetCreateEvent.user.screen_name.toLowerCase() !== 'rpglimitbreak') {
 					return;
 				}
 
@@ -114,8 +114,8 @@ function addTweet(tweet: GDQTypes.Tweet) {
 	// Replace newlines with spaces
 	tweet.text = tweet.text.replace(/\n/ig, ' ');
 
-	// Highlight the #AGDQ2018 hashtag.
-	tweet.text = tweet.text.replace(/#agdq2019/ig, '<span class="hashtag">#AGDQ2019</span>');
+	// Highlight the #RPGLB2019 hashtag.
+	tweet.text = tweet.text.replace(/#rpglb2019/ig, '<span class="hashtag">#RPGLB2019</span>');
 
 	if (tweet.extended_tweet &&
 		tweet.extended_tweet.extended_entities &&
