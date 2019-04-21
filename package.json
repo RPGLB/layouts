@@ -155,17 +155,7 @@
         "height": 1025
       },
       {
-        "file": "standard_1_smalttp.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
         "file": "standard_2.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "standard_2_sms.html",
         "width": 1920,
         "height": 1025
       },
@@ -195,62 +185,12 @@
         "height": 1025
       },
       {
-        "file": "widescreen_2_mario.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "widescreen_3.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "widescreen_4.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "widescreen_4_2.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
         "file": "gba_1.html",
         "width": 1920,
         "height": 1025
       },
       {
-        "file": "gba_2.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "gba_4.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "gameboy_1.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
         "file": "gameboy_2.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "gameboy_3.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "gameboy_4.html",
-        "width": 1920,
-        "height": 1025
-      },
-      {
-        "file": "3ds.html",
         "width": 1920,
         "height": 1025
       },
@@ -263,16 +203,6 @@
         "file": "ds_vertical.html",
         "width": 1920,
         "height": 1025
-      },
-      {
-        "file": "lttp_tracker.html",
-        "width": 300,
-        "height": 469
-      },
-      {
-        "file": "smalttp_tracker.html",
-        "width": 451,
-        "height": 226
       },
       {
         "file": "omnibar.html",
@@ -291,16 +221,6 @@
       },
       {
         "file": "producer_dashboard.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "bingosync.html",
-        "width": 474,
-        "height": 355
-      },
-      {
-        "file": "bingosync_dashboard.html",
         "width": 1920,
         "height": 1080
       },
