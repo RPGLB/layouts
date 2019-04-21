@@ -31,7 +31,7 @@
 	"title": "checklist",
 	"additionalProperties": false,
 	"properties": {
-		"extraContent": {
+		"audioEngineerDuties": {
 			"$ref": "#/definitions/checklistGroup"
 		},
 		"techStationDuties": {
@@ -40,24 +40,21 @@
 		"stageTechDuties": {
 			"$ref": "#/definitions/checklistGroup"
 		},
-		"audioEngineerDuties": {
-			"$ref": "#/definitions/checklistGroup"
-		},
 		"special": {
 			"$ref": "#/definitions/checklistGroup"
 		}
 	},
 	"required": [
-		"extraContent",
+		"audioEngineerDuties",
 		"techStationDuties",
 		"stageTechDuties",
-		"audioEngineerDuties",
 		"special"
 	],
 
 	"default": {
-		"extraContent": [
-			{"name": "Check for Sent segment", "complete": false}
+		"audioEngineerDuties": [
+			{"name": "Audio duty 1", "complete": false},
+			{"name": "Audio duty 2", "complete": false}
 		],
 		"techStationDuties": [
 			{"name": "Check Tech Notes", "complete": false},
@@ -71,10 +68,6 @@
 			{"name": "Steam Notifications Off", "shortName": "Steam Notifications", "complete": false},
 			{"name": "Restart Elgato Recording", "shortName": "Restart Elgato Rec.", "complete": false},
 			{"name": "Remove Excess Chairs", "shortName": "Remove Chairs", "complete": false}
-		],
-		"audioEngineerDuties": [
-			{"name": "Runner Game Audio", "complete": false},
-			{"name": "Stream Audio", "complete": false}
 		],
 		"special": [
 			{"name": "Cycle Recordings", "complete": false}

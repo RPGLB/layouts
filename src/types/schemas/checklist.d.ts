@@ -8,10 +8,9 @@
 export type ChecklistGroup = ChecklistTask[];
 
 export interface Checklist {
-	extraContent: ChecklistGroup;
+	audioEngineerDuties: ChecklistGroup;
 	techStationDuties: ChecklistGroup;
 	stageTechDuties: ChecklistGroup;
-	audioEngineerDuties: ChecklistGroup;
 	special: ChecklistGroup;
 }
 export interface ChecklistTask {
