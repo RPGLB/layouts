@@ -160,25 +160,17 @@
 		"tracker": {
 			"type": "object",
 			"properties": {
-				"username": {
-					"type": "string",
-					"default": "username"
-				},
-				"password": {
-					"type": "string",
-					"default": "password"
-				},
 				"eventId": {
 					"type": "number",
-					"default": 25
+					"default": 7
 				},
 				"baseUrl": {
 					"type": "string",
 					"default": "https://rpglimitbreak.com/tracker"
 				}
 			},
-			"description": "Login information for the private areas of the tracker API.",
-			"required": ["username", "password", "eventId", "baseUrl"]
+			"description": "Info for retrieving data from the event tracker.",
+			"required": ["eventId", "baseUrl"]
 		},
 		"donationSocketUrl": {
 			"type": "string"
