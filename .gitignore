@@ -15,4 +15,6 @@ firebase-credentials.json
 
 npm-debug.log
 
-/shared/lib/vendor/*
+shared/lib/vendor/CustomEase.js
+shared/lib/vendor/DrawSVGPlugin.js
+shared/lib/vendor/SplitText.js
