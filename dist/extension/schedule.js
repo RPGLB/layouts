@@ -23,9 +23,6 @@ const scheduleRep = nodecg.Replicant('schedule');
 const emitter = new events_1.EventEmitter();
 module.exports = emitter;
 module.exports.update = update;
-const TRACKER_CREDENTIALS_CONFIGURED = nodecg.bundleConfig.tracker.username &&
-    nodecg.bundleConfig.tracker.password &&
-    !nodecg.bundleConfig.useMockData;
 const POLL_INTERVAL = 60 * 1000;
 let updateInterval;
 update();
@@ -191,19 +188,9 @@ async function update() {
         uri: urls_1.GDQUrls.runs,
         json: true
     });
-    const adsPromise = TRACKER_CREDENTIALS_CONFIGURED ?
-        request({
-            uri: urls_1.GDQUrls.ads,
-            json: true
-        }) : Promise.resolve([]);
-    const interviewsPromise = TRACKER_CREDENTIALS_CONFIGURED ?
-        request({
-            uri: urls_1.GDQUrls.interviews,
-            json: true
-        }) : Promise.resolve([]);
     try {
-        const [runnersJSON, runsJSON, adsJSON, interviewsJSON] = await Promise.all([
-            runnersPromise, runsPromise, adsPromise, interviewsPromise
+        const [runnersJSON, runsJSON] = await Promise.all([
+            runnersPromise, runsPromise
         ]);
         const formattedRunners = [];
         runnersJSON.forEach((obj) => {
@@ -217,9 +204,7 @@ async function update() {
         }
         const formattedSchedule = calcFormattedSchedule({
             rawRuns: runsJSON,
-            formattedRunners,
-            formattedAds: adsJSON.map(formatAd),
-            formattedInterviews: interviewsJSON.map(formatInterview)
+            formattedRunners
         });
         // If nothing has changed, return.
         if (deepEqual(formattedSchedule, scheduleRep.value)) {
@@ -376,39 +361,13 @@ function _seekToArbitraryRun(runOrOrder) {
  * @param scheduleJSON - The raw schedule array from the Tracker.
  * @returns A formatted schedule.
  */
-function calcFormattedSchedule({ rawRuns, formattedRunners, formattedAds, formattedInterviews }) {
+function calcFormattedSchedule({ rawRuns, formattedRunners }) {
     const flatSchedule = [
         ...rawRuns.map(run => {
             return formatRun(run, formattedRunners);
-        }),
-        ...formattedAds,
-        ...formattedInterviews
+        })
     ].sort(suborderSort);
-    const schedule = [];
-    let adBreak;
-    flatSchedule.forEach((item, index) => {
-        if (item.type === 'ad') {
-            if (!adBreak) {
-                adBreak = {
-                    id: -1,
-                    type: 'adBreak',
-                    ads: []
-                };
-            }
-            adBreak.ads.push(item);
-            // Always make the ID of the entire break be equal to the ID of the last item in that break.
-            adBreak.id = item.id;
-            const nextItem = flatSchedule[index + 1];
-            if (nextItem && nextItem.type === 'ad') {
-                return;
-            }
-            schedule.push(adBreak);
-            adBreak = null;
-            return;
-        }
-        schedule.push(item);
-    });
-    return schedule;
+    return flatSchedule;
 }
 /**
  * Formats a raw run object from the GDQ Tracker API into a slimmed-down and hydrated version for our use.
@@ -440,72 +399,6 @@ function formatRun(rawRun, formattedRunners) {
         pk: rawRun.pk,
         type: 'run'
     };
-}
-/**
- * Formats a raw ad object from the GDQ Tracker API into a slimmed-down version for our use.
- * @param rawAd - A raw ad object from the GDQ Tracker API.
- * @returns The formatted ad object.
- */
-function formatAd(rawAd) {
-    return {
-        id: rawAd.pk,
-        name: rawAd.fields.ad_name,
-        adType: calcAdType(rawAd.fields.filename),
-        filename: rawAd.fields.filename,
-        duration: rawAd.fields.length,
-        order: rawAd.fields.order,
-        suborder: rawAd.fields.suborder,
-        sponsorName: rawAd.fields.sponsor_name,
-        type: 'ad'
-    };
-}
-/**
- * We completely ignore the ad_type field from the tracker because it's been wrong
- * a few too many times. And when its wrong, everything explodes.
- * It's safer just to compute the type ourselves based on the filename.
- * @param filename - The name of the file, with extension included.
- * @returns The type of this ad.
- */
-function calcAdType(filename) {
-    if (filename.endsWith('.mp4') ||
-        filename.endsWith('.webm') ||
-        filename.endsWith('.mov') ||
-        filename.endsWith('.avi')) {
-        return 'VIDEO';
-    }
-    if (filename.endsWith('.png') ||
-        filename.endsWith('.jpg') ||
-        filename.endsWith('.jpeg')) {
-        return 'IMAGE';
-    }
-    throw new Error(`Unexpected ad type! Filename: "${filename}"`);
-}
-/**
- * Formats a raw interview object from the GDQ Tracker API into a slimmed-down version for our use.
- * @param rawInterview - A raw interview object from the GDQ Tracker API.
- * @returns The formatted interview object.
- */
-function formatInterview(rawInterview) {
-    return {
-        id: rawInterview.pk,
-        interviewees: splitString(rawInterview.fields.interviewees),
-        interviewers: splitString(rawInterview.fields.interviewers),
-        duration: rawInterview.fields.length,
-        order: rawInterview.fields.order,
-        subject: rawInterview.fields.subject,
-        suborder: rawInterview.fields.suborder,
-        type: 'interview'
-    };
-}
-/**
- * Splits a comma-separated string into an array of strings, trimming whitespace.
- * @param str - The string to split.
- * @return The split string.
- */
-function splitString(str) {
-    return str.split(',')
-        .map(part => part.trim())
-        .filter(part => part);
 }
 /**
  * Sorts objects by their `order` property, then by their `suborder` property.
