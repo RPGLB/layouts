@@ -1,8 +1,11 @@
 {
-  "name": "agdq19-layouts",
-  "description": "The on-stream graphics used during Awesome Games Done Quick 2019.",
+  "name": "rpglb19-layouts",
+  "description": "The on-stream graphics to be used during RPG Limit Break 2019.",
   "version": "1.0.0",
   "contributors": [
+    "HeroicSpiritGamer",
+    "Ouro (https://ourolen.net/)",
+    "Vulajin (https://twitter.com/Vulajin)",
     "Alex Van Camp <email@alexvan.camp>",
     "Chris Hanel <chrishanel@gmail.com>"
   ],
@@ -85,7 +88,7 @@
     "tslint-xo": "^0.10.0",
     "typescript": "^3.1.6"
   },
-  "homepage": "https://gamesdonequick.com/",
+  "homepage": "https://rpglimitbreak.com/",
   "license": "Apache-2.0",
   "nodecg": {
     "compatibleRange": "^1.0.0",
@@ -417,7 +420,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/GamesDoneQuick/agdq19-layouts.git"
+    "url": "git://github.com/Vulajin/rpglb19-layouts.git"
   },
   "scripts": {
     "static": "npm run static:node && npm run static:browser && npm run static:shared",
@@ -435,6 +438,6 @@
     "debug-fixture-screenshots": "generate-fixture-screenshots --debug",
     "mock-donations": "node ./scripts/test_donation_server",
     "schema-types": "trash src/types/schemas && nodecg schema-types",
-    "start": "node ../.. --bundlesEnabled=agdq19-layouts"
+    "start": "node ../.. --bundlesEnabled=rpglb19-layouts"
   }
 }
