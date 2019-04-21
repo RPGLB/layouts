@@ -118,19 +118,6 @@
 			"required": ["channelId", "oauthToken", "clientId", "bitsOffset", "debug"],
 			"default": null
 		},
-		"footpedal": {
-			"type": "object",
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"default": false
-				},
-				"buttonId": {
-					"type": "number",
-					"default": 31
-				}
-			}
-		},
 		"firebase": {
 			"type": ["object", "null"],
 			"description": "Credentials used to log into Firebase, which is what hosts Lightning Round.",
@@ -187,7 +174,7 @@
 				},
 				"baseUrl": {
 					"type": "string",
-					"default": "https://gamesdonequick.com/tracker"
+					"default": "https://rpglimitbreak.com/tracker"
 				}
 			},
 			"description": "Login information for the private areas of the tracker API.",
@@ -225,36 +212,6 @@
 		},
 		"nowPlayingKey": {
 			"type": "string"
-		},
-		"victorOps": {
-			"type": ["object", "null"],
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"default": true
-				},
-				"apiId": {
-					"type": "string"
-				},
-				"apiKey": {
-					"type": "string"
-				},
-				"restEndpoint": {
-					"type": "string",
-					"description": "https://help.victorops.com/knowledge-base/victorops-restendpoint-integration/"
-				}
-			},
-			"description": "API credentials for the optional VictorOps integration..",
-			"required": ["enabled", "apiId", "apiKey", "restEndpoint"],
-			"default": null
-		},
-		"volunteerScheduleURL": {
-			"type": "string",
-			"description": "The URL to the volunteer schedule. Is embedded as an IFrame on the Producer Dashboard."
-		},
-		"volunteerEvaluationsURL": {
-			"type": "string",
-			"description": "The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard."
 		},
 		"techNotesURL": {
 			"type": "string",
