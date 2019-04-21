@@ -216,17 +216,6 @@
 		"techNotesURL": {
 			"type": "string",
 			"description": "The URL to the tech notes spreadsheet. Is embedded as n IFrame on the Producer Dashboard."
-		},
-		"zabbix": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"default": true
-				}
-			},
-			"required": ["enabled"]
 		}
 	},
 
