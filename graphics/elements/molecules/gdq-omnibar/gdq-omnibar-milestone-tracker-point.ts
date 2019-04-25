@@ -39,7 +39,6 @@ export default class GDQOmnibarMilestoneTrackerPointElement extends Polymer.Elem
 			}
 		}
 
-		// Use the monospace version of the "1" character in the gdqpixel font.
-		return amountString.replace(/1/ig, '\u00C0');
+		return amountString;
 	}
 }
