@@ -117,6 +117,6 @@ export default class GDQOmnibarMilestoneAlertElement extends Polymer.Element {
 			return `NEXT MILESTONE:&nbsp;<b>${succeedingMilestone.name} - ${this._formatTotal(succeedingMilestone.total)}</b>`;
 		}
 
-		return '<b>NEW GAMES DONE QUICK PB!</b>';
+		return '<b>NEW RPG LIMIT BREAK PB!</b>';
 	}
 }

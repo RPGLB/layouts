@@ -6,7 +6,6 @@
 <link rel="import" href="gdq-omnibar-challenges.html">
 <link rel="import" href="gdq-omnibar-cta.html">
 <link rel="import" href="gdq-omnibar-label.html">
-<link rel="import" href="gdq-omnibar-left-divider.html">
 <link rel="import" href="gdq-omnibar-list.html">
 <link rel="import" href="gdq-omnibar-milestone-alert.html">
 <link rel="import" href="gdq-omnibar-milestone-tracker.html">
@@ -19,15 +18,17 @@
 		<style include="gdq-text-styles">
 			:host {
 				display: flex;
-				width: 1920px;
+				width: 1280px;
 				height: 55px;
 				color: white;
-				background: linear-gradient(180deg, #061720 0%, #040C0D 100%);
-				font-family: "Source Code Pro", monospace;
+				background: #161616;
+				font-family: "Khand", monospace;
 			}
 
 			#gdqLogo {
 				z-index: 3;
+				padding: 2.5px;
+				height: 50px;
 				flex-shrink: 0;
 			}
 
@@ -68,13 +69,14 @@
 			}
 
 			#charityLogo {
+				padding: 5px;
+				height: 45px;
 				z-index: 1;
 				@apply --layout-flex-none;
 			}
 		</style>
 
-		<video id="gdqLogo" src="[[importPath]]img/logo-gdq.mp4" autoplay loop muted></video>
-		<gdq-omnibar-left-divider id="leftDivider"></gdq-omnibar-left-divider>
+		<img id="gdqLogo" src="[[importPath]]img/RPG-limit-break-vertical.png" />
 		<div id="body">
 			<gdq-omnibar-label id="label"></gdq-omnibar-label>
 			<div id="content"></div>
@@ -85,7 +87,7 @@
 			</gdq-omnibar-milestone-alert>
 		</div>
 		<gdq-omnibar-total id="total"></gdq-omnibar-total>
-		<img id="charityLogo" src="[[importPath]]img/logo-charity.png">
+		<img id="charityLogo" src="[[importPath]]img/nami-orb-white.png" />
 	</template>
 
 	<script src="gdq-omnibar.js" type="module"></script>

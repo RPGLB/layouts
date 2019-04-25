@@ -1,5 +1,5 @@
 const {customElement, property} = Polymer.decorators;
-const ONE_MILLION = 1000000;
+const ONE_THOUSAND = 1000;
 type Alignment = 'left' | 'center' | 'right';
 
 @customElement('gdq-omnibar-milestone-tracker-point')
@@ -24,7 +24,7 @@ export default class GDQOmnibarMilestoneTrackerPointElement extends Polymer.Elem
 	}
 
 	_calcDisplayAmount(amount: number) {
-		return `$${this._formatAmount(amount / ONE_MILLION)}M`;
+		return `$${this._formatAmount(amount / ONE_THOUSAND)}K`;
 	}
 
 	_formatAmount(amount: number) {

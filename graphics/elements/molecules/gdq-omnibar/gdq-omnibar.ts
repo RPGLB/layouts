@@ -15,20 +15,16 @@ import GDQOmnibarMilestoneTrackerElement from './gdq-omnibar-milestone-tracker';
 const {customElement, property} = Polymer.decorators;
 
 const MILESTONES = [
-	{name: 'AGDQ 2014', total: 1031665.5},
-	{name: 'AGDQ 2015', total: 1576085},
-	{name: 'AGDQ 2016', total: 1216309.02},
-	{name: 'SGDQ 2016', total: 1294139.5},
-	{name: 'AGDQ 2017', total: 2222790.52},
-	{name: 'SGDQ 2017', total: 1792342.37},
-	{name: 'AGDQ 2018', total: 2295190.66},
-	{name: 'SGDQ 2018', total: 2168913.51}
+	{name: 'RPGLB 2015', total: 46595},
+	{name: 'RPGLB 2016', total: 75194.33},
+	{name: 'RPGLB 2017', total: 111773.56},
+	{name: 'RPGLB 2018', total: 164099.31}
 ].sort((a, b) => {
 	return a.total - b.total;
 }).map((milestone, index, array) => {
 	const precedingMilestone = index > 0 ?
 		array[index - 1] :
-		{name: 'none', total: 1000000};
+		{name: 'none', total: 25000};
 
 	const succeedingMilestone = array[index + 1];
 	const modifiedMilestone = {

@@ -29,7 +29,10 @@
 
 			#totalText {
 				font-size: 24px;
-				font-family: gdqpixel, monospace;
+				font-weight: 600;
+				font-family: Roboto, monospace;
+				top: 11px;
+				color: #f9f9f9;
 				@apply --layout-horizontal;
 				@apply --layout-center;
 			}
@@ -37,35 +40,25 @@
 			#totalTextAmount {
 				display: block;
 				position: absolute;
-				top: 11px;
 				left: 37px;
 			}
 
 			#totalTextAmountPlaceholder {
 				opacity: 0;
 			}
-
-			.gradientText {
-				color: transparent;
-				text-shadow: 0 0 12px rgba(121, 241, 234, 0.5);
-				background-image: var(--atom-gradient-text-gradient, linear-gradient(
-					180deg,
-					#93FFE5 0%,
-					#30C7F5 100%
-				));
-				-webkit-background-clip: text;
-			}
 		</style>
 
+		<!--
 		<div id="leftEdge"></div>
+		-->
 
 		<div id="totals">
 			<div id="totalText">
-				<div id="totalTextDollars" class="gradientText">$</div>
+				<div id="totalTextDollars">$</div>
 
 				<!-- Workaround for https://bugs.chromium.org/p/chromium/issues/detail?id=670292 -->
 				<div id="totalTextAmountPlaceholder"></div>
-				<atom-tweening-number id="totalTextAmount" class="gradientText"></atom-tweening-number>
+				<atom-tweening-number id="totalTextAmount"></atom-tweening-number>
 			</div>
 		</div>
 	</template>

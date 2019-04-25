@@ -11,8 +11,8 @@
 				line-height: normal;
 				font-size: 32px;
 				text-align: center;
-				color: var(--gdq-primary-color);
-				text-shadow: 0 0 12px rgba(0, 255, 255, 0.75);
+				color: var(--gdq-secondary-color);
+				/*text-shadow: 0 0 12px rgba(0, 255, 255, 0.75);*/
 				height: 100%;
 				will-change: transform;
 			}
@@ -81,42 +81,34 @@
 				z-index: 2;
 				--atom-chevron-stroke-size: 0px;
 				--atom-chevron-thickness: 7px;
-				--atom-chevron-fill-color: var(--gdq-primary-color);
-			}
-
-			.chevron:not(.chevron--bg) {
-				filter: drop-shadow(0 0 12px var(--gdq-primary-color));
-			}
-
-			.chevron--bg {
-
+				--atom-chevron-fill-color: var(--gdq-secondary-color);
 			}
 		</style>
 
 		<div id="leftChevrons" class="chevronGroup">
-			<atom-chevron direction="left" no-auto-render class="chevron"></atom-chevron>
-			<atom-chevron direction="left" no-auto-render class="chevron chevron--bg"></atom-chevron>
-			<atom-chevron direction="left" no-auto-render class="chevron"></atom-chevron>
+			<atom-chevron direction="left" no-auto-render></atom-chevron>
+			<atom-chevron direction="left" no-auto-render></atom-chevron>
+			<atom-chevron direction="left" no-auto-render></atom-chevron>
 		</div>
 
 		<iron-selector id="lineSelector" attr-for-selected="id">
 			<div id="benefits" class="line">
 				<div id="benefitsContent" class="line-content">
-					<span class="bold">#AGDQ2019</span>&nbsp;benefits&nbsp;the&nbsp;<span class="white">Prevent Cancer Foundation</span>
+					<span class="bold">#RPGLB2019</span>&nbsp;supports&nbsp;the&nbsp;<span class="white">National Alliance on Mental Illness</span>
 				</div>
 			</div>
 
 			<div id="donate" class="line">
 				<div id="donateContent" class="line-content">
-					Donate at&nbsp;<span class="bold white">gamesdonequick.com</span>
+					Donate at&nbsp;<span class="bold white">rpglimitbreak.com/donate</span>
 				</div>
 			</div>
 		</iron-selector>
 
 		<div id="rightChevrons" class="chevronGroup">
-			<atom-chevron direction="right" no-auto-render class="chevron"></atom-chevron>
-			<atom-chevron direction="right" no-auto-render class="chevron chevron--bg"></atom-chevron>
-			<atom-chevron direction="right" no-auto-render class="chevron"></atom-chevron>
+			<atom-chevron direction="right" no-auto-render></atom-chevron>
+			<atom-chevron direction="right" no-auto-render></atom-chevron>
+			<atom-chevron direction="right" no-auto-render></atom-chevron>
 		</div>
 	</template>
 
