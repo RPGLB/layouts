@@ -39,11 +39,6 @@ export interface Configschema {
 	twitch?: {
 		[k: string]: any;
 	} | null;
-	footpedal?: {
-		enabled?: boolean;
-		buttonId?: number;
-		[k: string]: any;
-	};
 	/**
 	 * Credentials used to log into Firebase, which is what hosts Lightning Round.
 	 */
@@ -51,11 +46,9 @@ export interface Configschema {
 		[k: string]: any;
 	} | null;
 	/**
-	 * Login information for the private areas of the tracker API.
+	 * Info for retrieving data from the event tracker.
 	 */
 	tracker: {
-		username: string;
-		password: string;
 		eventId: number;
 		baseUrl: string;
 		[k: string]: any;
@@ -70,24 +63,7 @@ export interface Configschema {
 	};
 	nowPlayingKey?: string;
 	/**
-	 * API credentials for the optional VictorOps integration..
-	 */
-	victorOps?: {
-		[k: string]: any;
-	} | null;
-	/**
-	 * The URL to the volunteer schedule. Is embedded as an IFrame on the Producer Dashboard.
-	 */
-	volunteerScheduleURL?: string;
-	/**
-	 * The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard.
-	 */
-	volunteerEvaluationsURL?: string;
-	/**
 	 * The URL to the tech notes spreadsheet. Is embedded as n IFrame on the Producer Dashboard.
 	 */
 	techNotesURL?: string;
-	zabbix?: {
-		enabled: boolean;
-	};
 }

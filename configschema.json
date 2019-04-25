@@ -104,18 +104,13 @@
 					"type": "string",
 					"description": "The Client ID of the Twitch API application to use when sending API requests."
 				},
-				"bitsOffset": {
-					"type": "number",
-					"description": "The amount of bits to subtract from the total shown.",
-					"default": 0
-				},
 				"debug": {
 					"type": "boolean",
 					"description": "If true, enables additional debug logging for some Twitch systems.",
 					"default": false
 				}
 			},
-			"required": ["channelId", "oauthToken", "clientId", "bitsOffset", "debug"],
+			"required": ["channelId", "oauthToken", "clientId", "debug"],
 			"default": null
 		},
 		"firebase": {

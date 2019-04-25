@@ -8,12 +8,10 @@ import {formatDollars} from './util';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {GDQUrls} from './urls';
 import {ListenForCb} from '../types/nodecg';
-import {BitsTotal} from '../types/schemas/bits_total';
 import {Total} from '../types/schemas/total';
 
 const nodecg = nodecgApiContext.get();
 const autoUpdateTotal = nodecg.Replicant<boolean>('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 const recordTrackerEnabled = nodecg.Replicant<boolean>('recordTrackerEnabled');
 const total = nodecg.Replicant<Total>('total');
 let disconnectWarningTimeout: NodeJS.Timer | null;
@@ -104,8 +102,6 @@ nodecg.listenFor('setTotal', ({type, newValue}: {type: string; newValue: string}
 			raw: parseFloat(newValue),
 			formatted: formatDollars(newValue, {cents: false})
 		};
-	} else if (type === 'bits') {
-		bitsTotal.value = parseInt(newValue, 10);
 	} else {
 		nodecg.log.error('Unexpected "type" sent to setTotal: "%s"', type);
 	}

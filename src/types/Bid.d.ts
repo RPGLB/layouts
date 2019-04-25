@@ -12,7 +12,6 @@ export interface ChildBid extends Bid {
 
 export interface ParentBid extends Bid {
 	goal: string;
-	isBitsChallenge: boolean;
 	goalMet: boolean;
 	options: ChildBid[];
 	public: string;
