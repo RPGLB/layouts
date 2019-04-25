@@ -104,10 +104,10 @@ export default class GDQOmnibarElement extends Polymer.Element {
 		// For development, comment out whichever parts you don't want to see right now.
 		const parts = [
 			this.showCTA,
-			this.showUpNext,
+/*			this.showUpNext,
 			this.showChallenges,
 			this.showChoices,
-			this.showCurrentPrizes,
+			this.showCurrentPrizes,*/
 			this.showMilestoneProgress
 		];
 
@@ -435,8 +435,8 @@ export default class GDQOmnibarElement extends Polymer.Element {
 			return tl;
 		}
 
-		// If the current total is < $1M, return.
-		if (total.value.raw < 1000000) {
+		// If the current total is < $25K, return.
+		if (total.value.raw < 25000) {
 			return tl;
 		}
 

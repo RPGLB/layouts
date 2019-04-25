@@ -6,6 +6,7 @@
 <link rel="import" href="gdq-omnibar-challenges.html">
 <link rel="import" href="gdq-omnibar-cta.html">
 <link rel="import" href="gdq-omnibar-label.html">
+<link rel="import" href="gdq-omnibar-left-divider.html">
 <link rel="import" href="gdq-omnibar-list.html">
 <link rel="import" href="gdq-omnibar-milestone-alert.html">
 <link rel="import" href="gdq-omnibar-milestone-tracker.html">
@@ -29,6 +30,7 @@
 				z-index: 3;
 				padding: 2.5px;
 				height: 50px;
+				margin-right: 2.5px;
 				flex-shrink: 0;
 			}
 
@@ -77,6 +79,7 @@
 		</style>
 
 		<img id="gdqLogo" src="[[importPath]]img/RPG-limit-break-vertical.png" />
+		<gdq-omnibar-left-divider id="leftDivider"></gdq-omnibar-left-divider>
 		<div id="body">
 			<gdq-omnibar-label id="label"></gdq-omnibar-label>
 			<div id="content"></div>
