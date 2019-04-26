@@ -25,7 +25,7 @@ export default class GDQOmnibarListElement extends Polymer.Element {
 	 * How much space, in pixels, to put between items in the list.
 	 */
 	@property({type: Number, observer: GDQOmnibarListElement.prototype._marginSizeChanged})
-	marginSize = 6;
+	marginSize = 4;
 
 	enter(displayDuration: number, scrollHoldDuration: number) {
 		const listWidth = this.clientWidth;

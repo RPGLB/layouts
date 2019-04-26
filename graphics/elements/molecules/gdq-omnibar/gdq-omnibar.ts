@@ -103,12 +103,12 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		// For development, comment out whichever parts you don't want to see right now.
 		const parts = [
-			this.showCTA,
-/*			this.showUpNext,
+//			this.showCTA,
+			this.showUpNext,
 			this.showChallenges,
 			this.showChoices,
-			this.showCurrentPrizes,*/
-			this.showMilestoneProgress
+//			this.showCurrentPrizes,
+//			this.showMilestoneProgress
 		];
 
 		function processNextPart() {
@@ -139,18 +139,14 @@ export default class GDQOmnibarElement extends Polymer.Element {
 	 * @param options - Options for this animation.
 	 * @returns An animation timeline.
 	 */
-	showLabel(text: string, options: {avatarIconName: string; ringColor: string; flagColor: string}) {
+	showLabel(text: string) {
 		const tl = new TimelineLite();
 		const labelElem = this.$.label as GDQOmnibarLabelElement;
-		const fullOptions = {
-			...options,
-			flagHoldDuration: Math.max(DISPLAY_DURATION / 2, 5)
-		};
 
 		if (labelElem._showing) {
-			tl.add(labelElem.change(text, fullOptions));
+			tl.add(labelElem.change(text));
 		} else {
-			tl.add(labelElem.show(text, fullOptions));
+			tl.add(labelElem.show(text));
 		}
 
 		if (this.skipLabelAnims) {
@@ -266,11 +262,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, listElement);
 
-		tl.add(this.showLabel('Up Next', {
-			avatarIconName: 'upnext',
-			flagColor: '#7EF860',
-			ringColor: '#50A914'
-		}), '+=0.03');
+		tl.add(this.showLabel('Up Next'), '+=0.03');
 
 		this.showContent(tl, listElement);
 		this.hideContent(tl, listElement);
@@ -320,11 +312,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, containerElement);
 
-		tl.add(this.showLabel('Challenges', {
-			avatarIconName: 'challenges',
-			flagColor: '#82EFFF',
-			ringColor: '#FFFFFF'
-		}), '+=0.03');
+		tl.add(this.showLabel('Challenges'), '+=0.03');
 
 		this.showContent(tl, containerElement);
 		this.hideContent(tl, containerElement);
@@ -375,11 +363,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, containerElement);
 
-		tl.add(this.showLabel('Bid Wars', {
-			avatarIconName: 'bidwars',
-			flagColor: '#FF4D4A',
-			ringColor: '#FF4D4D'
-		}), '+=0.03');
+		tl.add(this.showLabel('Bid Wars'), '+=0.03');
 
 		this.showContent(tl, containerElement);
 		this.hideContent(tl, containerElement);
@@ -415,11 +399,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, listElement);
 
-		tl.add(this.showLabel('Prizes', {
-			avatarIconName: 'prizes',
-			flagColor: '#FF70C8',
-			ringColor: '#EC0793'
-		}), '+=0.03');
+		tl.add(this.showLabel('Prizes'), '+=0.03');
 
 		this.showContent(tl, listElement);
 		this.hideContent(tl, listElement);
@@ -455,11 +435,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, milestoneTrackerElement);
 
-		tl.add(this.showLabel('Milestone Progress', {
-			avatarIconName: 'milestones',
-			flagColor: '#FFB800',
-			ringColor: '#E7EC07'
-		}), '+=0.03');
+		tl.add(this.showLabel('Milestone Progress'), '+=0.03');
 
 		this.showContent(tl, milestoneTrackerElement);
 		this.hideContent(tl, milestoneTrackerElement);

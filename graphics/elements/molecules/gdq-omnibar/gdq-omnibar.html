@@ -22,16 +22,21 @@
 				width: 1280px;
 				height: 55px;
 				color: white;
-				background: #161616;
+				background: #222222;
 				font-family: "Khand", monospace;
 			}
 
-			#gdqLogo {
+			#rpglbLogo {
 				z-index: 3;
 				padding: 2.5px;
 				height: 50px;
 				margin-right: 2.5px;
 				flex-shrink: 0;
+			}
+
+			#leftDivider {
+				width: 3px;
+				background: #1976d2;
 			}
 
 			#body {
@@ -78,8 +83,8 @@
 			}
 		</style>
 
-		<img id="gdqLogo" src="[[importPath]]img/RPG-limit-break-vertical.png" />
-		<gdq-omnibar-left-divider id="leftDivider"></gdq-omnibar-left-divider>
+		<img id="rpglbLogo" src="[[importPath]]img/RPG-limit-break-vertical.png" />
+		<div id="leftDivider"></div>
 		<div id="body">
 			<gdq-omnibar-label id="label"></gdq-omnibar-label>
 			<div id="content"></div>

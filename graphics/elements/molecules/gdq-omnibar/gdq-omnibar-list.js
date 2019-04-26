@@ -25,7 +25,7 @@ let GDQOmnibarListElement = GDQOmnibarListElement_1 = class GDQOmnibarListElemen
         /**
          * How much space, in pixels, to put between items in the list.
          */
-        this.marginSize = 6;
+        this.marginSize = 4;
     }
     enter(displayDuration, scrollHoldDuration) {
         const listWidth = this.clientWidth;
