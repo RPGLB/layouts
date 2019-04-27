@@ -1,7 +1,7 @@
 import {ParentBid} from '../../../../src/types';
 import {TimelineLite} from 'gsap';
 import GDQOmnibarContentLabelElement from './gdq-omnibar-content-label';
-import GDQOmnibarChallengeElement from './gdq-omnibar-challenge';
+import RPGLBOmnibarChallengeElement from './rpglb-omnibar-challenge';
 
 const {customElement, property} = Polymer.decorators;
 
@@ -18,7 +18,7 @@ export default class GDQOmnibarChallengesElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		this.challenges.forEach((challenge, index) => {
-			const challengeElement = document.createElement('gdq-omnibar-challenge') as GDQOmnibarChallengeElement;
+			const challengeElement = document.createElement('rpglb-omnibar-challenge') as RPGLBOmnibarChallengeElement;
 			challengeElement.classList.add('challenge');
 			challengeElement.bid = challenge;
 			this.$.challenges.appendChild(challengeElement);

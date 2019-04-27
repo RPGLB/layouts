@@ -1,0 +1,73 @@
+<dom-module id="rpglb-omnibar-challenge">
+	<template>
+		<style>
+			:host {
+				height: 47px;
+				position: relative;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+				margin: 4px 4px 4px 0px;
+				overflow: hidden;
+
+				/* Prep for animation. */
+				transform: translateY(55px);
+				opacity: 0;
+			}
+
+			#body {
+				position: relative;
+				box-sizing: border-box;
+				background-color: #004ba0;
+				min-width: 1px;
+				@apply --layout-vertical;
+				@apply --layout-end;
+				@apply --layout-flex;
+			}
+
+			#progress {
+				position: relative;
+				@apply --layout-self-start;
+				@apply --layout-horizontal;
+
+				z-index: 1;
+				left: 0;
+				width: 0;
+				height: 22px;
+				background-color: #ff9100;
+			}
+
+			#total,
+			#goal {
+				font-style: normal;
+				line-height: normal;
+				color: #f9f9f9;
+			}
+
+			#total {
+				font-size: 18px;
+				font-weight: 500;
+				position: absolute;
+				line-height: 1.4em;
+				z-index: 2;
+
+				opacity: 0;
+				will-change: opacity;
+			}
+
+			#goal {
+				font-size: 14px;
+				font-weight: 700;
+				padding-right: 5px;
+			}
+		</style>
+
+		<div id="body">
+			<div id="goal">Goal: [[bid.goal]]</div>
+			<div id="progress">
+				<div id="total">[[bid.total]]</div>
+			</div>
+		</div>
+	</template>
+
+	<script src="rpglb-omnibar-challenge.js" type="module"></script>
+</dom-module>
