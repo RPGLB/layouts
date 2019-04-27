@@ -38,7 +38,6 @@ export default class GDQOmnibarBidwarsElement extends Polymer.Element {
 
 			const listElement = document.createElement('gdq-omnibar-list') as GDQOmnibarListElement;
 			listElement.classList.add('list');
-			listElement.marginSize = -8;
 			bidElements.forEach(element => {
 				listElement.appendChild(element);
 			});

@@ -1,132 +1,64 @@
-<link rel="import" href="../../atoms/atom-arrow-block/atom-arrow-block.html">
-<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
-<link rel="import" href="../../atoms/atom-gradient-text/atom-gradient-text.html">
-<link rel="import" href="../../atoms/atom-inner-glow-text/atom-inner-glow-text.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="gdq-omnibar-bidwar-option">
 	<template>
 		<style>
 			:host {
-				height: 100%;
+				height: 47px;
+				position: relative;
 				box-sizing: border-box;
-				will-change: opacity;
-				@apply --layout-horizontal;
+				@apply --layout-vertical;
+				margin: 4px 0px;
+				background-color: #1976d2;
+
+				/* Prep for animation. */
+				transform: translateY(55px);
+				opacity: 0;
 			}
 
-			#tailChevron {
-				position: relative;
-				top: 5px;
-				width: 24px;
-				height: calc(100% - 10px);
-				z-index: 2;
-				margin-right: -18px;
-				will-change: transform;
-				--atom-chevron-fill-color: #64fdff;
-				--atom-chevron-stroke-color: #4fffe6;
-				--atom-chevron-background: linear-gradient(to bottom, #052B33 0%, #040F10 100%);
-				--atom-chevron-chevron: {
-					filter: drop-shadow(0 0 12px #00c5ba);
-				};
+			:host([winning]) {
+				background-color: #ff9100;
+			}
+
+			:host([placeholder]) {
+				background-color: #ffc246;
 			}
 
 			#body {
-				padding: 5px 0;
-				box-sizing: border-box;
+				position: relative;
 				height: 100%;
-				will-change: clip-path;
-				@apply --layout-horizontal;
+				padding: 4px 16px 4px 8px;
+				@apply --layout-vertical;
+				@apply --layout-center-justified;
+				@apply --layout-flex;
 			}
 
-			#totalBlock {
-				margin-left: -18px;
-				--atom-arrow-block-fill-color: rgba(102, 252, 255, 0.4);
-				--atom-arrow-block-glow-color: #00bdc5;
-			}
-
-			#label,
-			#total {
-				font-style: normal;
-				line-height: normal;
-				font-size: 24px;
+			#body > * {
+				position: relative;
 			}
 
 			#label {
+				font-style: normal;
 				font-weight: 500;
-				--atom-gradient-text-shadow: 0 0 4px #00c0c5;
-				--atom-gradient-text-gradient: linear-gradient(to bottom, #FFFFFF 0%, #CDCDCD 100%);
+				line-height: 1em;
+				font-size: 18px;
+				color: #f9f9f9;
+				-webkit-background-clip: text;
 			}
 
 			#total {
-				font-weight: 700;
-				color: #05262e;
-				will-change: opacity;
-				--atom-inner-glow-text-glow-color: #01c2c5;
-			}
-
-			atom-arrow-block {
-				height: 100%;
-				--atom-arrow-block-stroke-color: #5affec;
-				--atom-arrow-block-fill-color: transparent;
-			}
-
-			/* Winning styles. */
-			:host([winning]) #total {
-				--atom-inner-glow-text-glow-color: #2AC503;
-			}
-
-			:host([winning]) #tailChevron {
-				--atom-chevron-fill-color: #8BFF6E;
-				--atom-chevron-stroke-color: #8BFF6E;
-				--atom-chevron-chevron: {
-					filter: drop-shadow(0 0 12px #2AC503);
-				};
-			}
-
-			:host([winning]) #totalBlock {
-				--atom-arrow-block-fill-color: rgba(139, 255, 110, 0.4);
-				--atom-arrow-block-glow-color: #2AC503;
-			}
-
-			:host([winning]) #label {
-				--atom-gradient-text-shadow: 0 0 4px #2AC503;
-			}
-
-			:host([winning]) atom-arrow-block {
-				--atom-arrow-block-stroke-color: #87FD6A;
-			}
-
-			/* Placeholder styles. ("Be the first to bid!") */
-			:host([placeholder]) #tailChevron {
-				--atom-chevron-fill-color: #82EFFF;
-				--atom-chevron-stroke-color: #82EFFF;
-				--atom-chevron-chevron: {
-					filter: drop-shadow(0 0 12px #82EFFF);
-				};
-			}
-
-			:host([placeholder]) #label {
-				--atom-gradient-text-shadow: 0 0 4px #82EFFF;
-				--atom-gradient-text-gradient: linear-gradient(to bottom, #FFFFFF 0%, #82EFFF 100%);
-			}
-
-			:host([placeholder]) atom-arrow-block {
-				--atom-arrow-block-stroke-color: #82EFFF;
-			}
-
-			:host([placeholder]) #totalBlock {
-				display: none;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+				font-size: 16px;
+				color: #f9f9f9;
+				-webkit-background-clip: text;
 			}
 		</style>
 
-		<atom-chevron id="tailChevron" no-auto-render></atom-chevron>
-
 		<div id="body">
-			<atom-arrow-block id="labelBlock">
-				<atom-gradient-text id="label" text="[[formatOptionDescription(bid)]]"></atom-gradient-text>
-			</atom-arrow-block>
-			<atom-arrow-block id="totalBlock" inner-glow>
-				<atom-inner-glow-text id="total" text="[[bid.total]]"></atom-inner-glow-text>
-			</atom-arrow-block>
+			<div id="label">[[formatOptionDescription(bid)]]</div>
+			<div id="total">[[bid.total]]</div>
 		</div>
 	</template>
 

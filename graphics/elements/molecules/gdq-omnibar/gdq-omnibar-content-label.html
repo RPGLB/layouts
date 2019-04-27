@@ -1,33 +1,12 @@
-<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
-
 <dom-module id="gdq-omnibar-content-label">
 	<template>
 		<style>
 			:host {
 				height: 100%;
-				padding: 3px 0;
+				padding: 4px 0px 0px 4px;
 				box-sizing: border-box;
-				margin-right: -7px;
+				margin-right: 4px;
 				@apply --layout-horizontal;
-			}
-
-			#anchor {
-				width: 5px;
-				background: var(--gdq-omnibar-content-label-fg-color);
-				box-shadow: 0 0 12px var(--gdq-omnibar-content-label-glow-color);
-				transform-origin: center;
-
-				/* prep for animation */
-				transform: scaleY(0);
-				will-change: transform;
-			}
-
-			#bodyClip {
-				overflow: hidden;
-
-				/* give the glow some room to breathe */
-				padding-right: 12px;
-				margin-right: -12px;
 			}
 
 			#body {
@@ -35,12 +14,17 @@
 				@apply --layout-horizontal;
 
 				/* prep for animation */
-				transform: translateX(-100%);
+				transform: translateY(55px);
 				will-change: transform;
 			}
 
-			#text,
-			#yardstick {
+			#text {
+				position: relative;
+				height: 100%;
+				color: #FFFFFF;
+				padding: 0 10px;
+				background-color: #1976d2;
+
 				font-style: normal;
 				font-weight: 500;
 				line-height: normal;
@@ -49,55 +33,10 @@
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
 			}
-
-			#text {
-				position: relative;
-				top: -1px;
-				height: calc(100% + 1px);
-				color: #FFFFFF;
-				text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-				background-color: var(--gdq-omnibar-content-label-bg-color);
-			}
-
-			#yardstick {
-				position: absolute;
-				top: 0;
-				left: 0;
-				opacity: 0;
-				padding: 0 18px;
-				background: none;
-			}
-
-			#innerChevron {
-				width: 24px;
-				--atom-chevron-thickness: 4.5px;
-				--atom-chevron-fill-color: var(--gdq-omnibar-content-label-fg-color);
-				--atom-chevron-background: var(--gdq-omnibar-content-label-bg-color);
-				--atom-chevron-chevron: {
-					filter: drop-shadow(0 0 12px var(--gdq-omnibar-content-label-glow-color));
-				}
-			}
-
-			#outerChevron {
-				width: 26px;
-				margin-left: -20px;
-				--atom-chevron-thickness: 6.5px;
-				--atom-chevron-fill-color: var(--gdq-omnibar-content-label-bg-color);
-			}
-
-			atom-chevron {
-				--atom-chevron-stroke-size: 0px;
-			}
 		</style>
 
-		<div id="anchor"></div>
-		<div id="bodyClip">
-			<div id="body">
-				<div id="text">?</div>
-				<div id="yardstick">?</div>
-				<atom-chevron id="innerChevron" direction="right"></atom-chevron>
-				<atom-chevron id="outerChevron" direction="right"></atom-chevron>
-			</div>
+		<div id="body">
+			<div id="text">?</div>
 		</div>
 	</template>
 
