@@ -41,13 +41,6 @@ async function update() {
 		const currentBids = processRawBids(currentBidsJSON);
 		const allBids = processRawBids(allBidsJSON);
 
-		allBids.forEach(bid => {
-			const bidAlreadyExistsInCurrentBids = currentBids.find(currentBid => currentBid.id === bid.id);
-			if (!bidAlreadyExistsInCurrentBids) {
-				currentBids.unshift(bid);
-			}
-		});
-
 		if (!equal(allBidsRep.value, allBids)) {
 			allBidsRep.value = allBids;
 		}
@@ -93,6 +86,7 @@ function processRawBids(bids: TrackerObject[]) {
 				speedrun: bid.fields.speedrun__name,
 				speedrunEndtime: Date.parse(bid.fields.speedrun__endtime),
 				public: bid.fields.public,
+				allowuser: bid.fields.allowuseroptions,
 			} as ParentBid;
 
 			// If this parent bid is not a target, that means it is a donation war that has options.
@@ -144,7 +138,7 @@ function processRawBids(bids: TrackerObject[]) {
 		const bid = formattedParentBidsById[id];
 		bid.type = (() => {
 			if (bid.options) {
-				if (bid.options.length === 2) {
+				if (bid.options.length === 2 && !bid.allowuser) {
 					return 'choice-binary';
 				}
 

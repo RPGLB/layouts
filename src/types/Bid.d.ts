@@ -11,6 +11,7 @@ export interface ChildBid extends Bid {
 }
 
 export interface ParentBid extends Bid {
+	allowuser: boolean;
 	goal: string;
 	goalMet: boolean;
 	options: ChildBid[];

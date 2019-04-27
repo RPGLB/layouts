@@ -40,7 +40,6 @@ async function init() {
 
 	if (nodecg.bundleConfig.twitch) {
 		require('./twitch-ads');
-		require('./twitch-pubsub');
 
 		// If the appropriate config params are present,
 		// automatically update the Twitch game and title when currentRun changes.
