@@ -107,7 +107,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 			this.showUpNext,
 			this.showChallenges,
 			this.showChoices,
-//			this.showCurrentPrizes,
+			this.showCurrentPrizes,
 //			this.showMilestoneProgress
 		];
 
