@@ -10,6 +10,7 @@
 				@apply --layout-vertical;
 				margin: 4px 0px;
 				background-color: #1976d2;
+				min-width: 80px;
 
 				/* Prep for animation. */
 				transform: translateY(55px);
@@ -27,7 +28,7 @@
 			#body {
 				position: relative;
 				height: 100%;
-				padding: 4px 16px 4px 8px;
+				padding: 4px 8px 4px 8px;
 				@apply --layout-vertical;
 				@apply --layout-center-justified;
 				@apply --layout-flex;
@@ -53,6 +54,7 @@
 				font-size: 16px;
 				color: #f9f9f9;
 				-webkit-background-clip: text;
+				@apply --layout-self-end;
 			}
 		</style>
 
