@@ -1,4 +1,4 @@
-import {TimelineLite, Sine, SlowMo} from 'gsap';
+import {TimelineLite, Sine} from 'gsap';
 
 const {customElement} = Polymer.decorators;
 
