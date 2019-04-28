@@ -28,16 +28,6 @@ export default class GDQOmnibarRunElement extends Polymer.Element {
 	}
 
 	concatenateRunners(run: Run) {
-		if (run.pk === 2640) {
-			// Pre-Show
-			return 'SpikeVegeta, feasel, Blechy, Protomagicalgirl & JHobz';
-		}
-
-		if (run.pk === 2779) {
-			// Mega Man 1 - 3 Team Relay Race Any%
-			return '12 Runners';
-		}
-
 		let concatenatedRunners = run.runners[0] ? run.runners[0].name : '';
 		if (run.runners.length > 1) {
 			concatenatedRunners = run.runners.slice(1).reduce((prev, curr, index, array) => {

@@ -103,7 +103,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		// For development, comment out whichever parts you don't want to see right now.
 		const parts = [
-//			this.showCTA,
+			this.showCTA,
 			this.showUpNext,
 			this.showChallenges,
 			this.showChoices,
