@@ -442,6 +442,7 @@ function formatRun(rawRun: GDQTypes.TrackerObject, formattedRunners: GDQTypes.Ru
 		commentators: rawRun.fields.commentators || 'Unknown',
 		category: rawRun.fields.category || 'Any%',
 		setupTime: rawRun.fields.setup_time,
+		startTime: rawRun.fields.starttime,
 		order: rawRun.fields.order,
 		estimate: rawRun.fields.run_time || 'Unknown',
 		releaseYear: rawRun.fields.release_year || '',

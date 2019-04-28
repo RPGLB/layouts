@@ -13,6 +13,7 @@ export interface Run {
 	releaseYear: string | number | null;
 	runners: Runner[];
 	setupTime: string;
+	startTime: string;
 	type: 'run';
 	originalValues?: Partial<Run>;
 }
