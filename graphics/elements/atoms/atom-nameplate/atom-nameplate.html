@@ -13,41 +13,62 @@
 			:host {
 				display: flex;
 				position: relative;
-				height: var(--atom-nameplate-height, 54px);
-				text-transform: uppercase;
-				color: white;
-				font-family: "Source Code Pro", monospace;
-				@apply --fui-glow-rect;
+				height: var(--atom-nameplate-height, 35px);
+				color: var(--atom-nameplate-color, #222222);
+				font-family: "Khand", monospace;
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
 			}
 
 			#wrapper {
 				position: relative;
-				width: calc(100% - 9px);
-				height: calc(100% + 2px);
-				margin: -1px 5px;
+				height: 100%;
+				background-color: var(--atom-nameplate-bg, #f9f9f9);
+				box-sizing: border-box;
 				min-width: 1px; /* needed to prevent overflow */
 				flex: 1;
-				@apply --fui-glow-rect;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+				align-items: stretch;
+			}
+
+			#icon {
+				width: var(--atom-nameplate-height, 35px);
+				background-color: #004ba0;
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
 			}
 
+			:host([left]) #wrapper {
+				@apply --layout-horizontal;
+			}
+
+			:host([right]) #wrapper {
+				@apply --layout-horizontal-reverse;
+			}
+
+			:host([no-cap]) #cap {
+				display: none;
+			}
+
+			:host([no-icon]) #icon {
+				display: none;
+			}
+
 			#names {
 				position: relative;
-				top: -1px;
-				display: flex;
-				justify-content: var(--atom-nameplate-justify, center);
-				flex: 1;
+				@apply --layout-horizontal;
+				justify-content: var(--atom-nameplate-justify, start);
+				@apply --layout-center;
+				@apply --layout-flex;
 				white-space: nowrap;
-				padding: 0 var(--atom-nameplate-padding, 19px);
 				opacity: 0;
 				font-weight: 600;
 				z-index: 1;
-				text-shadow: 0 0 16px rgba(58, 216, 255, 0.8);
 				line-height: 1;
+				top: 1px;
 				min-width: 1px;
+				text-shadow: var(--atom-nameplate-shadow, none);
 				box-sizing: border-box;
 				@apply --atom-nameplate-names;
 			}
@@ -56,61 +77,16 @@
 				@apply --layout-horizontal;
 			}
 
+			#cactuar {
+				content: url("/bundles/rpglb19-layouts/graphics/img/Cactuar-Icon.png");
+
+			    height: 2.2ex;
+			    margin-left: -0.10ex;
+			}
+
 			#twitchLogo {
 				top: 0.5px;
 				margin-right: 1px;
-			}
-
-			.dotGreeble {
-				position: absolute;
-				width: 2px;
-				height: 2px;
-				background: var(--gdq-primary-color);
-			}
-
-			.dotGreeble--top {
-				top: 0;
-			}
-
-			.dotGreeble--bottom {
-				bottom: 0;
-			}
-
-			.dotGreeble--left {
-				left: 0;
-			}
-
-			.dotGreeble--right {
-				right: 0;
-			}
-
-			:host([no-left-cap]) .dotGreeble--left {
-				display: none;
-			}
-
-			:host([no-right-cap]) .dotGreeble--right {
-				display: none;
-			}
-
-			:host([no-left-cap]) #wrapper {
-				border-left: 0;
-				margin-left: 0;
-			}
-
-			:host([no-right-cap]) #wrapper {
-				border-right: 0;
-				margin-right: 0;
-			}
-
-			sc-fitted-text {
-				--sc-fitted-text-content: {
-					color: var(--atom-nameplate-name-color, transparent);
-					background-image: var(--atom-gradient-text-gradient, linear-gradient(
-						180deg,
-						#FFFFFF 0%,
-						#CDCDCD 100%
-					));
-				};
 			}
 
 			.hidden {
@@ -125,10 +101,9 @@
 		</style>
 
 		<div id="wrapper">
-			<div class="dotGreeble dotGreeble--top dotGreeble--left"></div>
-			<div class="dotGreeble dotGreeble--bottom dotGreeble--left"></div>
-			<div class="dotGreeble dotGreeble--top dotGreeble--right"></div>
-			<div class="dotGreeble dotGreeble--bottom dotGreeble--right"></div>
+			<div id="icon">
+				<img id="cactuar" />
+			</div>
 			<div id="names">
 				<sc-fitted-text id="namesName" text="[[name]]" align="center"></sc-fitted-text>
 				<div id="namesTwitch">
@@ -136,6 +111,7 @@
 					<sc-fitted-text text="[[twitch]]" align="left"></sc-fitted-text>
 				</div>
 			</div>
+			<div id="cap"></div>
 		</div>
 	</template>
 

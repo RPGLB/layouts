@@ -26,13 +26,14 @@ export default class GDQLowerthirdNameplateElement extends Polymer.Element {
 	enter() {
 		const tl = new TimelineLite();
 
-		tl.to(this.$.occluder, ENTRANCE_ANIM_DURATION, {
-			x: '250%',
-			ease: ENTRANCE_ANIM_EASE
+		tl.call(() => {
+			if (this.header) {
+				(this.$.nameplate as AtomNameplateElement).updateName({alias: "#RPGLB2019", rotate: false});
+			}
 		}, 0);
 
-		tl.to(this.$.clipped, ENTRANCE_ANIM_DURATION, {
-			clipPath: 'inset(0 0% 0 0)',
+		tl.to(this.$.name, ENTRANCE_ANIM_DURATION, {
+			scaleX: 1,
 			ease: ENTRANCE_ANIM_EASE
 		}, 0);
 
@@ -49,8 +50,7 @@ export default class GDQLowerthirdNameplateElement extends Polymer.Element {
 	}
 
 	reset() {
-		TweenLite.set(this.$.occluder, {x: '-100%'});
-		TweenLite.set(this.$.clipped, {clipPath: 'inset(0 100% 0 0)'});
+		TweenLite.set(this.$.name, {scaleX: 0});
 		TweenLite.set(this.$.title, {y: '-100%', opacity: 0});
 	}
 

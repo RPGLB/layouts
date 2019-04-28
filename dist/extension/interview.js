@@ -1,23 +1,12 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-// Packages
-const firebase = require("firebase-admin");
 // Ours
 const nodecgApiContext = require("./util/nodecg-api-context");
 const TimeUtils = require("./lib/time");
 const nodecg = nodecgApiContext.get();
-firebase.initializeApp({
-    credential: firebase.credential.cert(nodecg.bundleConfig.firebase),
-    databaseURL: `https://${nodecg.bundleConfig.firebase.project_id}.firebaseio.com`
-});
-const database = firebase.database();
 const lowerthirdPulseTimeRemaining = nodecg.Replicant('interview:lowerthirdTimeRemaining', { defaultValue: 0, persistent: false });
 const lowerthirdShowing = nodecg.Replicant('interview:lowerthirdShowing', { defaultValue: false, persistent: false });
 const throwIncoming = nodecg.Replicant('interview_throwIncoming');
-const questionPulseTimeRemaining = nodecg.Replicant('interview:questionTimeRemaining', { defaultValue: 0, persistent: false });
-const questionShowing = nodecg.Replicant('interview_questionShowing', { defaultValue: false, persistent: false });
-const questionSortMap = nodecg.Replicant('interview_questionSortMap');
-const questionTweetsRep = nodecg.Replicant('interview_questionTweets');
 const interviewStopwatch = nodecg.Replicant('interview_stopwatch');
 const currentLayout = nodecg.Replicant('currentLayout');
 const prizePlaylist = nodecg.Replicant('interview_prizePlaylist');
@@ -26,8 +15,6 @@ const allPrizes = nodecg.Replicant('allPrizes');
 const pulseIntervalMap = new Map();
 const pulseTimeoutMap = new Map();
 let interviewTimer;
-let _repliesListener;
-let _repliesRef;
 // Restore lost time, if applicable.
 if (interviewStopwatch.value.running) {
     const missedTime = Date.now() - interviewStopwatch.value.time.timestamp;
@@ -56,69 +43,6 @@ currentLayout.on('change', (newVal) => {
 nodecg.listenFor('pulseInterviewLowerthird', (duration) => {
     pulse(lowerthirdShowing, lowerthirdPulseTimeRemaining, duration);
 });
-nodecg.listenFor('pulseInterviewQuestion', (id, cb) => {
-    pulse(questionShowing, questionPulseTimeRemaining, 10).then(() => {
-        markQuestionAsDone(id, cb);
-    }).catch(error => {
-        if (cb && !cb.handled) {
-            cb(error);
-        }
-    });
-});
-questionShowing.on('change', (newVal) => {
-    // Hide the interview lowerthird when a question starts showing.
-    if (newVal) {
-        lowerthirdShowing.value = false;
-    }
-    else {
-        clearTimerFromMap(questionShowing, pulseIntervalMap);
-        clearTimerFromMap(questionShowing, pulseTimeoutMap);
-        questionPulseTimeRemaining.value = 0;
-    }
-});
-questionSortMap.on('change', (newVal, oldVal) => {
-    if (!oldVal || newVal[0] !== oldVal[0]) {
-        questionShowing.value = false;
-    }
-});
-database.ref('/active_tweet_id').on('value', activeTweetIdSnapshot => {
-    if (!activeTweetIdSnapshot) {
-        return;
-    }
-    if (_repliesRef && _repliesListener) {
-        _repliesRef.off('value', _repliesListener);
-    }
-    const activeTweetID = activeTweetIdSnapshot.val();
-    _repliesRef = database.ref(`/tweets/${activeTweetID}/replies`);
-    _repliesListener = _repliesRef.on('value', repliesSnapshot => {
-        if (!repliesSnapshot) {
-            return;
-        }
-        const rawReplies = repliesSnapshot.val();
-        const convertedAndFilteredReplies = [];
-        for (const item in rawReplies) { //tslint:disable-line:no-for-in
-            if (!{}.hasOwnProperty.call(rawReplies, item)) {
-                continue;
-            }
-            const reply = rawReplies[item];
-            // Exclude tweets that somehow have no approval status yet.
-            if (!reply.approval_status) {
-                continue;
-            }
-            // Exclude any tweet that hasn't been approved by tier1.
-            if (reply.approval_status.tier1 !== 'approved') {
-                continue;
-            }
-            // Exclude tweets that have already been marked as "done" by tier2 (this app).
-            if (reply.approval_status.tier2 === 'done') {
-                continue;
-            }
-            convertedAndFilteredReplies.push(reply);
-        }
-        questionTweetsRep.value = convertedAndFilteredReplies;
-        updateQuestionSortMap();
-    });
-});
 // Ensure that the prize playlist only contains prizes currently in the tracker.
 allPrizes.on('change', (newVal) => {
     prizePlaylist.value = prizePlaylist.value.filter((playlistEntry) => {
@@ -126,11 +50,6 @@ allPrizes.on('change', (newVal) => {
             return prize.id === playlistEntry.id;
         });
     });
-});
-nodecg.listenFor('interview:updateQuestionSortMap', updateQuestionSortMap);
-nodecg.listenFor('interview:markQuestionAsDone', markQuestionAsDone);
-nodecg.listenFor('interview:end', () => {
-    database.ref('/active_tweet_id').set(0);
 });
 nodecg.listenFor('interview:addPrizeToPlaylist', (prizeId) => {
     if (typeof prizeId !== 'number' || prizeId < 0) {
@@ -172,59 +91,6 @@ nodecg.listenFor('interview:showPrizePlaylistOnMonitor', () => {
 nodecg.listenFor('interview:hidePrizePlaylistOnMonitor', () => {
     showPrizesOnMonitor.value = false;
 });
-function markQuestionAsDone(id, cb) {
-    if (!_repliesRef) {
-        if (cb && !cb.handled) {
-            cb(new Error('_repliesRef not ready!'));
-        }
-        return;
-    }
-    if (!id) {
-        if (cb && !cb.handled) {
-            cb();
-        }
-        return;
-    }
-    _repliesRef.child(id).transaction(tweet => {
-        if (tweet) {
-            if (!tweet.approval_status) {
-                tweet.approval_status = {}; // eslint-disable-line camelcase
-            }
-            tweet.approval_status.tier2 = 'done';
-        }
-        return tweet;
-    }).then(() => {
-        updateQuestionSortMap();
-        if (cb && !cb.handled) {
-            cb();
-        }
-    }).catch(error => {
-        nodecg.log.error('[interview]', error);
-        if (cb && !cb.handled) {
-            cb(error);
-        }
-    });
-}
-/**
- * Fixes up the sort map by adding and new IDs and removing deleted IDs.
- */
-function updateQuestionSortMap() {
-    // To the sort map, add the IDs of any new question tweets.
-    questionTweetsRep.value.forEach((tweet) => {
-        if (questionSortMap.value.indexOf(tweet.id_str) < 0) {
-            questionSortMap.value.push(tweet.id_str);
-        }
-    });
-    // From the sort map, remove the IDs of any question tweets that were deleted or have been filtered out.
-    for (let i = questionSortMap.value.length - 1; i >= 0; i--) {
-        const result = questionTweetsRep.value.findIndex((tweet) => {
-            return tweet.id_str === questionSortMap.value[i];
-        });
-        if (result < 0) {
-            questionSortMap.value.splice(i, 1);
-        }
-    }
-}
 /**
  * Pulses a replicant for a specified duration, and tracks the remaining time in another replicant.
  * @param showingRep - The Boolean replicant that controls if the element is showing or not.

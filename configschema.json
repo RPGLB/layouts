@@ -113,45 +113,6 @@
 			"required": ["channelId", "oauthToken", "clientId", "debug"],
 			"default": null
 		},
-		"firebase": {
-			"type": ["object", "null"],
-			"description": "Credentials used to log into Firebase, which is what hosts Lightning Round.",
-			"properties": {
-				"type": {
-					"type": "string"
-				},
-				"project_id": {
-					"type": "string"
-				},
-				"private_key_id": {
-					"type": "string"
-				},
-				"private_key": {
-					"type": "string"
-				},
-				"client_email": {
-					"type": "string"
-				},
-				"client_id": {
-					"type": "string"
-				},
-				"auth_uri": {
-					"type": "string"
-				},
-				"token_uri": {
-					"type": "string"
-				},
-				"auth_provider_x509_cert_url": {
-					"type": "string"
-				},
-				"client_x509_cert_url": {
-					"type": "string"
-				}
-			},
-			"required": ["project_id", "private_key", "client_email"],
-			"additionalProperties": false,
-			"default": null
-		},
 		"tracker": {
 			"type": "object",
 			"properties": {

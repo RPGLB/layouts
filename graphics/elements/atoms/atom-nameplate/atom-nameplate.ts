@@ -12,6 +12,18 @@ export default class AtomNameplateElement extends Polymer.Element {
 	@property({type: Boolean, reflectToAttribute: true})
 	noRightCap = false;
 
+	@property({type: Boolean, reflectToAttribute: true})
+	left = true;
+
+	@property({type: Boolean, reflectToAttribute: true})
+	right = false;
+
+	@property({type: Boolean, reflectToAttribute: true})
+	noCap = false;
+
+	@property({type: Boolean, reflectToAttribute: true})
+	noIcon = false;
+
 	@property({type: String})
 	name = '';
 

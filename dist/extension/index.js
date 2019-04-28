@@ -32,6 +32,7 @@ async function init() {
     require('./bids');
     require('./prizes');
     require('./total');
+    require('./interview');
     if (nodecg.bundleConfig.twitch) {
         require('./twitch-ads');
         // If the appropriate config params are present,
@@ -56,13 +57,6 @@ async function init() {
     else {
         nodecg.log.warn('"mixer" is not defined in cfg/rpglb19-layouts.json! ' +
             'Behringer X32 OSC integration will be disabled.');
-    }
-    if (nodecg.bundleConfig.firebase && Object.keys(nodecg.bundleConfig.firebase).length > 0) {
-        require('./interview');
-    }
-    else {
-        nodecg.log.warn('"firebase" is not defined in cfg/rpglb19-layouts.json! ' +
-            'The interview question system (Lightning Round) will be disabled.');
     }
 }
 //# sourceMappingURL=index.js.map
