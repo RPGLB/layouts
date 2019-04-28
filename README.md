@@ -14,6 +14,7 @@ rpglb19-layouts is provided under the Apache v2 license, which is available to r
 
 ## Credits for RPG Limit Break layouts
  - [HeroicSpiritGamer](https://twitter.com/HeroicSpiritGmr)
+ - [Keiichiro "Hoishin" Amemiya](https://github.com/Hoishin)
  - [Ouro](https://ourolen.net/)
  - [Vulajin](https://twitter.com/Vulajin)
 
