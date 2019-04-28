@@ -1,5 +1,6 @@
 import {Run, Runner} from '../../../../src/types/index';
 import {TweenLite, TimelineMax, Sine} from 'gsap';
+import moment from 'moment';
 
 const {customElement, property} = Polymer.decorators;
 const DISPALY_DURATION = nodecg.bundleConfig.displayDuration;
@@ -32,8 +33,6 @@ export default class GDQBreakScheduleRunElement extends Polymer.MutableData(Poly
 			return;
 		}
 
-		const WIDTH_ADDED_BY_BORDERS = 2;
-		const PADDING_OF_INFO_RUNNER = 48;
 		const infoRunnerElem = this.$['info-runner'] as Polymer.Element;
 
 		this._killRunnerLoopTimeline();
@@ -43,14 +42,15 @@ export default class GDQBreakScheduleRunElement extends Polymer.MutableData(Poly
 		TweenLite.set(infoRunnerElem, {opacity: 1, width: 'auto'});
 		TweenLite.set(infoRunnerElem.$.fittedContent, {scaleX: 1});
 
+		const upcomingRun = moment(this.run.startTime);
+		this.$.when.innerHTML = '| ' + upcomingRun.format('hh:mm A') + ' MDT';
+
 		Polymer.RenderStatus.beforeNextRender(this, () => {
 			(infoRunnerElem as any).maxWidth =
 				this.$.info.clientWidth -
-				WIDTH_ADDED_BY_BORDERS -
-				PADDING_OF_INFO_RUNNER -
 				this.$['info-category'].clientWidth;
 
-			infoRunnerElem.style.width = `${this.$['info-runner'].clientWidth - PADDING_OF_INFO_RUNNER}px`;
+			infoRunnerElem.style.width = `${this.$['info-runner'].clientWidth}px`;
 			(infoRunnerElem as any).text = newVal.runners[0].name;
 
 			if (newVal.runners.length > 1) {

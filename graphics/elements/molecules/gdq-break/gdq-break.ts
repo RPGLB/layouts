@@ -1,8 +1,17 @@
-import {TimelineLite, TimelineMax} from 'gsap';
+import {TimelineLite, TweenLite, TimelineMax, Power1} from 'gsap';
 import {ICompanionElement, IInterruptMixin} from '../../../mixins/interrupt-mixin';
 import PQueue from '../../../../shared/lib/vendor/p-queue';
+import {CurrentHost} from '../../../../src/types/schemas/currentHost';
+import {NowPlaying} from '../../../../src/types/schemas/nowPlaying';
 
 const {customElement, property} = Polymer.decorators;
+
+const FADE_DURATION = 0.334;
+const FADE_OUT_EASE = Power1.easeIn;
+const FADE_IN_EASE = Power1.easeOut;
+
+const currentHost = nodecg.Replicant<CurrentHost>('currentHost');
+const nowPlaying = nodecg.Replicant<NowPlaying>('nowPlaying');
 
 /**
  * @customElement
@@ -17,22 +26,36 @@ export default class GDQBreakElement extends Polymer.Element {
 		super.connectedCallback();
 		Polymer.RenderStatus.afterNextRender(this, () => {
 			const tweetElem = this.$.tweet as IInterruptMixin;
-			const fanartElem = this.$.fanart as IInterruptMixin;
 			tweetElem.companionElement = this.$.prizes as ICompanionElement;
-			fanartElem.companionElement = [
-				this.$.bids,
-				this.$.prizes
-			] as ICompanionElement[];
 
 			this._setupInterrupt({
 				messageName: 'showTweet',
 				interruptElement: tweetElem
 			});
 
-			this._setupInterrupt({
-				messageName: 'showFanart',
-				interruptElement: fanartElem
+			currentHost.on('change', newVal => {
+				this._changeText(this.$.host as HTMLElement, newVal);
 			});
+
+			nowPlaying.on('change', newVal => {
+				this._changeText(this.$.music as HTMLElement, `${newVal.title || '?'} [${newVal.game || '?'}]`);
+			});
+		});
+	}
+
+	_changeText(element: HTMLElement, newText: string) {
+		TweenLite.to(element, FADE_DURATION, {
+			opacity: 0,
+			ease: FADE_OUT_EASE,
+			callbackScope: this,
+			onComplete() {
+				(element as any).text = newText;
+				TweenLite.to(element, FADE_DURATION, {
+					opacity: 1,
+					ease: FADE_IN_EASE,
+					delay: 0.05
+				});
+			}
 		});
 	}
 

@@ -5,19 +5,18 @@ import GDQBreakScheduleRunElement from './gdq-break-schedule-run';
 const {customElement, property} = Polymer.decorators;
 
 const currentRun = nodecg.Replicant<Run>('currentRun');
-const nextRun = nodecg.Replicant<Run>('nextRun');
 const schedule = nodecg.Replicant<ScheduleItem[]>('schedule');
 
 /**
  * @customElement
  * @polymer
  */
-@customElement('gdq-break-schedule')
-export default class GDQBreakScheduleElement extends Polymer.MutableData(Polymer.Element) {
-	@property({type: Array})
-	onDeck: Run[];
+@customElement('rpglb-break-upnext')
+export default class RPGLBBreakUpnextElement extends Polymer.MutableData(Polymer.Element) {
+	@property({type: Object})
+	upNext: Run;
 
-	_$runs: NodeListOf<GDQBreakScheduleRunElement>;
+	_runElem: GDQBreakScheduleRunElement;
 	_updateDebouncer: Polymer.Debouncer;
 
 	ready() {
@@ -31,7 +30,7 @@ export default class GDQBreakScheduleElement extends Polymer.MutableData(Polymer
 			this.update();
 		});
 
-		this._$runs = this.shadowRoot!.querySelectorAll('gdq-break-schedule-run') as NodeListOf<GDQBreakScheduleRunElement>;
+		this._runElem = this.$.upnext as GDQBreakScheduleRunElement;
 	}
 
 	update() {
@@ -52,45 +51,24 @@ export default class GDQBreakScheduleElement extends Polymer.MutableData(Polymer
 			return tl;
 		}
 
-		tl.set(this._$runs, {willChange: 'opacity'});
+		tl.set(this._runElem, {willChange: 'opacity'});
 
-		tl.to(this._$runs, 0.5, {
+		tl.to(this._runElem, 0.5, {
 			opacity: 0,
 			ease: Sine.easeInOut
 		}, '+=0.25');
 
 		tl.call(() => {
-			const onDeckRuns = [nextRun.value!];
-			schedule.value!.some(item => {
-				if (item.type !== 'run' || !nextRun.value) {
-					return false;
-				}
-
-				if (item.order <= nextRun.value!.order) {
-					return false;
-				}
-
-				onDeckRuns.push(item);
-				return onDeckRuns.length >= 2;
-			});
-			this.onDeck = onDeckRuns;
+			this.upNext = currentRun.value!;
 		});
 
-		tl.to(this._$runs, 0.5, {
+		tl.to(this._runElem, 0.5, {
 			opacity: 1,
 			ease: Sine.easeInOut
 		}, '+=0.1');
 
-		tl.set(this._$runs, {clearProps: 'will-change'});
+		tl.set(this._runElem, {clearProps: 'will-change'});
 
 		return tl;
-	}
-
-	_getArrayItem(array: any[], index: number) {
-		if (!array) {
-			return null;
-		}
-
-		return array[index];
 	}
 }

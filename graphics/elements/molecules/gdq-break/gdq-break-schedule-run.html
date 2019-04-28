@@ -2,154 +2,84 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
-<link rel="import" href="../../../../shared/fonts/letter-gothic-std/import.html">
 
 <dom-module id="gdq-break-schedule-run">
 	<template>
 		<style>
 			:host {
-				display: block;
-			}
-
-			:host(:not(:last-of-type)) {
-				margin-bottom: 10px;
-			}
-
-			#name {
+				height: 100%;
 				width: 100%;
-				height: 45px;
-				background: rgba(214, 208, 255, 0.2);
-				border-style: solid;
-				border-width: 1px;
-				border-image: linear-gradient(
-					to bottom,
-					rgb(61, 200, 224) 0%,
-					rgba(255, 255, 255, 0) 100%
-				) 1;
 				box-sizing: border-box;
+				padding: 3px 12px;
+
+				@apply --layout-vertical;
+				@apply --layout-start;
+
+				font-family: Khand;
+				color: #f9f9f9;
+			}
+
+			#game {
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+
+				font-weight: bold;
+				text-shadow: 3px 3px #004ba0;
+			}
+
+			#info {
+				height: 29px;
+				padding-top: 3px;
+				width: 100%;
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+
+				font-size: 21px;
+			}
+
+			#runner {
 				@apply --layout-horizontal;
 				@apply --layout-center;
 			}
 
-			#name-text {
-				line-height: 1;
-				font-size: 26px;
-				color: #FFFFFF;
-				text-shadow: 0 0 18px #56CCF2,
-							 2px 2px 0 #000000;
-				margin-left: 18px;
-				margin-right: auto;
-				text-transform: uppercase;
-				font-family: 'Dosis', sans-serif;
-				font-weight: 600;
+			#cactuar {
+				content: url("/bundles/rpglb19-layouts/graphics/img/Cactuar-Icon.png");
+
+			    height: 2.2ex;
+			    margin-left: -0.30ex;
+			    margin-right: 0.50ex;
 			}
 
-			#name-greeble {
-				margin-right: 5px;
-				width: 14px;
-				height: 100%;
-				background: linear-gradient(
-					to bottom,
-					rgba(255, 255, 255, 0.4) 0%,
-					rgba(255, 255, 255, 0) 100%
-				);
-			}
-
-			#info {
-				width: 758px;
-				height: 27px;
-				box-sizing: border-box;
-				border: 1px solid #fff5ff;
-				border-top: 0;
-				border-right: 0;
-				margin-top: 17px;
+			#category {
 				@apply --layout-horizontal;
+				@apply --layout-center;
 			}
 
-			#info-category,
-			#info-runner {
-				position: relative;
-				top: -4px;
-				line-height: normal;
-				font-size: 22px;
-				text-align: center;
-				letter-spacing: -0.05em;
-				color: #FFFFFF;
-				padding: 0 29px;
-				font-family: "Letter Gothic Std";
-				white-space: nowrap;
-				text-transform: uppercase;
+			:host([up-next]) #when {
+				display: none;
 			}
 
-			#info-runner {
-				max-width: 420px;
+			#when {
+				margin-left: 0.5ex;
+				display: block;
 			}
-
-			#bottomGreeble {
-				margin-top: -1px;
-			}
-
-			.info-divider {
-				width: 1px;
-				height: 26px;
-				background: #76f1fd;
-				@apply --layout-flex-none;
-			}
-
-			/* "Up Next" styles */
-			:host([up-next]) #name {
-				height: 59px;
-				background-color:  rgba(145, 145, 145, 0.3);
-				background-image: linear-gradient(
-					to bottom,
-					rgba(255, 246, 0, 0.15) -7.92%,
-					rgba(243, 233, 5, 0.125) 39.72%,
-					rgba(214, 231, 11, 0.125) 74.57%,
-					rgba(255, 246, 0, 0.25) 120.79%
-				);
-				border-image: linear-gradient(
-					to bottom,
-					rgba(255, 255, 0, 100) 0%,
-					rgba(255, 255, 0, 0) 100%
-				) 1;
-			}
-
-			:host([up-next]) #name-text {
-				font-size: 43px;
-				text-shadow: 0 0 18px rgba(255, 223, 58, 0.8),
-				2px 2px 0px #000000;
-			}
-
-			:host([up-next]) #name-greeble {
-				width: 31px;
-				background: linear-gradient(
-					to bottom,
-					rgba(249, 239, 0, 0.75) 0%,
-					rgba(249, 239, 0, 0) 100%
-				);
-			}
-			/* End "Up Next" styles */
 		</style>
 
-		<div id="name">
-			<sc-fitted-text
-				id="name-text"
-				max-width="620"
-				text="[[_formatRunName(run.name)]]"
-				align="left">
-			</sc-fitted-text>
-			<div id="name-greeble"></div>
+		<div id="game">
+			<sc-fitted-text id="name-text" max-width="576" text="[[_formatRunName(run.name)]]"></sc-fitted-text>
 		</div>
 
 		<div id="info">
-			<sc-fitted-text id="info-category" text="[[run.category]]" align="left" max-width="302"></sc-fitted-text>
-			<div class="info-divider"></div>
-			<sc-fitted-text id="info-runner" align="left"></sc-fitted-text>
-			<div class="info-divider"></div>
+			<div id="runner">
+				<img id="cactuar" />
+				<sc-fitted-text id="info-runner"></sc-fitted-text>
+			</div>
+			<div id="category">
+				<sc-fitted-text id="info-category" text="[[run.category]]"></sc-fitted-text>
+				<div id="when"></div>
+			</div>
 		</div>
-		<template is="dom-if" if="[[upNext]]">
-			<img id="bottomGreeble" src="[[importPath]]img/run-bottom-greeble.svg">
-		</template>
 	</template>
 
 	<script src="gdq-break-schedule-run.js" type="module"></script>

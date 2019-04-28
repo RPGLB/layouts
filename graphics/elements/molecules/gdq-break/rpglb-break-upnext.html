@@ -1,22 +1,19 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="gdq-break-header.html">
 <link rel="import" href="gdq-break-schedule-run.html">
 
-<dom-module id="gdq-break-schedule">
+<dom-module id="rpglb-break-upnext">
 	<template>
 		<style>
 			:host {
 				@apply --layout-vertical;
-				@apply --layout-justified;
 				align-items: stretch;
 			}
 
 			gdq-break-schedule-run {
-				height: 82px;
 				opacity: 0;
 
-				font-size: 28px;
+				font-size: 36px;
 			}
 
 			[hidden] {
@@ -24,9 +21,8 @@
 			}
 		</style>
 
-		<gdq-break-schedule-run run="[[_getArrayItem(onDeck, 0)]]"></gdq-break-schedule-run>
-		<gdq-break-schedule-run run="[[_getArrayItem(onDeck, 1)]]"></gdq-break-schedule-run>
+		<gdq-break-schedule-run id="upnext" up-next run="[[upNext]]"></gdq-break-schedule-run>
 	</template>
 
-	<script src="gdq-break-schedule.js" type="module"></script>
+	<script src="rpglb-break-upnext.js" type="module"></script>
 </dom-module>
