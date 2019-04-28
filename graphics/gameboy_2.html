@@ -7,113 +7,45 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
-				position: absolute;
-				width: 4px;
-				height: 720px;
-				left: 958px;
-				top: 0;
-				background-color: var(--gdq-primary-color);
-			}
-
-			.tronleft {
-				left: 0;
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			.tronright {
-				right: 0;
-				border-left: 1px solid var(--gdq-primary-color);
-			}
-
-			.plate {
-				width: 164px;
-				height: 720px;
-				border: 1px solid var(--gdq-primary-color);
-				background-color: #051113;
-				position: absolute;
-				top: -1px;
-			}
-
-			.plate-left {
-				left: -1px;
-			}
-
-			.plate-right {
-				right: -1px;
-			}
-
 			gdq-runner-nameplate {
-				top: 708px;
-				width: 450px;
+				top: 491px;
+				width: 454px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 1250px;
+				right: 816px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 1250px;
+				left: 816px;
 			}
 
 			gdq-runinfo {
 				bottom: 18px;
-				width: 670px;
-				height: 245px;
+				width: 372px;
+				height: 112px;
 				--gdq-runinfo-name-padding: 0 16px 8px 16px;
 				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
-				left: 670px;
-				bottom: 247px;
-				height: 75px;
-				width: 580px;
+				left: 859px;
+				top: 542px;
+				height: 74px;
+				width: 366px;
 				font-size: 56px;
-				--gdq-timer-voffset: -2px;
 				z-index: 2;
-			}
-
-			gdq-tweet {
-				bottom: 14px;
-				right: 11px;
-				width: 650px;
-				height: 235px;
-
-				--gdq-tweet-name-font-size: 16px;
-				--gdq-tweet-body: {
-					font-size: 16px;
-				};
-			}
-
-			gdq-sponsors {
-				bottom: 14px;
-				right: 11px;
-				width: 650px;
-				height: 235px;
-			}
-
-			atom-tronlines {
-				position: absolute;
-				bottom: 0;
-				border-top: 1px solid var(--gdq-primary-color);
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 <div id="container">
-	<div class="plate plate-left"></div>
-	<div class="plate plate-right"></div>
-	<div id="lineone"></div>
-	<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
-	<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
+	<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_GBC2.png" />
 	<gdq-runinfo max-name-size="58"></gdq-runinfo>
 	<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 	<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
 	<gdq-timer></gdq-timer>
-	<gdq-sponsors></gdq-sponsors>
-	<gdq-tweet></gdq-tweet>
 </div>
 
 <script>

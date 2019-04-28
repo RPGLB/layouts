@@ -7,57 +7,35 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
-				width: 750px;
-				height: 1025px;
-				top: 0;
-				left: 0;
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			#linetwo {
-				width: 750px;
-				height: 70px;
-				top: 180px;
-				left: 0;
-				border-bottom: 1px solid var(--gdq-primary-color);
-				background-color: #051113;
-			}
-
-			.line {
-				position: absolute;
-			}
-
 			gdq-runner-nameplate {
-				top: 625px;
-				left: 20px;
+				top: 447px;
+				left: 885px;
 				z-index: 11;
-				width: 710px;
+				width: 372px;
 			}
 
 			gdq-runinfo {
-				left: 0;
-				top: 0;
-				width: 750px;
-				height: 231px;
+				left: 21px;
+				top: 232px;
+				width: 372px;
+				height: 201px;
 				--gdq-runinfo-name-padding: 1px 16px 4px 16px;
 				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
-				left: 20px;
-				top: 686px;
-				height: 57px;
-				width: 710px;
+				left: 24px;
+				top: 344px;
+				height: 54px;
+				width: 366px;
 				font-size: 56px;
-				--gdq-timer-voffset: -2px;
 			}
 
 			gdq-tweet, gdq-sponsors {
-				bottom: 10px;
-				left: 10px;
-				width: 730px;
-				height: 262px;
+				top: 454px;
+				bottom: 21px;
+				left: 21px;
+				width: 372px;
 			}
 
 			gdq-tweet {
@@ -65,81 +43,12 @@
 					font-size: 20px;
 				};
 			}
-
-			atom-tronlines {
-				position: absolute;
-				width: 750px;
-				height: 370px;
-				bottom: 0;
-				left: 0;
-				border-top: 1px solid var(--gdq-primary-color);
-			}
-
-			atom-gridlines {
-				position: absolute;
-				width: 750px;
-				height: 180px;
-				top: 0;
-				left: 0;
-			}
-
-			.box {
-				width: 650px;
-				height: 487px;
-				position: absolute;
-				border: 1px solid var(--gdq-primary-color);
-				right: 261px;
-			}
-
-			#boxone {
-				top: -1px;
-			}
-
-			#boxtwo {
-				bottom: -1px;
-			}
-
-			.fill {
-				background-color: #051113;
-				background-image: url('images/circuit-board.svg');
-				position: absolute;
-			}
-
-			#fillone, #filltwo {
-				height: 1025px;
-				top: 0;
-			}
-
-			#fillone {
-				right: 0;
-				width: 261px;
-			}
-
-			#filltwo {
-				right: 910px;
-				width: 260px;
-			}
-
-			#fillthree {
-				height: 50px;
-				width: 650px;
-				right: 261px;
-				top: 487px;
-			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<div id="fillone" class="fill"></div>
-		<div id="filltwo" class="fill"></div>
-		<div id="fillthree" class="fill"></div>
-		<atom-gridlines></atom-gridlines>
-		<atom-tronlines width="750" height="370"></atom-tronlines>
-		<div id="lineone" class="line"></div>
-		<div id="linetwo" class="line"></div>
-		<div id="boxone" class="box"></div>
-		<div id="boxtwo" class="box"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_DSstacked.png" />
 		<gdq-runinfo max-name-size="48"></gdq-runinfo>
 		<gdq-timer></gdq-timer>
 		<gdq-sponsors></gdq-sponsors>

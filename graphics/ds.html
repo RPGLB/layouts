@@ -8,55 +8,34 @@
 	<custom-style>
 		<style>
 			gdq-runner-nameplate {
-				bottom: 5px;
+				bottom: 255px;
 				left: 10px;
 				z-index: 11;
-				width: 534px;
+				width: 373px;
 			}
 
 			gdq-runinfo {
-				left: 0;
-				top: 415px;
-				width: 554px;
-				height: 220px;
+				left: 0px;
+				top: 0px;
+				width: 392px;
+				height: 201px;
 				--gdq-runinfo-name-padding: 0 16px;
 				--gdq-runinfo-misc-height: 45px;
 			}
 
 			gdq-timer {
-				left: 10px;
-				bottom: 320px;
-				height: 47px;
-				width: 534px;
+				left: 0px;
+				top: 112px;
+				height: 54px;
+				width: 392px;
 				font-size: 42px;
-				--gdq-timer-voffset: -2px;
-			}
-
-			#lineone {
-				width: 554px;
-				height: 1025px;
-				position: absolute;
-				top: 0;
-				left: 0;
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			atom-gridlines {
-				position: absolute;
-				top: 415px;
-				left: 0;
-				width: 554px;
-				height: 230px;
-				border-bottom: 1px solid var(--gdq-primary-color);
-				border-top: 1px solid var(--gdq-primary-color);
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<atom-gridlines></atom-gridlines>
-		<div id="lineone"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_DS.png" />
 		<gdq-runinfo max-name-size="48"></gdq-runinfo>
 		<gdq-timer></gdq-timer>
 		<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>

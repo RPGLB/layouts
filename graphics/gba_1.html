@@ -7,54 +7,34 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style is="custom-style">
-			#lineone {
-				width: 382px;
-				height: 1025px;
-				position: absolute;
-				top: 0;
-				left: 0;
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			#linetwo {
-				width: 382px;
-				height: 91px;
-				position: absolute;
-				left: 0;
-				top: 150px;
-				background-color: #051113;
-				border-bottom: 1px solid var(--gdq-primary-color);
-			}
-
 			gdq-runner-nameplate {
-				top: 561px;
+				top: 393px;
 				left: 10px;
-				width: 362px;
+				width: 261px;
 			}
 
 			gdq-runinfo {
 				left: 0;
 				top: 0;
-				width: 382px;
-				height: 217px;
+				width: 281px;
+				height: 223px;
 				--gdq-runinfo-name-padding: 8px 16px;
 				--gdq-runinfo-misc-height: 43px;
 			}
 
 			gdq-timer {
-				left: 10px;
-				top: 621px;
-				height: 57px;
-				width: 362px;
+				left: 0;
+				top: 125px;
+				height: 61px;
+				width: 281px;
 				font-size: 42px;
-				--gdq-timer-voffset: -1px;
 			}
 
 			gdq-tweet, gdq-sponsors {
 				bottom: 10px;
 				left: 10px;
-				width: 362px;
-				height: 330px;
+				top: 438px;
+				width: 261px;
 			}
 
 			gdq-tweet {
@@ -62,30 +42,12 @@
 					font-size: 16px;
 				};
 			}
-
-			atom-tronlines {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				border-top: 1px solid var(--gdq-primary-color);
-			}
-
-			atom-gridlines {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 382px;
-				height: 150px;
-			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<atom-gridlines></atom-gridlines>
-		<atom-tronlines width="382" height="425"></atom-tronlines>
-		<div id="lineone"></div>
-		<div id="linetwo"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_GBA.png" />
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
 		<gdq-sponsors></gdq-sponsors>
