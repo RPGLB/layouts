@@ -7,98 +7,66 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
-				width: 1440px;
-				height: 810px;
-				top: 0;
-				right: 0;
-				border-left: 1px solid var(--gdq-primary-color);
-				border-bottom: 1px solid var(--gdq-primary-color);
-			}
-
-			.line {
-				position: absolute;
-			}
-
-			gdq-runner-nameplate {
-				left: 502px;
-				bottom: 110px;
-				width: 640px;
-			}
-
 			gdq-runinfo {
-				right: 0;
-				bottom: 10px;
-				width: 750px;
-				height: 215px;
+				left: 346px;
+				top: 543px;
+				width: 457px;
+				height: 112px;
 				--gdq-runinfo-name-padding: 8px 16px;
 				--gdq-runinfo-misc-height: 43px;
 			}
 
 			gdq-timer {
-				left: 502px;
-				bottom: 48px;
-				height: 57px;
-				width: 640px;
+				left: 816px;
+				top: 546px;
+				height: 74px;
+				width: 451px;
 				font-size: 45px;
-				--gdq-timer-voffset: -2px;
+			}
+
+			#panel {
+				position: absolute;
+				left: 10px;
+				top: 258px;
+				bottom: 10px;
+				width: 314px;
+				@apply --layout-vertical;
+			}
+
+			gdq-runner-nameplate {
+				height: 35px;
+				width: 100%;
+			}
+
+			#sponsorsAndTwitter {
+				position: relative;
+				@apply --layout-flex;
 			}
 
 			gdq-tweet {
+				height: 100%;
+				width: 100%;
+				
 				--gdq-tweet-name-font-size: 16px;
 				--gdq-tweet-body: {
 					font-size: 18px;
 				};
-			}
-
-			gdq-tweet,
-			gdq-sponsors {
-				bottom: 10px;
-				left: 10px;
-				width: 459px;
-				height: 530px;
-			}
-
-			atom-tronlines {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				border-top: 1px solid var(--gdq-primary-color);
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			atom-gridlines {
-				position: absolute;
-				width: 750px;
-				bottom: 0;
-				right: 0;
-				height: 215px;
-				border-left: 1px solid var(--gdq-primary-color);
-			}
-
-			#plate {
-				position: absolute;
-				bottom: 0;
-				right: 750px;
-				height: 215px;
-				width: 691px;
-				background-color: #051113;
-				background-image: url('images/circuit-board.svg');
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<div id="plate"></div>
-		<atom-gridlines></atom-gridlines>
-		<atom-tronlines width="479" height="550"></atom-tronlines>
-		<div id="lineone" class="line"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_HD.png" />
 		<gdq-runinfo max-name-size="35"></gdq-runinfo>
 		<gdq-timer></gdq-timer>
-		<gdq-sponsors></gdq-sponsors>
-		<gdq-tweet></gdq-tweet>
-		<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+		<div id="panel">
+			<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+			<div id="sponsorsAndTwitter">
+				<gdq-sponsors></gdq-sponsors>
+				<gdq-tweet></gdq-tweet>
+			</div>
+		</div>
 	</div>
 
 	<script>
