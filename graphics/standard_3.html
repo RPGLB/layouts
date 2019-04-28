@@ -7,78 +7,39 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
-				width: 554px;
-				height: 1025px;
-				left: 683px;
-				border-left: 1px solid var(--gdq-primary-color);
-				border-right: 1px solid var(--gdq-primary-color);
-			}
-
-			#linetwo, #linethree {
-				width: 683px;
-				height: 512px;
-				border-bottom: 1px solid var(--gdq-primary-color);
-				top: 0;
-				box-sizing: content-box;
-			}
-
-			#linetwo {
-				left: 0;
-			}
-
-			#linethree {
-				right: 0;
-			}
-
-			#cover {
-				position: absolute;
-				width: 554px;
-				height: 89px;
-				top: 143px;
-				left: 683px;
-				background-color: #051113;
-			}
-
-			.line {
-				position: absolute;
-				box-sizing: border-box;
-			}
-
 			gdq-runner-nameplate {
-				width: 420px;
+				width: 300px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				top: 345px;
-				left: 683px;
+				top: 231px;
+				left: 443px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				top: 440px;
-				right: 683px;
+				top: 286px;
+				right: 443px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(3) {
-				top: 535px;
-				left: 683px;
+				top: 341px;
+				left: 443px;
 			}
 
 			gdq-runinfo {
-				left: 683px;
-				top: 0;
-				width: 554px;
-				height: 210px;
+				left: 454px;
+				top: 10px;
+				width: 372px;
+				height: 112px;
 				--gdq-runinfo-misc-height: 47px;
 				--gdq-runinfo-name-padding: 8px 16px;
 			}
 
 			gdq-timer {
-				left: 683px;
-				top: 232px;
-				height: 60px;
-				width: 554px;
-				--gdq-timer-voffset: -2px;
+				left: 454px;
+				top: 119px;
+				height: 92px;
+				width: 372px;
 				font-size: 56px;
 			}
 
@@ -91,33 +52,18 @@
 
 			gdq-tweet,
 			gdq-sponsors {
-				bottom: 15px;
-				left: 693px;
-				width: 534px;
-				height: 315px;
-			}
-
-			atom-gridlines {
 				position: absolute;
-				width: 554px;
-				height: 143px;
-				top: 0;
-				left: 683px;
-			}
-
-			atom-tronlines {
-				position: absolute;
-				bottom: 0;
-				left: 683px;
+				top: 397px;
+				left: 463px;
+				height: 303px;
+				width: 354px;
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<atom-gridlines></atom-gridlines>
-		<atom-tronlines width="553" height="733"></atom-tronlines>
-		<div id="cover"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_SD3.png" />
 
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
@@ -126,10 +72,6 @@
 		<gdq-runner-nameplate index="0" no-left-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" no-right-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="2" no-left-cap result-side="left" audio-vert-pos="bottom"  audio-horiz-pos="left"></gdq-runner-nameplate>
-
-		<div id="lineone" class="line"></div>
-		<div id="linetwo" class="line"></div>
-		<div id="linethree" class="line"></div>
 	</div>
 
 	<script>

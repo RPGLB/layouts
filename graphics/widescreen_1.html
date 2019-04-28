@@ -17,10 +17,10 @@
 			}
 
 			gdq-timer {
-				left: 816px;
-				top: 546px;
-				height: 74px;
-				width: 451px;
+				left: 813px;
+				top: 543px;
+				height: 112px;
+				width: 457px;
 				font-size: 45px;
 			}
 
@@ -33,7 +33,16 @@
 				@apply --layout-vertical;
 			}
 
+			#runners {
+				@apply --layout-vertical;
+				@apply --layout-start;
+
+				position: relative;
+				margin-bottom: 10px;
+			}
+
 			gdq-runner-nameplate {
+				position: relative;
 				height: 35px;
 				width: 100%;
 			}
@@ -61,7 +70,9 @@
 		<gdq-runinfo max-name-size="35"></gdq-runinfo>
 		<gdq-timer></gdq-timer>
 		<div id="panel">
-			<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+			<div id="runners">
+				<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+			</div>
 			<div id="sponsorsAndTwitter">
 				<gdq-sponsors></gdq-sponsors>
 				<gdq-tweet></gdq-tweet>

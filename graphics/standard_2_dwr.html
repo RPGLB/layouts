@@ -2,73 +2,60 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Widescreen, 2 Player</title>
+	<title>Standard, 2 Player</title>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
 			gdq-runner-nameplate {
-				top: 371px;
-				width: 412px;
+				top: 380px;
+				width: 377px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 858px;
+				right: 883px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 858px;
+				left: 883px;
 			}
 
 			gdq-runinfo {
 				top: 434px;
-				left: 28px;
-				width: 372px;
+				left: 20px;
+				width: 377px;
 				height: 112px;
-				--gdq-runinfo-name-padding: 16px 16px 8px 16px;
+				--gdq-runinfo-name-padding: 0 16px 8px 16px;
 				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
-				left: 28px;
+				left: 20px;
 				top: 543px;
 				height: 92px;
-				width: 372px;
+				width: 377px;
 				font-size: 56px;
 				z-index: 2;
 			}
 
-			gdq-tweet, gdq-sponsors {
-				top: 416px;
-				left: 858px;
-				bottom: 10px;
-				width: 412px;
-			}
-
-			gdq-tweet {
-				--gdq-tweet-name-font-size: 16px;
-				--gdq-tweet-body: {
-					font-size: 16px;
-				};
-			}
-
-			gdq-sponsors {
-				border: 1px solid var(--gdq-primary-color);
-				box-sizing: border-box;
-				box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.66);
+			gdq-sponsors, gdq-tweet {
+				left: 883px;
+				top: 430px;
+				width: 377px;
+				height: 220px;
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_HD2.png" />
-		<gdq-runinfo max-name-size="45"></gdq-runinfo>
-		<gdq-sponsors></gdq-sponsors>
-		<gdq-tweet></gdq-tweet>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_DWR.png" />
+		<gdq-runinfo max-name-size="58"></gdq-runinfo>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
 		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
 	</div>
 
 	<script>
