@@ -13,18 +13,8 @@
 	<custom-style>
 		<style>
 			body {
-				--board-vertical-offset: 86px;
-				--board-horizontal-offset: 57px;
-			}
-
-			#lineone {
-				position: absolute;
-				box-sizing: border-box;
-				width: 404px;
-				height: 1025px;
-				left: 758px;
-				border-left: 1px solid var(--gdq-primary-color);
-				border-right: 1px solid var(--gdq-primary-color);
+				--board-vertical-offset: 0px;
+				--board-horizontal-offset: 0px;
 			}
 
 			#leftPlate {
@@ -32,89 +22,39 @@
 				@apply --layout-end;
 			}
 
-			#leftPlate > gdq-runner-nameplate {
-				margin-right: -1px;
-			}
-
 			#rightPlate {
 				right: 0;
 			}
 
-			#rightPlate > gdq-runner-nameplate {
-				margin-left: -1px;
-			}
-
 			.plate {
-				background-color: #051113;
-				border-top: 1px solid var(--gdq-primary-color);
-				border-bottom: 1px solid var(--gdq-primary-color);
 				position: absolute;
-				height: 135px;
-				width: 758px;
-				top: 444px;
+				height: 125px;
+				width: 492px;
+				top: 270px;
 				@apply --layout-vertical;
 				@apply --layout-justified;
 			}
 
-			.plate > :first-child {
-				margin-top: -1px;
-			}
-
-			.plate > :last-child {
-				margin-bottom: -1px;
-			}
-
 			gdq-runner-nameplate {
 				position: relative;
-				width: 450px;
+				width: 330px;
 			}
 
 			gdq-runinfo {
-				left: 758px;
-				top: 259px;
-				width: 404px;
-				height: 196px;
+				left: 494px;
+				top: 0px;
+				width: 292px;
+				height: 201px;
 				--gdq-runinfo-name-padding: 8px 16px;
 				--gdq-runinfo-misc-height: 45px;
 			}
 
 			gdq-timer {
-				left: 758px;
-				top: 464px;
-				height: 81px;
-				width: 404px;
-				font-size: 56px;
-			}
-
-			gdq-sponsors {
-				width: 384px;
-				position: absolute;
-				bottom: 269px;
-				height: 199px;
-				left: 768px;
-			}
-
-			atom-tronlines {
-				position: absolute;
-				left: 758px;
-			}
-
-			atom-tronlines:nth-of-type(1) {
-				top: 403px;
-			}
-
-			atom-tronlines:nth-of-type(2) {
-				bottom: 259px;
-				border-bottom: 1px solid var(--gdq-primary-color);
-			}
-
-			atom-gridlines {
-				position: absolute;
-				top: 259px;
-				left: 758px;
-				height: 145px;
-				width: 404px;
-				border-top: 1px solid var(--gdq-primary-color);
+				left: 494px;
+				top: 112px;
+				height: 54px;
+				width: 292px;
+				font-size: 48px;
 			}
 
 			gdq-ff4fe-tracker {
@@ -140,32 +80,13 @@
 				bottom: var(--board-vertical-offset);
 				right: var(--board-horizontal-offset);
 			}
-
-			.tracker-bg {
-				background-color: #051113;
-				background-image: url('images/circuit-board.svg');
-				position: absolute;
-				border-right: 1px solid #00ffff;
-				border-left: 1px solid #00ffff;
-				height: 100%;
-				width: 250px;
-				top: 0;
-			}
-
-			.tracker-bg:nth-of-type(1) {
-				left: -1px;
-			}
-
-			.tracker-bg:nth-of-type(2) {
-				right: -1px;
-			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<div class="tracker-bg"></div>
-		<div class="tracker-bg"></div>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_FFIV.png" />
+
 		<div id="leftPlate" class="plate">
 			<gdq-runner-nameplate index="0" no-right-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
 			<gdq-runner-nameplate index="2" no-right-cap result-side="left" audio-vert-pos="top" audio-horiz-pos="right"></gdq-runner-nameplate>
@@ -181,13 +102,8 @@
 		<gdq-ff4fe-tracker index="2"></gdq-ff4fe-tracker>
 		<gdq-ff4fe-tracker index="3"></gdq-ff4fe-tracker>
 
-		<atom-gridlines></atom-gridlines>
-		<atom-tronlines direction="down" width="404" height="60"></atom-tronlines>
-		<atom-tronlines width="404" height="249"></atom-tronlines>
-		<div id="lineone"></div>
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
-		<gdq-sponsors></gdq-sponsors>
 	</div>
 
 	<script>
