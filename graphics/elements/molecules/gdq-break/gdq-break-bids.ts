@@ -96,7 +96,9 @@ export default class GDQBreakBidsElement extends GDQBreakLoopMixin(Polymer.Eleme
 		tl.call(() => {
 			const contentElem = this.$.content as IronSelectorElement;
 			contentElem.selectIndex(contentElem.indexOf(element));
-			this.$['description-actual'].innerHTML = bid.description.replace(/\\n/g, '</br>');
+			this.$['game-name'].innerHTML = bid.speedrun.replace(/\\n/g, '</br>');
+			typeAnim(this.$['game-name'] as HTMLDivElement);
+			this.$['description-actual'].innerHTML = bid.name.replace(/\\n/g, '</br>');
 			typeAnim(this.$['description-actual'] as HTMLDivElement);
 		}, undefined, null, '+=0.1');
 

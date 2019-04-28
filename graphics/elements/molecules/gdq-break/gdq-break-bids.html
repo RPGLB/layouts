@@ -2,51 +2,24 @@
 <link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../shared/imports/svgjs.html">
-<link rel="import" href="../../atoms/atom-text-greeble/atom-text-greeble.html">
 <link rel="import" href="gdq-break-bid-binary.html">
 <link rel="import" href="gdq-break-bid-challenge.html">
 <link rel="import" href="gdq-break-bid-many.html">
-<link rel="import" href="gdq-break-header.html">
 
 <dom-module id="gdq-break-bids">
 	<template>
 		<style>
 			:host {
-				width: 942px;
+				height: 411px;
+				width: 610px;
 				@apply --layout-vertical;
-			}
-
-			#header {
-				margin-bottom: 2px;
-				--gdq-break-header-text: {
-					padding-left: 20px
-				};
-			}
-
-			#description {
-				position: relative;
-				height: 86.4px;
-				padding: 6px 11px;
-				background-color: rgba(145, 145, 145, 0.3);
-				margin-bottom: 18px;
-			}
-
-			#description-actual {
-				font-weight: 400;
-				font-size: 36px;
-				color: var(--gdq-primary-color);
-				text-shadow: 0 0 14px rgba(0, 255, 255, 0.25);
-			}
-
-			#description-greeble {
-				position: absolute;
-				top: 4px;
-				right: 9px;
-				font-size: 9px;
+				@apply --layout-center;
 			}
 
 			#content {
 				position: relative;
+				@apply --layout-flex;
+				@apply --layout-self-stretch;
 			}
 
 			#content > :not(.iron-selected) {
@@ -56,13 +29,31 @@
 				width: 100%;
 				opacity: 0 !important;
 			}
+
+			#description {
+				color: #222222;
+				font-family: Khand;
+				@apply --layout-vertical;
+				@apply --layout-center;
+			}
+
+			#game-name {
+				padding: 15px 0px 10px 0px;
+				font-weight: bold;
+				font-size: 48px;
+				height: 2ex;
+			}
+
+			#description-actual {
+				position: relative;
+				font-weight: 600;
+				font-size: 32px;
+			}
 		</style>
 
-		<gdq-break-header id="header" text="INCENTIVES_AND_CHALLENGES"></gdq-break-header>
-
 		<div id="description">
+			<div id="game-name"></div>
 			<div id="description-actual"></div>
-			<atom-text-greeble id="description-greeble" length="11"></atom-text-greeble>
 		</div>
 
 		<iron-selector id="content" selected="-1"></iron-selector>

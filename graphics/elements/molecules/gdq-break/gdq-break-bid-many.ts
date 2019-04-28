@@ -1,6 +1,5 @@
 import {TimelineLite, Power4} from 'gsap';
 import {BidElement} from './gdq-break-bids';
-import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
 import {ParentBid} from '../../../../src/types/index';
 import GDQBreakBidManyOptionElement from './gdq-break-bid-many-option';
 
@@ -21,17 +20,13 @@ export default class GDQBreakBidManyElement extends Polymer.Element implements B
 		const tl = new TimelineLite();
 		const optionElements = Array.from(this.shadowRoot!.querySelectorAll('gdq-break-bid-many-option')) as GDQBreakBidManyOptionElement[];
 
-		tl.addLabel('flickerOptions', '+=0');
+		tl.addLabel('showOptions', '+=0');
 		optionElements.forEach((optionElement, index) => {
 			optionElement.style.opacity = '0';
-			tl.add(createMaybeRandomTween({
-				target: optionElement.style,
-				propName: 'opacity',
-				duration: 0.465,
-				ease: Power4.easeIn,
-				start: {probability: 1, normalValue: 0},
-				end: {probability: 0, normalValue: 1}
-			}), `flickerOptions+=${index * 0.1}`);
+			tl.to(optionElement, 0.465, {
+				opacity: 1,
+				ease: Power4.easeIn
+			}, `showOptions+=${index * 0.1}`);
 		});
 
 		tl.addLabel('enterOptions', '+=0');
@@ -47,16 +42,12 @@ export default class GDQBreakBidManyElement extends Polymer.Element implements B
 
 		const optionElements = Array.from(this.shadowRoot!.querySelectorAll('gdq-break-bid-many-option')) as GDQBreakBidManyOptionElement[];
 
-		tl.addLabel('flickerOptions', '+=0');
+		tl.addLabel('hideOptions', '+=0');
 		optionElements.slice(0).reverse().forEach((optionElement, index) => {
-			tl.add(createMaybeRandomTween({
-				target: optionElement.style,
-				propName: 'opacity',
-				duration: 0.2,
-				ease: Power4.easeIn,
-				start: {probability: 1, normalValue: 1},
-				end: {probability: 0, normalValue: 0}
-			}), `flickerOptions+=${index * 0.1}`);
+			tl.to(optionElement, 0.2, {
+				opacity: 0,
+				ease: Power4.easeIn
+			}, `hideOptions+=${index * 0.1}`);
 		});
 
 		return tl;
@@ -67,6 +58,6 @@ export default class GDQBreakBidManyElement extends Polymer.Element implements B
 			return [];
 		}
 
-		return bid.options.slice(0, 5);
+		return bid.options.slice(0, 3);
 	}
 }

@@ -1,6 +1,6 @@
 import {TimelineLite, TweenLite, Power2, Power4} from 'gsap';
 import AtomTweeningNumberElement from '../../atoms/atom-tweening-number/atom-tweening-number';
-import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
+import AtomCandystripeBarElement from '../../atoms/atom-candystripe-bar/atom-candystripe-bar';
 import {BidElement} from './gdq-break-bids';
 import {ParentBid} from '../../../../src/types/index';
 
@@ -18,27 +18,20 @@ export default class GDQBreakBidChallengeElement extends Polymer.Element impleme
 	ready() {
 		super.ready();
 		const amountElem = this.$.amount as AtomTweeningNumberElement;
-		const percentElem = this.$.percent as AtomTweeningNumberElement;
 
 		amountElem.ease = Power2.easeOut;
 		amountElem.displayValueTransform = displayValue => {
+			if (displayValue >= this.bid.rawGoal) {
+				amountElem.style.color = '#ff9100';
+			}
+
 			return '$' + displayValue.toLocaleString('en-US', {
 				maximumFractionDigits: 0,
 				useGrouping: false
 			});
 		};
 
-		percentElem.ease = Power2.easeOut;
-		percentElem.displayValueTransform = displayValue => {
-			return displayValue.toLocaleString('en-US', {
-				maximumFractionDigits: 0,
-				useGrouping: false
-			}) + '%';
-		};
-
 		TweenLite.set(this, {opacity: 0});
-		TweenLite.set(this.$.meter, {scaleX: 0});
-		TweenLite.set(this.$['meter-line'], {scaleY: 0});
 	}
 
 	enter() {
@@ -52,46 +45,26 @@ export default class GDQBreakBidChallengeElement extends Polymer.Element impleme
 		const tl = new TimelineLite();
 		const meterDuration = meterPercent * 0.75;
 
-		tl.set(this.$.left, {
-			width: `${meterPercent * 100}%`
-		});
+		const progressElem = this.$['visual-progress'] as AtomCandystripeBarElement;
+		progressElem.progress = meterPercent;
+
+		tl.add(progressElem.reset());
 
 		tl.call(() => {
-			this.$.goal.textContent = '$' + this.bid.rawGoal.toLocaleString('en-US', {
+			this.$.goal.textContent = '/ $' + this.bid.rawGoal.toLocaleString('en-US', {
 				maximumFractionDigits: 0,
 				useGrouping: false
 			});
-
-			if (this.$.meter.clientWidth < this.$.amount.clientWidth) {
-				TweenLite.set(this.$.amount, {
-					right: '',
-					left: '100%'
-				});
-			}
 		}, undefined, null, '+=0.03');
 
-		tl.add(createMaybeRandomTween({
-			target: this.style,
-			propName: 'opacity',
-			duration: 0.465,
-			ease: Power4.easeIn,
-			start: {probability: 1, normalValue: 0},
-			end: {probability: 0, normalValue: 1}
-		}));
-
-		tl.to(this.$['meter-line'], 0.324, {
-			scaleY: 1,
-			ease: Power2.easeInOut
+		tl.to(this, 0.465, {
+			opacity: 1,
+			ease: Power4.easeIn
 		});
 
-		tl.to(this.$.meter, meterDuration, {
-			scaleX: 1,
-			ease: Power2.easeOut,
-			onStart: () => {
-				(this.$.amount as AtomTweeningNumberElement).tween(this.bid.rawTotal, meterDuration);
-				(this.$.percent as AtomTweeningNumberElement).tween(Math.floor(meterPercent * 100), meterDuration);
-			}
-		});
+		tl.addLabel('tween', '+=0');
+		tl.add(progressElem.fill(meterDuration), 'tween');
+		tl.add((this.$.amount as AtomTweeningNumberElement).tween(this.bid.rawTotal, meterDuration), 'tween');
 
 		return tl;
 	}
@@ -99,14 +72,10 @@ export default class GDQBreakBidChallengeElement extends Polymer.Element impleme
 	exit() {
 		const tl = new TimelineLite();
 
-		tl.add(createMaybeRandomTween({
-			target: this.style,
-			propName: 'opacity',
-			duration: 0.2,
-			ease: Power4.easeIn,
-			start: {probability: 1, normalValue: 1},
-			end: {probability: 0, normalValue: 0}
-		}));
+		tl.to(this, 0.2, {
+			opacity: 0,
+			ease: Power4.easeIn
+		});
 
 		return tl;
 	}

@@ -8,12 +8,30 @@
 	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 	<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 	<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
 	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
 	<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
-	<link rel="import" href="../shared/fonts/source-code-pro/import.html">
-	<link rel="import" href="../shared/imports/gsap.html">
-	<link rel="import" href="elements/molecules/gdq-break/gdq-break-bids.html">
-	<link rel="import" href="elements/molecules/gdq-break/gdq-break-prizes.html">
+	<script>
+		{
+			let links = [
+				'elements/molecules/gdq-break/gdq-break-bids.html',
+				'elements/molecules/gdq-break/gdq-break-prizes.html'
+			];
+
+			if (window.extraImports && Array.isArray(window.extraImports)) {
+				links = links.concat(extraImports)
+			}
+
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
 	<custom-style>
 		<style include="iron-positioning">
 			body {
@@ -53,8 +71,7 @@
 
 				gdq-break-bids,
 				gdq-break-prizes {
-					background: black;
-					padding: 14px;
+					background: #f9f9f9;
 				}
 			</style>
 

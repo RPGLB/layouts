@@ -1,5 +1,6 @@
 import {ChildBid, ParentBid} from '../../../../src/types/index';
 import {TimelineLite, Power2} from 'gsap';
+import AtomCandystripeBarElement from '../../atoms/atom-candystripe-bar/atom-candystripe-bar';
 import AtomTweeningNumberElement from '../../atoms/atom-tweening-number/atom-tweening-number';
 
 const {customElement, property} = Polymer.decorators;
@@ -39,15 +40,14 @@ export default class GDQBreakBidManyOptionElement extends Polymer.Element {
 		const tl = new TimelineLite();
 		const duration = meterPercent * 0.75;
 
-		tl.fromTo(this.$.meter, duration, {
-			scaleX: 0
-		}, {
-			scaleX: meterPercent,
-			ease: Power2.easeOut,
-			onStart: () => {
-				(this.$.amount as AtomTweeningNumberElement).tween(this.option.rawTotal, duration);
-			}
-		});
+		const compareElem = this.$.compare as AtomCandystripeBarElement;
+		compareElem.progress = meterPercent;
+
+		tl.add(compareElem.reset());
+
+		tl.addLabel('tween', '+=0');
+		tl.add(compareElem.fill(duration), 'tween');
+		tl.add((this.$.amount as AtomTweeningNumberElement).tween(this.option.rawTotal, duration), 'tween');
 
 		return tl;
 	}
