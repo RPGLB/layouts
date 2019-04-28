@@ -1,0 +1,57 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"Board": {
+			"type": "array",
+			"additionalItems": false,
+			"items": {
+				"$ref": "#/definitions/Goal"
+			},
+			"default": [
+				{"name": "staff-of-rain", "state": 0, "maxState": 1},
+				{"name": "stones-of-sunlight", "state": 0, "maxState": 1},
+				{"name": "erdrick-token", "state": 0, "maxState": 1},
+				{"name": "magic-harp", "state": 0, "maxState": 1},
+				{"name": "rainbow-drop", "state": 0, "maxState": 1},
+				{"name": "fairy-flute", "state": 0, "maxState": 1},
+				{"name": "magic-key", "state": 0, "maxState": 1},
+				{"name": "ball-of-light", "state": 0, "maxState": 1},
+				{"name": "gwaelin", "state": 0, "maxState": 1},
+				{"name": "fighters-ring", "state": 0, "maxState": 1},
+				{"name": "dragons-scale", "state": 0, "maxState": 1},
+				{"name": "death-necklace", "state": 0, "maxState": 1},
+				{"name": "weapon", "state": 0, "maxState": 7},
+				{"name": "armor", "state": 0, "maxState": 7},
+				{"name": "shield", "state": 0, "maxState": 3}
+			]
+		},
+		"Goal": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"state": {
+					"type": "number",
+					"minimum": 0
+				},
+				"maxState": {
+					"type": "number",
+					"minimum": 1
+				}
+			},
+			"required": ["name", "state", "maxState"]
+		}
+	},
+
+	"type": "array",
+	"title": "dwrRandoBoards",
+	"additionalItems": false,
+	"items": {
+		"$ref": "#/definitions/Board"
+	},
+	"minItems": 4,
+	"maxItems": 4
+}

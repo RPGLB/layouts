@@ -1,0 +1,47 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../style/gdq-rando-style.html">
+<dom-module id="rpglb-dwr-tracker">
+	<template>
+		<style include="gdq-rando-style">
+			:host {
+				--cell-size: 44px;
+				display: flex;
+			}
+
+			#grid {
+				grid-template-columns: repeat(3, var(--cell-size));
+				grid-template-rows: repeat(3, var(--cell-size)) 23px repeat(2, var(--cell-size));
+			}
+
+			#tracker-bg {
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				background-color: var(--rpglb-dwr-tracker-bg, #004ba0);
+			}
+
+			#grid::before {
+				content: '';
+				grid-column: 1 / -1;
+				grid-row: 4;
+			}
+		</style>
+
+		<div id="tracker-bg" class="background"></div>
+
+		<div id="grid">
+			<template is="dom-repeat" mutable-data items="[[goals]]" as="goal">
+				<div class$="[[_calcCellClass(goal, index)]]" on-click="_advance">
+					<iron-image
+						src="[[importPath]]img/[[_calcCellSrc(goal)]].png"
+						sizing="contain">
+					</iron-image>
+				</div>
+			</template>
+		</div>
+	</template>
+
+	<script src="rpglb-dwr-tracker.js" type="module"></script>
+</dom-module>

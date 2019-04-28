@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Standard, 2 Player</title>
+	<title>Standard, 2 Player, DWR</title>
 	<link rel="stylesheet" href="style/layout.css">
+	<script>
+		window.extraImports = [
+			'elements/molecules/rpglb-dwr-tracker/rpglb-dwr-tracker.html'
+		];
+	</script>
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
@@ -44,6 +49,24 @@
 				width: 377px;
 				height: 220px;
 			}
+
+			rpglb-dwr-tracker {
+				position: absolute;
+				top: 29px;
+				margin: 23px;
+
+				--cell-size: 48px;
+				--grid-gap: 4px;
+				--rpglb-dwr-tracker-bg: transparent;
+			}
+
+			rpglb-dwr-tracker[index="0"] {
+				left: 0px;
+			}
+
+			rpglb-dwr-tracker[index="1"] {
+				right: 0px;
+			}
 		</style>
 	</custom-style>
 </head>
@@ -56,6 +79,9 @@
 		<gdq-timer></gdq-timer>
 		<gdq-sponsors></gdq-sponsors>
 		<gdq-tweet></gdq-tweet>
+
+		<rpglb-dwr-tracker index="0"></rpglb-dwr-tracker>
+		<rpglb-dwr-tracker index="1"></rpglb-dwr-tracker>
 	</div>
 
 	<script>
