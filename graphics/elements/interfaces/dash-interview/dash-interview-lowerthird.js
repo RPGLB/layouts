@@ -43,7 +43,7 @@ let DashInterviewLowerthirdElement = class DashInterviewLowerthirdElement extend
                 const entry = entries[0];
                 const cr = entry.contentRect;
                 TweenLite.set(this.$.lowerthirdPreview, {
-                    scale: cr.width / 1920
+                    scale: cr.width / 1280
                 });
             });
             ro.observe(this.$.previewContainer);

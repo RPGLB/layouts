@@ -226,9 +226,7 @@
 		<div id="tabbedControls">
 			<iron-selector id="tabs" selected="{{selectedTab}}">
 				<paper-button class="tab">L3</paper-button>
-				<paper-button class="tab">TEXT</paper-button>
 				<paper-button class="tab">PRIZE</paper-button>
-				<paper-button class="tab">Q&A</paper-button>
 			</iron-selector>
 
 			<div id="teletabs">
@@ -279,40 +277,8 @@
 						</div>
 					</div>
 
-					<div id="controls__text">
-						Not implemented yet.
-					</div>
-
 					<div id="controls__prizes">
 						<dash-interview-prizes id="prizes"></dash-interview-prizes>
-					</div>
-
-					<div id="controls__qna">
-						<dash-interview-lightning-round
-							id="lightningRound"
-							question-showing="{{questionShowing}}">
-						</dash-interview-lightning-round>
-
-						<div id="questionToggle">
-							<paper-button
-								id="showQuestion"
-								class="green"
-								on-tap="showQuestion"
-								hidden="[[questionShowing]]"
-								disabled="[[_any(_markingTopQuestionAsDone, lowerthirdShowing)]]"
-								raised>
-								Show Question
-							</paper-button>
-
-							<paper-button
-								id="hideQuestion"
-								class="red"
-								on-tap="hideQuestion"
-								hidden="[[!questionShowing]]"
-								raised>
-								Hide Question ([[questionTimeRemaining]])
-							</paper-button>
-						</div>
 					</div>
 				</iron-pages>
 			</div>
