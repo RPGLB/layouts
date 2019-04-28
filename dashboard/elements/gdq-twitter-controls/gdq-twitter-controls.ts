@@ -24,12 +24,10 @@ export default class GDQTwitterControlsElement extends Polymer.MutableData(Polym
 			switch (newVal) {
 				case 'countdown':
 				case 'interview':
+				case 'standard_2':
 				case 'standard_4':
-				case 'widescreen_4':
-				case 'gameboy_4':
+				case 'gameboy_2':
 				case 'ds':
-				case 'standard_4_ff4fe':
-				case 'widescreen_3':
 					cover.style.display = 'flex';
 					break;
 				default:
