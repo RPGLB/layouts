@@ -22,7 +22,7 @@ export default class GDQBreakBidChallengeElement extends Polymer.Element impleme
 		amountElem.ease = Power2.easeOut;
 		amountElem.displayValueTransform = displayValue => {
 			if (displayValue >= this.bid.rawGoal) {
-				amountElem.style.color = '#ff9100';
+				amountElem.style.color = '#004ba0';
 			}
 
 			return '$' + displayValue.toLocaleString('en-US', {

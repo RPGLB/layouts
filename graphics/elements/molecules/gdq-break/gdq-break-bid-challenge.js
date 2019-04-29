@@ -12,7 +12,7 @@ let GDQBreakBidChallengeElement = class GDQBreakBidChallengeElement extends Poly
         amountElem.ease = Power2.easeOut;
         amountElem.displayValueTransform = displayValue => {
             if (displayValue >= this.bid.rawGoal) {
-                amountElem.style.color = '#ff9100';
+                amountElem.style.color = '#004ba0';
             }
             return '$' + displayValue.toLocaleString('en-US', {
                 maximumFractionDigits: 0,
