@@ -11,6 +11,7 @@ import GDQOmnibarChallengesElement from './gdq-omnibar-challenges';
 import GDQOmnibarBidwarsElement from './gdq-omnibar-bidwars';
 import GDQOmnibarPrizeElement from './gdq-omnibar-prize';
 import GDQOmnibarMilestoneTrackerElement from './gdq-omnibar-milestone-tracker';
+import RPGLBOmnibarBreakinfoElement from './rpglb-omnibar-breakinfo';
 
 const {customElement, property} = Polymer.decorators;
 
@@ -91,6 +92,20 @@ export default class GDQOmnibarElement extends Polymer.Element {
 					});
 				}
 			});
+		});
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+
+		Polymer.RenderStatus.beforeNextRender(this, () => {
+			currentLayout.on('change', newVal => {
+				if (newVal === 'break') {
+					(this.$.breakinfo as RPGLBOmnibarBreakinfoElement).enter();
+				} else {
+					(this.$.breakinfo as RPGLBOmnibarBreakinfoElement).exit();
+				}
+			})
 		});
 	}
 

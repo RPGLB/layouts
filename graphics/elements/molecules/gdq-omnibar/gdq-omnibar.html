@@ -13,6 +13,7 @@
 <link rel="import" href="gdq-omnibar-prize.html">
 <link rel="import" href="gdq-omnibar-run.html">
 <link rel="import" href="gdq-omnibar-total.html">
+<link rel="import" href="rpglb-omnibar-breakinfo.html">
 
 <dom-module id="gdq-omnibar">
 	<template>
@@ -53,7 +54,8 @@
 			}
 
 			#cta,
-			#milestoneAlert {
+			#milestoneAlert,
+			#breakinfo {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -68,6 +70,10 @@
 			#milestoneAlert {
 				font-size: 33px;
 				z-index: 10;
+			}
+
+			#breakinfo {
+				z-index: 9;
 			}
 
 			#charityLogo {
@@ -87,6 +93,7 @@
 				id="milestoneAlert"
 				milestones="[[milestones]]">
 			</gdq-omnibar-milestone-alert>
+			<rpglb-omnibar-breakinfo id="breakinfo"></rpglb-omnibar-breakinfo>
 		</div>
 		<gdq-omnibar-total id="total"></gdq-omnibar-total>
 		<img id="charityLogo" src="[[importPath]]img/nami-orb-white.png" />

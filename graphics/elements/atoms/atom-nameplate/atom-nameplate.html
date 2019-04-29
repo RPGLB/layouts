@@ -37,6 +37,13 @@
 				background-color: #004ba0;
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
+				@apply --layout-flex-none;
+			}
+
+			#cap {
+				width: 10px;
+				background-color: #004ba0;
+				@apply --layout-flex-none;
 			}
 
 			:host([left]) #wrapper {
@@ -77,8 +84,8 @@
 				@apply --layout-horizontal;
 			}
 
-			#cactuar {
-				content: url("/bundles/rpglb19-layouts/graphics/img/Cactuar-Icon.png");
+			#icon-img {
+				content: var(--atom-nameplate-icon, url("/bundles/rpglb19-layouts/graphics/img/Cactuar-Icon.png"));
 
 			    height: 2.2ex;
 			    margin-left: -0.10ex;
@@ -102,7 +109,7 @@
 
 		<div id="wrapper">
 			<div id="icon">
-				<img id="cactuar" />
+				<img id="icon-img" />
 			</div>
 			<div id="names">
 				<sc-fitted-text id="namesName" text="[[name]]" align="center"></sc-fitted-text>

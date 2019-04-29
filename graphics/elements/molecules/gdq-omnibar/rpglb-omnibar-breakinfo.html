@@ -1,0 +1,50 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../atoms/atom-nameplate/atom-nameplate.html">
+
+<dom-module id="rpglb-omnibar-breakinfo">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: block;
+				background-color: #222222;
+
+				opacity: 0;
+				will-change: transform, opacity;
+			}
+
+			#break {
+				position: relative;
+				height: 100%;
+				padding: 0px 5px;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-justified;
+			}
+
+			atom-nameplate {
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			#host {
+				height: 35px;
+				margin-right: 10px;
+				@apply --layout-flex;
+				--atom-nameplate-icon: url("/bundles/rpglb19-layouts/graphics/elements/molecules/gdq-omnibar/img/Host.png");
+			}
+
+			#music {
+				height: 35px;
+				@apply --layout-flex-2;
+				--atom-nameplate-icon: url("/bundles/rpglb19-layouts/graphics/elements/molecules/gdq-omnibar/img/Music.png");
+			}
+		</style>
+
+		<div id="break">
+			<atom-nameplate id="host" left></atom-nameplate>
+			<atom-nameplate id="music" left></atom-nameplate>
+		</div>
+	</template>
+
+	<script src="rpglb-omnibar-breakinfo.js" type="module"></script>
+</dom-module>

@@ -37,10 +37,10 @@
 
 			#upnext {
 				position: absolute;
-				top: 523px;
-				left: 20px;
-				height: 132px;
-				width: 610px;
+				top: 369px;
+				left: 660px;
+				height: 82px;
+				width: 600px;
 			}
 
 			#schedule {
@@ -50,41 +50,12 @@
 				height: 174px;
 				width: 600px;
 			}
-
-			#host,
-			#music {
-				position: absolute;
-				height: 35px;
-				width: 555px;
-				box-sizing: border-box;
-
-				font-family: Khand;
-				font-size: 21px;
-				font-weight: bold;
-				vertical-align: middle;
-				color: #222222;
-				padding-left: 10px;
-				padding-top: 3px;
-			}
-
-			#host {
-				left: 695px;
-				top: 367px;
-			}
-
-			#music {
-				left: 695px;
-				top: 412px;
-			}
 		</style>
 
 		<gdq-break-bids id="bids"></gdq-break-bids>
 		<gdq-tweet id="tweet" label="SOCIAL_MEDIA_ENGAGEMENT" bind-to-message="false"></gdq-tweet>
 		<rpglb-break-upnext id="upnext"></rpglb-break-upnext>
 		<gdq-break-schedule id="schedule"></gdq-break-schedule>
-
-		<sc-fitted-text id="host" max-width="535"></sc-fitted-text>
-		<sc-fitted-text id="music" max-width="535"></sc-fitted-text>
 	</template>
 
 	<script src="gdq-break.js" type="module"></script>
