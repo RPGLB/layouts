@@ -1,3 +1,6 @@
+<link rel="import" href="../../atoms/atom-candystripe-bar/atom-candystripe-bar.html">
+<link rel="import" href="../../atoms/atom-tweening-number/atom-tweening-number.html">
+
 <dom-module id="rpglb-omnibar-challenge">
 	<template>
 		<style>
@@ -19,8 +22,6 @@
 				box-sizing: border-box;
 				background-color: #004ba0;
 				min-width: 1px;
-				@apply --layout-vertical;
-				@apply --layout-end;
 				@apply --layout-flex;
 			}
 
@@ -32,39 +33,45 @@
 				z-index: 1;
 				left: 0;
 				width: 0;
-				height: 22px;
-				background-color: #ff9100;
-			}
-
-			#total,
-			#goal {
-				font-style: normal;
-				line-height: normal;
-				color: #f9f9f9;
+				height: 100%;
+				background-color: transparent;
 			}
 
 			#total {
-				font-size: 18px;
-				font-weight: 500;
+				font-style: normal;
+				line-height: normal;
+				color: #f9f9f9;
+				font-size: 32px;
+				font-weight: bold;
 				position: absolute;
-				line-height: 1.4em;
+				height: 100%;
+				vertical-align: middle;
 				z-index: 2;
 
 				opacity: 0;
 				will-change: opacity;
 			}
 
-			#goal {
-				font-size: 14px;
-				font-weight: 700;
-				padding-right: 5px;
+			#amount {
+				color: #222222;
+			}
+
+			#progress-bar {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				opacity: 1;
+				--atom-candystripe-bar-border: 0px;
+				--atom-candystripe-bar-color: #ff9100;
 			}
 		</style>
 
 		<div id="body">
-			<div id="goal">Goal: [[bid.goal]]</div>
+			<atom-candystripe-bar id="progress-bar"></atom-candystripe-bar>
 			<div id="progress">
-				<div id="total">[[bid.total]]</div>
+				<div id="total"><atom-tweening-number id="amount">[[bid.total]]</atom-tweening-number>/ [[bid.goal]]</div>
 			</div>
 		</div>
 	</template>
