@@ -1,9 +1,10 @@
-import {TimelineLite, Power2} from 'gsap';
+import {Run} from '../../../../src/types';
 import {Stopwatch} from '../../../../src/types/schemas/stopwatch';
 
 const {customElement, property} = Polymer.decorators;
 
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
+const currentRun = nodecg.Replicant<Run>('currentRun');
 
 @customElement('gdq-timer')
 export default class GDQTimerElement extends Polymer.Element {
@@ -28,33 +29,27 @@ export default class GDQTimerElement extends Polymer.Element {
 	@property({type: Number})
 	milliseconds: number;
 
+	@property({type: String})
+	estimate: string;
+
+	@property({type: String})
+	console: string;
+
 	ready() {
 		super.ready();
 
-		const timerTL = new TimelineLite({autoRemoveChildren: true});
-		stopwatch.on('change', (newVal, oldVal) => {
+		stopwatch.on('change', (newVal) => {
 			this.hours = newVal.time.hours;
 			this.minutes = newVal.time.minutes;
 			this.seconds = newVal.time.seconds;
 			this.milliseconds = newVal.time.milliseconds;
 
-			if (oldVal) {
-				if (newVal.state === 'running' && oldVal.state !== 'running') {
-					this._flash(timerTL);
-				} else if (newVal.state !== 'running' && newVal.state !== oldVal.state) {
-					timerTL.clear();
-					(this.$.startFlash as HTMLDivElement).style.opacity = '0';
-				}
-
-				if (newVal.state === 'finished' && oldVal.state !== 'finished') {
-					this._flash(timerTL);
-				}
-			}
-
 			this.notStarted = newVal.state === 'not_started';
 			this.paused = newVal.state === 'paused';
 			this.finished = newVal.state === 'finished';
 		});
+
+		currentRun.on('change', this.currentRunChanged.bind(this));
 	}
 
 	pausedChanged(newVal: boolean) {
@@ -69,6 +64,11 @@ export default class GDQTimerElement extends Polymer.Element {
 		}
 	}
 
+	currentRunChanged(newVal: Run) {
+		this.console = newVal.console;
+		this.estimate = newVal.estimate;
+	}
+
 	_lessThanEqZero(num: number) {
 		return num <= 0;
 	}
@@ -79,14 +79,5 @@ export default class GDQTimerElement extends Polymer.Element {
 
 	_formatMilliseconds(milliseconds: number) {
 		return Math.floor(milliseconds / 100);
-	}
-
-	_flash(timeline: TimelineLite) {
-		return timeline.fromTo(this.$.startFlash, 1, {
-			opacity: 0.5
-		}, {
-			opacity: 0,
-			ease: Power2.easeIn
-		});
 	}
 }

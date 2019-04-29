@@ -1,5 +1,4 @@
 import {Run} from '../../../../src/types';
-import GDQRuninfoMiscElement from './gdq-runinfo-misc';
 
 const {customElement, property} = Polymer.decorators;
 const currentRun = nodecg.Replicant<Run>('currentRun');
@@ -11,15 +10,6 @@ export default class GDQRuninfoElement extends Polymer.Element {
 
 	@property({type: Boolean, reflectToAttribute: true})
 	forceSingleLineName = false;
-
-	@property({type: String})
-	estimate: string;
-
-	@property({type: String})
-	releaseYear: string;
-
-	@property({type: String})
-	console: string;
 
 	@property({type: String})
 	category: string;
@@ -39,9 +29,6 @@ export default class GDQRuninfoElement extends Polymer.Element {
 	currentRunChanged(newVal: Run) {
 		this.name = newVal.name;
 		this.category = newVal.category;
-		this.console = newVal.console;
-		this.releaseYear = String(newVal.releaseYear) || '20XX';
-		this.estimate = newVal.estimate;
 
 		// Avoids some issues that can arise on the first time that fitText is run.
 		// Currently unsure why these issues happen.
@@ -56,7 +43,6 @@ export default class GDQRuninfoElement extends Polymer.Element {
 	fitText() {
 		Polymer.flush();
 		(window as any).textFit(this.$.name, {maxFontSize: this.maxNameSize});
-		(this.$.misc as GDQRuninfoMiscElement).maxTextWidth = (this.clientWidth - 124) / 3;
 	}
 
 	_processName(name?: string) {
@@ -69,9 +55,8 @@ export default class GDQRuninfoElement extends Polymer.Element {
 		}
 
 		return name.split('\\n')
-			.map((lineText, index) => {
-				const tag = index === 0 ? 'div' : 'small';
-				return `<${tag} class="name-line">${lineText}</${tag}>`;
+			.map((lineText) => {
+				return `<div class="name-line">${lineText}</div>`;
 			})
 			.join('\n');
 	}
