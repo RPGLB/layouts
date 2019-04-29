@@ -30,7 +30,7 @@ export default class GDQLowerthirdNameplateElement extends Polymer.Element {
 			if (this.header) {
 				(this.$.nameplate as AtomNameplateElement).updateName({alias: "#RPGLB2019", rotate: false});
 			}
-		}, 0);
+		});
 
 		tl.to(this.$.name, ENTRANCE_ANIM_DURATION, {
 			scaleX: 1,
