@@ -2,7 +2,6 @@ import {TimelineLite, TweenLite, Sine} from 'gsap';
 import {CountdownRunning} from '../../../../src/types/schemas/countdownRunning';
 import {Countdown} from '../../../../src/types/schemas/countdown';
 import {NowPlaying} from '../../../../src/types/schemas/nowPlaying';
-import {typeAnim} from '../../../../shared/lib/type-anims';
 import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
 
 const {customElement, property} = Polymer.decorators;
@@ -91,7 +90,6 @@ export default class GDQCountdownElement extends Polymer.Element {
 
 		nowPlaying.on('change', newVal => {
 			this.$.nowPlaying.textContent = `${newVal.game || '?'} - ${newVal.title || '?'}`;
-			typeAnim(this.$.nowPlaying as HTMLDivElement);
 		});
 
 		(this.$.coldopen as HTMLVideoElement).addEventListener('ended', () => {
@@ -158,7 +156,6 @@ export default class GDQCountdownElement extends Polymer.Element {
 		}), 'flickerTotal');
 
 		tl.set(this.$.pressStart, {opacity: 1});
-		tl.add(typeAnim(this.$.pressStart as HTMLDivElement));
 	}
 
 	_debounceFoo() {

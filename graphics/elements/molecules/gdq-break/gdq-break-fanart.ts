@@ -2,11 +2,7 @@ import {TimelineLite, Linear, Sine, Power2} from 'gsap';
 import InterruptMixin, {IInterruptMixin} from '../../../mixins/interrupt-mixin';
 import {Tweet} from '../../../../src/types/Twitter';
 import AtomGridmaskImageElement from '../../atoms/atom-gridmask-image/atom-gridmask-image';
-import {typeAnim} from '../../../../shared/lib/type-anims';
 import GDQTweetElement from '../gdq-tweet/gdq-tweet';
-import * as DrawSVGPlugin from '../../../../shared/lib/vendor/DrawSVGPlugin';
-
-(window as any)._gsapPlugins = [DrawSVGPlugin]; // prevent tree shaking
 
 const {customElement, property} = Polymer.decorators;
 const SVG = ((window as any).svgjs || (window as any).SVG) as svgjs.Library;
@@ -91,7 +87,6 @@ export default class GDQBreakFanartElement extends InterruptMixin(Polymer.Elemen
 			ease: Sine.easeInOut,
 			onComplete: () => {
 				(this.$.label as HTMLDivElement).style.color = '';
-				typeAnim(this.$.label as HTMLDivElement);
 			}
 		}, 'start+=0.4');
 

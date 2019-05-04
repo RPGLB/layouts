@@ -1,6 +1,5 @@
 import {BidElement} from './gdq-break-bids';
 import {TweenLite, TimelineLite, Sine, Power3, Power4} from 'gsap';
-import {typeAnim} from '../../../../shared/lib/type-anims';
 import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
 import {ParentBid} from '../../../../src/types/index';
 
@@ -57,8 +56,6 @@ export default class GDQBreakBidBinaryElement extends Polymer.Element implements
 		tl.call(() => {
 			winningOptionAmountEl.style.color = '';
 			losingOptionAmountEl.style.color = '';
-			typeAnim(winningOptionAmountEl);
-			typeAnim(losingOptionAmountEl);
 		});
 
 		tl.add(createMaybeRandomTween({
@@ -78,8 +75,6 @@ export default class GDQBreakBidBinaryElement extends Polymer.Element implements
 
 				winningOptionNameEl.innerText = this.bid.options[0].description || this.bid.options[0].name;
 				losingOptionNameEl.innerText = this.bid.options[1].description || this.bid.options[1].name;
-				typeAnim(winningOptionNameEl);
-				typeAnim(losingOptionNameEl);
 			},
 			onUpdate: () => {
 				this.drawWinningSlice(proxy.percent);

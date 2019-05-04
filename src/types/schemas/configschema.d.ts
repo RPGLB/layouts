@@ -40,12 +40,6 @@ export interface Configschema {
 		[k: string]: any;
 	} | null;
 	/**
-	 * Credentials used to log into Firebase, which is what hosts Lightning Round.
-	 */
-	firebase?: {
-		[k: string]: any;
-	} | null;
-	/**
 	 * Info for retrieving data from the event tracker.
 	 */
 	tracker: {

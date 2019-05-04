@@ -1,10 +1,7 @@
 import {TimelineLite, Linear, Sine, Power2} from 'gsap';
 import InterruptMixin, {ICompanionElement} from '../../../mixins/interrupt-mixin';
 import {Tweet} from '../../../../src/types/Twitter';
-import {typeAnim, untypeAnim} from '../../../../shared/lib/type-anims';
 import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
-import * as DrawSVGPlugin from '../../../../shared/lib/vendor/DrawSVGPlugin';
-(window as any)._gsapPlugins = [DrawSVGPlugin]; // prevent tree shaking
 
 const {customElement, property} = Polymer.decorators;
 const SVG = ((window as any).svgjs || (window as any).SVG) as svgjs.Library;
@@ -88,7 +85,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			ease: Sine.easeInOut,
 			onComplete: () => {
 				(this.$.name as HTMLDivElement).style.color = '';
-				typeAnim(this.$.name as HTMLElement);
 			}
 		}, 'start+=0.05');
 
@@ -97,7 +93,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			ease: Sine.easeInOut,
 			onComplete: () => {
 				(this.$.label as HTMLDivElement).style.color = '';
-				typeAnim(this.$.label as HTMLElement);
 			}
 		}, 'start+=0.4');
 
@@ -108,7 +103,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 
 		tl.call(() => {
 			this.$['body-actual'].innerHTML = tweet.text;
-			typeAnim(this.$['body-actual'] as HTMLElement, {typeInterval: 0.01});
 		});
 
 		return tl;
@@ -132,8 +126,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 
 			tl.pause();
 			const exitTextTl = new TimelineLite();
-			exitTextTl.add(untypeAnim(this.$.name as HTMLElement, 0.01), 0);
-			exitTextTl.add(untypeAnim(this.$['body-actual'] as HTMLElement, 0.01), 0.08);
 			exitTextTl.call(() => {
 				exitedPreviousTweet = true;
 				tl.resume();
@@ -144,9 +136,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			(this.$.name as HTMLDivElement).innerText = `@${tweet.user.screen_name}`;
 			this.$['body-actual'].innerHTML = tweet.text;
 
-			const enterTextTl = new TimelineLite();
-			enterTextTl.add(typeAnim(this.$.name as HTMLElement, {typeInterval: 0.01}), 0);
-			enterTextTl.add(typeAnim(this.$['body-actual'] as HTMLElement, {typeInterval: 0.01}), 0.08);
 		}, undefined, null, '+=0.03');
 
 		return tl;

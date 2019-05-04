@@ -1,7 +1,6 @@
 import GDQBreakLoopMixin from '../../../mixins/gdq-break-loop-mixin';
 import {Prize} from '../../../../src/types/index';
 import {TimelineLite, Power2, Sine, TweenLite} from 'gsap';
-import {typeAnim} from '../../../../shared/lib/type-anims';
 import AtomGridmaskImageElement from '../../atoms/atom-gridmask-image/atom-gridmask-image';
 import {preloadImage} from '../../../../shared/lib/gdq-utils';
 
@@ -220,7 +219,6 @@ export default class GDQBreakPrizesElement extends GDQBreakLoopMixin(Polymer.Ele
 			}
 
 			providerTextElem.innerText = prize.provided;
-			typeAnim(providerTextElem);
 			TweenLite.set(providerTextElem, {opacity: 1});
 		}, undefined, null, 'enter+=0.03');
 
@@ -228,7 +226,6 @@ export default class GDQBreakPrizesElement extends GDQBreakLoopMixin(Polymer.Ele
 
 		tl.call(() => {
 			descriptionTextElem.innerText = prize.description;
-			typeAnim(descriptionTextElem);
 			TweenLite.set(descriptionTextElem, {opacity: 1});
 		}, undefined, null, 'enter+=0.2');
 
@@ -238,7 +235,6 @@ export default class GDQBreakPrizesElement extends GDQBreakLoopMixin(Polymer.Ele
 			}
 
 			minimumBidTextElem.innerText = minimumBidText;
-			typeAnim(minimumBidTextElem);
 			TweenLite.set(minimumBidTextElem, {opacity: 1});
 		}, undefined, null, 'enter+=0.3');
 

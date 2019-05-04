@@ -1,7 +1,6 @@
 import {TimelineLite, Sine, Power2} from 'gsap';
 import GDQBreakLoopMixin from '../../../mixins/gdq-break-loop-mixin';
 import {ParentBid} from '../../../../src/types/index';
-import {typeAnim} from '../../../../shared/lib/type-anims';
 
 const {customElement} = Polymer.decorators;
 
@@ -97,9 +96,7 @@ export default class GDQBreakBidsElement extends GDQBreakLoopMixin(Polymer.Eleme
 			const contentElem = this.$.content as IronSelectorElement;
 			contentElem.selectIndex(contentElem.indexOf(element));
 			this.$['game-name'].innerHTML = bid.speedrun.replace(/\\n/g, '</br>');
-			typeAnim(this.$['game-name'] as HTMLDivElement);
 			this.$['description-actual'].innerHTML = bid.name.replace(/\\n/g, '</br>');
-			typeAnim(this.$['description-actual'] as HTMLDivElement);
 		}, undefined, null, '+=0.1');
 
 		tl.add(element.enter());

@@ -1,7 +1,6 @@
 import {TimelineLite, TweenLite, Sine} from 'gsap';
 import * as gdqUtils from '../../../../shared/lib/gdq-utils';
 import {CurrentLayout} from '../../../../src/types/schemas/currentLayout';
-import CustomEase from '../../../../shared/lib/vendor/CustomEase';
 
 const {customElement} = Polymer.decorators;
 const HOME_POSITION = {x: 0, y: 0};
@@ -20,8 +19,6 @@ interface Point {
 	x: number;
 	y: number;
 }
-
-CustomEase.create('ModifiedPower2EaseInOut', 'M0,0 C0.66,0 0.339,1 1,1');
 
 /**
  * @customElement
