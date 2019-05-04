@@ -1,172 +1,60 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
-<link rel="import" href="../../atoms/atom-sub-alerts/atom-sub-alerts.html">
-<link rel="import" href="../../atoms/atom-tronlines/atom-tronlines.html">
-<link rel="import" href="gdq-countdown-anim.html">
 
 <dom-module id="gdq-countdown">
 	<template>
 		<style>
 			:host {
 				display: block;
-				width: 1920px;
-				height: 1080px;
-				font-family: gdqpixel, monospace;
+				width: 1280px;
+				height: 720px;
 			}
 
-			gdq-countdown-anim {
+			#container {
 				position: absolute;
-				top: 100px;
-				left: 100px;
+				top: 410px;
+				left: 0px;
+				right: 0px;
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: center;
 			}
 
-			#coldopen {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 1920px;
-				height: 1080px;
-			}
-
-			#logobox {
-				position: absolute;
-				top: 303px;
-				right: 175px;
-				width: 591px;
-				height: 261px;
-				border: 1px solid #ffffff;
-			}
-
-			#gdqlogo {
-				position: absolute;
-				top: 343px;
-				right: 215px;
-			}
-
-			#rightLine {
-				position: absolute;
-				top: 899px;
-				right: 0;
-				width: 915.6px;
-				height: 1px;
-				background: white;
-			}
-
-			#pressStart {
-				font-size: 20px;
-			}
-
-			#countdown,
-			#pressStart {
-				position: absolute;
-				bottom: 190px;
-				left: 1013px;
-				text-align: right;
-				color: #85f8ff;
-				text-transform: uppercase;
-			}
-
-			#countdown {
-				font-size: 36px;
-				@apply --layout-horizontal;
-			}
-
-			#nowPlaying {
-				position: absolute;
-				top: 912px;
-				left: 1013px;
-				font-size: 25px;
-				color: #85f8ff;
-				text-transform: uppercase;
-				padding-right: 1em;
-				box-sizing: border-box;
-				word-wrap: break-word;
-				word-break: break-word;
-			}
-
-			#subscriptionAlerts {
-				bottom: 0;
-				height: 77px;
-				left: 0;
-				position: absolute;
-				width: 100%;
-			}
-
-			.oscillate {
+			#timer {
+				font-family: Roboto, sans-serif;
+				font-style: normal;
+				font-weight: 600;
+				font-size: 55px;
+				text-shadow: 2px 2px #004ba0;
 				color: white;
-				animation: oscillate 2s alternate infinite ease-in;
 			}
 
-			.blink {
-				animation: blink 1s step-start 0s infinite;
+			#divider {
+				width: 560px;
+				height: 5px;
+				background-color: white;
 			}
 
-			@keyframes oscillate {
-				from { color: white; }
-				to { color: #85f8ff; }
+			#music {
+				font-family: gdqpixel, monospace;
+				color: white;
 			}
 
-			@keyframes blink {
-				50% { opacity: 0; }
-			}
-
-			atom-tronlines {
-				position: absolute;
-				width: 100%;
-				height: 600px;
-				left: 0;
-			}
-
-			atom-tronlines:nth-of-type(1) {
-				top: 0;
-			}
-
-			atom-tronlines:nth-of-type(2) {
-				bottom: 0;
+			#note {
+				font-size: 25px;
+				margin-right: 10px;
 			}
 		</style>
-		<atom-tronlines
-			width="1920"
-			height="600"
-			tail-length="500"
-			speed="5"
-			direction="down"
-			opacity-start="0.3"
-			opacity-end="0"
-			background-color="rgba(0, 0, 0, 0)">
-		</atom-tronlines>
-		<atom-tronlines
-			width="1920"
-			height="600"
-			tail-length="500"
-			speed="5"
-			opacity-start="0.3"
-			opacity-end="0"
-			background-color="rgba(0, 0, 0, 0)">
-		</atom-tronlines>
-		<gdq-countdown-anim></gdq-countdown-anim>
-		<img id="gdqlogo" src="[[importPath]]img/gdqlogo.png">
-		<div id="logobox"></div>
-		<div id="leftLine"></div>
-		<div id="rightLine"></div>
 
-		<div id="pressStart">
-			Press <span class="oscillate">pogChamp</span> to start
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_Blank.png" />
+
+		<div id="container">
+			<div id="timer">10:00</div>
+			<div id="divider"></div>
+			<div id="music"><span id="note">♪</span>[[music]]</div>
 		</div>
 
-		<div id="countdown">
-			<div id="countdownMinutesTens"></div>
-			<div id="countdownMinutesOnes"></div>
-			<div id="countdownColon">:</div>
-			<div id="countdownSecondsTens"></div>
-			<div id="countdownSecondsOnes"></div>
-		</div>
-
-		<div id="nowPlaying"></div>
-
-		<atom-sub-alerts id="subscriptionAlerts"></atom-sub-alerts>
-		<video id="coldopen" src="[[importPath]]vid/countdown_end.webm"></video>
 	</template>
 
 	<script src="gdq-countdown.js" type="module"></script>
