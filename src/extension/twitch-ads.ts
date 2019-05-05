@@ -115,12 +115,6 @@ function updateCanPlay() {
 		return;
 	}
 
-	if (timeSince.value.raw > 0 && timeSince.value.raw < 480 * 1000) {
-		canPlayTwitchAd.value.canPlay = false;
-		canPlayTwitchAd.value.reason = CANT_PLAY_REASONS.ON_COOLDOWN;
-		return;
-	}
-
 	if (stopwatch.value.state !== GDQTypes.StopwatchStateEnum.NOT_STARTED &&
 		stopwatch.value.state !== GDQTypes.StopwatchStateEnum.FINISHED) {
 		canPlayTwitchAd.value.canPlay = false;

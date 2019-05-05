@@ -99,11 +99,6 @@ function updateCanPlay() {
         canPlayTwitchAd.value.reason = CANT_PLAY_REASONS.AD_IN_PROGRESS;
         return;
     }
-    if (timeSince.value.raw > 0 && timeSince.value.raw < 480 * 1000) {
-        canPlayTwitchAd.value.canPlay = false;
-        canPlayTwitchAd.value.reason = CANT_PLAY_REASONS.ON_COOLDOWN;
-        return;
-    }
     if (stopwatch.value.state !== "not_started" /* NOT_STARTED */ &&
         stopwatch.value.state !== "finished" /* FINISHED */) {
         canPlayTwitchAd.value.canPlay = false;
