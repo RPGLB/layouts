@@ -56,7 +56,7 @@ export default class GDQBreakPrizesElement extends Polymer.Element {
 		const tl = new TimelineLite();
 		tl.to(opacityTargets, 0.33, { opacity: 0 });
 		tl.call(() => {
-			(this.$.infoTextWrapper as HTMLDivElement).innerHTML = firstItem.name.replace(/\n/g, '<br>')
+			(this.$.infoTextWrapper as HTMLDivElement).innerHTML = firstItem.name.replace(/\\n/g, '<br>')
 			this.imageSrc = firstItem.image || '';
 			this.minimal = firstItem.minimumbid ? `Minimum Donation: ${firstItem.minimumbid}` : '';
 		});
