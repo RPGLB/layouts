@@ -60,6 +60,12 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 	@property({type: Boolean, computed: '_computeLastPlace(place, _numRunners)'})
 	lastPlace: boolean;
 
+	@property({type: Boolean, reflectToAttribute: true})
+	left: boolean;
+
+	@property({type: Boolean, reflectToAttribute: true})
+	right: boolean;
+
 	@property({type: Number})
 	_numRunners = 1;
 
