@@ -1,10 +1,9 @@
-import {TimelineLite, Linear, Sine, Power2} from 'gsap';
+import {TimelineLite, Sine} from 'gsap';
 import InterruptMixin, {ICompanionElement} from '../../../mixins/interrupt-mixin';
 import {Tweet} from '../../../../src/types/Twitter';
 import {createMaybeRandomTween} from '../../../../shared/lib/maybe-random';
 
 const {customElement, property} = Polymer.decorators;
-const SVG = ((window as any).svgjs || (window as any).SVG) as svgjs.Library;
 
 /**
  * @customElement
@@ -26,14 +25,8 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 
 	_initialized: boolean;
 
-	$svg: {
-		svgDoc: svgjs.Doc;
-		bgRect: svgjs.Rect;
-	};
-
 	ready() {
 		super.ready();
-		this._initBackgroundSVG();
 		this._addReset();
 
 		Polymer.RenderStatus.beforeNextRender(this, () => {
@@ -56,7 +49,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			this.$['body-actual'].innerHTML = '';
 			this.$.name.innerHTML = '';
 		}, undefined, null, '+=0.03');
-		tl.set(this.$svg.bgRect.node, {drawSVG: '0%', 'fill-opacity': 0});
 		tl.set([this.$.label, this.$.name], {scaleX: 0, color: 'transparent', clipPath: ''});
 		tl.set(this.$['body-actual'], {opacity: 1});
 	}
@@ -75,11 +67,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			(this.$.name as HTMLDivElement).innerText = `@${tweet.user.screen_name}`;
 		}, undefined, null, 'start');
 
-		tl.to(this.$svg.bgRect.node, 0.75, {
-			drawSVG: '100%',
-			ease: Linear.easeNone
-		}, 'start');
-
 		tl.to(this.$.name, 0.334, {
 			scaleX: 1,
 			ease: Sine.easeInOut,
@@ -95,11 +82,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 				(this.$.label as HTMLDivElement).style.color = '';
 			}
 		}, 'start+=0.4');
-
-		tl.to(this.$svg.bgRect.node, 0.5, {
-			'fill-opacity': this.backgroundOpacity,
-			ease: Sine.easeOut
-		}, 'start+=1');
 
 		tl.call(() => {
 			this.$['body-actual'].innerHTML = tweet.text;
@@ -158,16 +140,6 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 			end: {probability: 0, normalValue: 0}
 		}), 'exit');
 
-		tl.to(this.$svg.bgRect.node, 0.5, {
-			'fill-opacity': 0,
-			ease: Sine.easeOut
-		}, 'exit');
-
-		tl.to(this.$svg.bgRect.node, 1.5, {
-			drawSVG: '0%',
-			ease: Power2.easeIn
-		}, 'exit');
-
 		tl.fromTo(this.$.label, 0.334, {
 			clipPath: 'inset(0 0% 0 0)'
 		}, {
@@ -185,49 +157,10 @@ export default class GDQTweetElement extends InterruptMixin(Polymer.Element) {
 		return tl;
 	}
 
-	_initBackgroundSVG() {
-		if (this._initialized) {
-			throw new Error('this element has already been initialized');
-		}
-
-		this._initialized = true;
-
-		const STROKE_SIZE = 1;
-		(this as any).$svg = {};
-
-		const svgDoc = SVG(this.$.background as HTMLDivElement);
-		const bgRect = svgDoc.rect();
-		this.$svg.svgDoc = svgDoc;
-		this.$svg.bgRect = bgRect;
-
-		// Intentionally flip the width and height.
-		// This is part of how we get the drawSVG anim to go in the direction we want.
-		bgRect.stroke({
-			color: 'white',
-
-			// Makes it effectively STROKE_SIZE, because all SVG strokes
-			// are center strokes, and the outer half is cut off.
-			width: STROKE_SIZE * 2
-		});
-		bgRect.fill({color: 'black', opacity: this.backgroundOpacity});
-
-		this.resize();
-	}
-
 	resize() {
 		if (!this._initialized) {
 			return;
 		}
-
-		const ELEMENT_WIDTH = this.$.background.clientWidth;
-		const ELEMENT_HEIGHT = this.$.background.clientHeight;
-
-		this.$svg.svgDoc.size(ELEMENT_WIDTH, ELEMENT_HEIGHT);
-		this.$svg.bgRect.size(ELEMENT_HEIGHT, ELEMENT_WIDTH);
-
-		// Rotate and translate such that drawSVG anims start from the top right
-		// and move clockwise to un-draw, counter-clockwise to un-draw.
-		this.$svg.bgRect.style({transform: `rotate(90deg) translateY(${-ELEMENT_WIDTH}px)`});
 	}
 
 	_falsey(value: any) {
