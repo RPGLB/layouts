@@ -19,11 +19,13 @@
 
 			#leftPlate {
 				left: 0;
+				padding-right: 10px;
 				@apply --layout-end;
 			}
 
 			#rightPlate {
 				right: 0;
+				padding-left: 10px;
 			}
 
 			.plate {
@@ -31,6 +33,11 @@
 				height: 125px;
 				width: 492px;
 				top: 270px;
+				box-sizing: border-box;
+
+				padding-top: 10px;
+				padding-bottom: 10px;
+
 				@apply --layout-vertical;
 				@apply --layout-justified;
 			}
