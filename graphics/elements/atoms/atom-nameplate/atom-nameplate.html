@@ -78,6 +78,7 @@
 				text-shadow: var(--atom-nameplate-shadow, none);
 				box-sizing: border-box;
 				@apply --atom-nameplate-names;
+				padding-left: 4px;
 			}
 
 			#namesTwitch {
@@ -94,6 +95,10 @@
 			#twitchLogo {
 				top: 0.5px;
 				margin-right: 1px;
+			}
+
+			#twitchName {
+				margin-left: 4px;
 			}
 
 			.hidden {
@@ -115,7 +120,7 @@
 				<sc-fitted-text id="namesName" text="[[name]]" align="center"></sc-fitted-text>
 				<div id="namesTwitch">
 					<atom-nameplate-twitch-logo id="twitchLogo"></atom-nameplate-twitch-logo>
-					<sc-fitted-text text="[[twitch]]" align="left"></sc-fitted-text>
+					<sc-fitted-text id="twitchName" text="[[twitch]]" align="left"></sc-fitted-text>
 				</div>
 			</div>
 			<div id="cap"></div>
