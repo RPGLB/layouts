@@ -99,7 +99,7 @@ export default class GDQBreakBidsElement extends GDQBreakLoopMixin(Polymer.Eleme
 			(this.$['description-actual'] as any).text = bid.name.replace(/\\n/g, ' ');
 		}, undefined, null, '+=0.1');
 
-		tl.add(element.enter());
+		tl.add(element.enter && element.enter());
 
 		// Give the bid some time to show.
 		tl.to(EMPTY_OBJ, DISPLAY_DURATION, EMPTY_OBJ);
