@@ -55,8 +55,8 @@ async function update() {
 			currentPromise,
 			allPromise
 		]);
-	} catch (_error) { // tslint:disable-line:no-unused
-		// Disregard error.
+	} catch (error) {
+		nodecg.log.error(error.stack)
 	}
 
 	nodecg.sendMessage('prizes:updated');

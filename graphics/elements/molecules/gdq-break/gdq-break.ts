@@ -1,5 +1,5 @@
 import {TimelineLite, TimelineMax} from 'gsap';
-import {ICompanionElement, IInterruptMixin} from '../../../mixins/interrupt-mixin';
+import {IInterruptMixin} from '../../../mixins/interrupt-mixin';
 import PQueue from '../../../../shared/lib/vendor/p-queue';
 
 const {customElement, property} = Polymer.decorators;
@@ -12,19 +12,6 @@ const {customElement, property} = Polymer.decorators;
 export default class GDQBreakElement extends Polymer.Element {
 	@property({type: Object})
 	_queue: PQueue = new PQueue({concurrency: 1});
-
-	connectedCallback() {
-		super.connectedCallback();
-		Polymer.RenderStatus.afterNextRender(this, () => {
-			const tweetElem = this.$.tweet as IInterruptMixin;
-			tweetElem.companionElement = this.$.prizes as ICompanionElement;
-
-			this._setupInterrupt({
-				messageName: 'showTweet',
-				interruptElement: tweetElem
-			});
-		});
-	}
 
 	_setupInterrupt({messageName, interruptElement}: { messageName: string; interruptElement: IInterruptMixin }) {
 		let queued = false;

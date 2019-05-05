@@ -8,135 +8,83 @@
 	<template>
 		<style>
 			:host {
-				width: 978px; /* only needed because of the width tween on the #photo element */
-				@apply --layout-horizontal;
+				width: 610px;
+				height: 194px;
+				display: flex;
+				flex-flow: row nowrap;
+				font-family: Khand, monospace;
 			}
 
 			#info {
-				width: 434px;
-				margin-right: 48px;
+				width: 406px;
+				margin-right: 10px;
+				display: flex;
+				flex-flow: column nowrap;
 			}
 
-			#info-description {
-				height: 123px;
-				color: var(--gdq-primary-color);
-				margin-bottom: 19px;
-				--corner-clip-size: 33px;
+			#infoTitle {
+				background-color: #1976D1;
+				color: white;
+				text-shadow: 2px 2px #004ba0;
+				text-align: center;
+				font-size: 25px;
+				font-weight: bold;
 			}
 
-			#info-minimumBid {
-				height: 52px;
-				color: #FFFFFF;
-				white-space: nowrap;
-				--corner-clip-size: 17px;
+			#infoContent {
+				background-color: white;
+				flex-grow: 1;
+				display: flex;
+				justify-content: center;
+				flex-flow: column nowrap;
+				overflow: hidden;
+				line-height: 1.2;
 			}
 
-			#info-disclaimer {
-				font-size: 12px;
-				text-transform: uppercase;
-				color: #FFFFFF;
-				margin-top: 11px;
-				margin-left: 22px;
+			#infoTextWrapper {
+				opacity: 0;
+				text-align: center;
+				font-size: 30px;
+				margin-bottom: 4px;
+			}
+
+			#infoBottom {
+				background-color: #1976D1;
+				color: white;
+				text-shadow: 1px 1px #004ba0;
+				text-align: center;
+				font-size: 18px;
+			}
+
+			#minimal {
+				text-align: center;
+				font-size: 20px;
 			}
 
 			#photo {
-				position: relative;
-				width: 493px;
-				height: 277px;
-				box-sizing: border-box;
-				margin-top: 12px;
-				margin-left: auto;
+				width: 194px;
+				display: grid;
+				justify-items: center;
+				align-items: center;
 			}
 
-			#photo-actual {
-				width: 100%;
-				height: 100%;
-			}
-
-			#photo-label {
-				position: absolute;
-				width: 361px;
-				height: 19px;
-				left: -22px;
-				bottom: -9px;
-				background: #ffffff;
-				color: black;
-				font-size: 14px;
-				font-weight: 400;
-				box-sizing: border-box;
-				padding: 0 5px;
-				line-height: 1;
-				text-transform: uppercase;
-				white-space: nowrap;
-				z-index: 1;
-				@apply --layout-horizontal;
-				@apply --layout-center;
-			}
-
-			#provider {
-				overflow: hidden;
-			}
-
-			.header {
-				font-size: 14px;
-				color: #FFFFFF;
-				padding-left: 22px;
-				border-bottom: 1px solid white;
-				padding-bottom: 3px;
-				margin-bottom: 2px;
-			}
-
-			.data {
-				background-color: rgba(145, 145, 145, 0.3);
-				padding: 6px 20px;
-				box-sizing: border-box;
-				width: 100%;
-				text-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
-				text-transform: uppercase;
-				font-style: normal;
-				font-weight: normal;
-				line-height: normal;
-				font-size: 29px;
-				color: white;
-				clip-path: polygon(
-					0 0,
-					100% 0,
-					100% calc(100% - var(--corner-clip-size)),
-					calc(100% - var(--corner-clip-size)) 100%,
-					0 100%
-				);
+			#image {
+				max-width: 100%;
+				max-height: 100%;
 			}
 		</style>
 
 		<div id="info">
-			<div class="header">PRIZE_AVAILABLE</div>
-			<div id="info-description" class="data">
-				<div id="info-description-text"></div>
+			<div id="infoTitle">Prizes</div>
+			<div id="infoContent">
+				<div id="infoTextWrapper"></div>
+				<div id="minimal">[[minimal]]</div>
 			</div>
-
-			<div class="header">MINIMUM_BID_FOR_ENTRY</div>
-			<div id="info-minimumBid" class="data">
-				<div id="info-minimumBid-text"></div>
-			</div>
-
-			<div id="info-disclaimer">
-				No donation necessary for entry.<br/>
-				See website for details.
-			</div>
+			<div id="infoBottom">No donation necessary for entry. See website for details.</div>
 		</div>
 
 		<div id="photo">
-			<atom-gridmask-image
-				id="photo-actual"
-				fallback-src="[[importPath]]img/prize-fallback.png"
-				with-background
-				stroke-size="1"
-				preserve-aspect-ratio="xMidYMid slice">
-			</atom-gridmask-image>
-
-			<div id="photo-label">
-				PROVIDED_BY:&nbsp;<div id="provider"></div>
-			</div>
+			<img src="[[imageSrc]]" id="image">
 		</div>
 	</template>
 

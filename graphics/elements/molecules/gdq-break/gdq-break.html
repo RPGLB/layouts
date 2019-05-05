@@ -5,6 +5,7 @@
 <link rel="import" href="gdq-break-prizes.html">
 <link rel="import" href="gdq-break-schedule.html">
 <link rel="import" href="rpglb-break-upnext.html">
+<link rel="import" href="gdq-break-prizes.html">
 
 <dom-module id="gdq-break">
 	<template>
@@ -19,14 +20,6 @@
 				position: absolute;
 				top: 70px;
 				left: 20px;
-			}
-
-			#tweet {
-				position: absolute;
-				top: 70px;
-				left: 20px;
-				width: 980px;
-				height: 278px;
 			}
 
 			#prizes {
@@ -50,12 +43,18 @@
 				height: 174px;
 				width: 600px;
 			}
+
+			#prize {
+				position: absolute;
+				top: 461px;
+				left: 20px;
+			}
 		</style>
 
 		<gdq-break-bids id="bids"></gdq-break-bids>
-		<gdq-tweet id="tweet" label="SOCIAL_MEDIA_ENGAGEMENT" bind-to-message="false"></gdq-tweet>
 		<rpglb-break-upnext id="upnext"></rpglb-break-upnext>
 		<gdq-break-schedule id="schedule"></gdq-break-schedule>
+		<gdq-break-prizes id="prize"></gdq-break-prizes>
 	</template>
 
 	<script src="gdq-break.js" type="module"></script>
