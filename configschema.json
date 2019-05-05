@@ -104,6 +104,11 @@
 					"type": "boolean",
 					"description": "If true, enables additional debug logging for some Twitch systems.",
 					"default": false
+				},
+				"pre": {
+					"type": "boolean",
+					"description": "If true, set title to something about the upcoming show.",
+					"default": false
 				}
 			},
 			"required": ["channelId", "oauthToken", "clientId", "debug"],
