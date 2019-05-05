@@ -5,7 +5,7 @@ const { customElement, property } = Polymer.decorators;
 
 const LOOP_DURATION = nodecg.bundleConfig.displayDuration * 1000;
 
-const currentPrizes = nodecg.Replicant<Prize[]>("allPrizes"); // TODO: REPLACE WITH current
+const currentPrizes = nodecg.Replicant<Prize[]>("currentPrizes");
 
 /**
  * @customElement
