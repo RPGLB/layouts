@@ -28,15 +28,6 @@ export default class GDQSponsorsElement extends GDQBreakLoopMixin(Polymer.Elemen
 		super.connectedCallback();
 
 		let sponsors = nodecg.Replicant<Asset[]>('assets:sponsors-standard_1');
-		const layoutName = window.location.pathname.split('/').pop();
-		switch (layoutName) {
-			case ('widescreen_1.html'):
-			case ('gba_1.html'):
-				sponsors = nodecg.Replicant<Asset[]>('assets:sponsors-widescreen_1');
-				break;
-			default:
-				// Do nothing.
-		}
 
 		Polymer.RenderStatus.afterNextRender(this, () => {
 			sponsors.on('change', newVal => {
