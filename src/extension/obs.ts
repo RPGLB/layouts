@@ -8,7 +8,6 @@ import * as ObsWebsocketJs from 'obs-websocket-js'; // tslint:disable-line:no-im
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {CurrentLayout} from '../types/schemas/currentLayout';
 import {ObsCyclingRecordings} from '../types/schemas/obs_cyclingRecordings';
-import * as gdqUtils from '../../dist/shared/lib/gdq-utils';
 import {StreamStatus} from '../types/schemas/streamStatus';
 
 const nodecg = nodecgApiContext.get();
@@ -18,8 +17,6 @@ const nodecg = nodecgApiContext.get();
 const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
 const cyclingRecordingsRep = nodecg.Replicant<ObsCyclingRecordings>('obs_cyclingRecordings', {persistent: false});
 export const compositingOBS = new OBSUtility(nodecg, {namespace: 'compositingOBS'});
-export const recordingOBS = new OBSUtility(nodecg, {namespace: 'recordingOBS'});
-export const encodingOBS = new OBSUtility(nodecg, {namespace: 'encodingOBS'});
 
 compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scene) => {
 	if (!newVal) {
@@ -44,7 +41,7 @@ compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scen
 // This should probably be in nodecg-utility-obs.
 // For now, leaving it here.
 // Come back and refactor this eventually.
-[compositingOBS, recordingOBS, encodingOBS].forEach(obs => {
+[compositingOBS].forEach(obs => {
 	const replicant = nodecg.Replicant<StreamStatus>(`${obs.namespace}:streamStatus`, {persistent: false});
 	obs.on('StreamStatus', data => {
 		replicant.value = {
@@ -64,72 +61,6 @@ compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scen
 			'total-stream-time': data['total-stream-time']
 		};
 	});
-});
-
-compositingOBS.replicants.previewScene.on('change', (newVal: any) => {
-	if (!newVal || !newVal.name) {
-		return;
-	}
-
-	// Hide the transition graphic on gameplay scenes when they are in preview.
-	if (gdqUtils.isGameScene(newVal.name)) {
-		// Abort if the PVW scene is also the PGM scene.
-		if (newVal.name === compositingOBS.replicants.programScene.value.name) {
-			return;
-		}
-
-		compositingOBS.send('SetSceneItemRender', {
-			'scene-name': newVal.name,
-			source: 'Transition Graphic',
-			render: false
-		}).catch((error: Error) => {
-			nodecg.log.error(`Failed to hide Transition Graphic on scene "${newVal.name}":`, error);
-		});
-	}
-});
-
-compositingOBS.on('TransitionBegin', data => {
-	if (data.name !== 'Blank Stinger') {
-		return;
-	}
-
-	if (data['to-scene']) {
-		// Show the Transition Graphic on the scene which is being transitioned to.
-		compositingOBS.send('SetSceneItemRender', {
-			'scene-name': data['to-scene'],
-			source: 'Transition Graphic',
-			render: true
-		}).catch((error: Error) => {
-			nodecg.log.error(`Failed to show Transition Graphic on scene "${data['to-scene']}":`, error);
-		});
-	}
-});
-
-compositingOBS.on('SwitchScenes', (data: any) => {
-	const actualPgmSceneName = data['scene-name'];
-	const pvwSceneName = compositingOBS.replicants.previewScene.value && compositingOBS.replicants.previewScene.value.name;
-	const pgmSceneName = compositingOBS.replicants.programScene.value && compositingOBS.replicants.programScene.value.name;
-	const actualPvwSceneName = actualPgmSceneName === pvwSceneName ? pgmSceneName : pvwSceneName;
-
-	if (actualPvwSceneName === 'Break') {
-		return;
-	}
-
-	// Abort if the PVW scene is also the PGM scene.
-	if (actualPvwSceneName === actualPgmSceneName) {
-		return;
-	}
-
-	// Hide the transition graphic on gameplay scenes when they are in preview.
-	if (gdqUtils.isGameScene(actualPvwSceneName)) {
-		compositingOBS.send('SetSceneItemRender', {
-			'scene-name': actualPvwSceneName,
-			source: 'Transition Graphic',
-			render: false
-		}).catch((error: Error) => {
-			nodecg.log.error(`Failed to hide Transition Graphic on scene "${actualPvwSceneName}":`, error);
-		});
-	}
 });
 
 async function cycleRecording(obs: OBSUtility) {
@@ -186,22 +117,11 @@ export async function cycleRecordings() {
 
 	try {
 		const cycleRecordingPromises = [];
-		if ((recordingOBS as any)._connected) {
-			cycleRecordingPromises.push(cycleRecording(recordingOBS));
-		} else {
-			nodecg.log.error('Recording OBS is disconnected! Not cycling its recording.');
-		}
 
 		if ((compositingOBS as any)._connected) {
 			cycleRecordingPromises.push(cycleRecording(compositingOBS));
 		} else {
 			nodecg.log.error('Compositing OBS is disconnected! Not cycling its recording.');
-		}
-
-		if ((encodingOBS as any)._connected) {
-			cycleRecordingPromises.push(cycleRecording(encodingOBS));
-		} else {
-			nodecg.log.error('Encoding OBS is disconnected! Not cycling its recording.');
 		}
 
 		if (cycleRecordingPromises.length <= 0) {

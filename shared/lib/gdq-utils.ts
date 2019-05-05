@@ -1,4 +1,4 @@
-const GAME_SCENE_NAME_REGEX = /^(Standard|Widescreen|GBA|Gameboy|3DS|DS|LttP|OoT|Mario|SM\/ALttP)/;
+const GAME_SCENE_NAME_REGEX = /^(Standard|Widescreen|GBA|Gameboy|3DS|DS|LttP|OoT|Mario|SM\/ALttP|PC\/Component)/;
 
 const preloadedImages = new Set();
 const preloaderPromises = new Map();
