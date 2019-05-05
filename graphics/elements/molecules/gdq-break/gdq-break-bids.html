@@ -5,13 +5,14 @@
 <link rel="import" href="gdq-break-bid-binary.html">
 <link rel="import" href="gdq-break-bid-challenge.html">
 <link rel="import" href="gdq-break-bid-many.html">
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
 
 <dom-module id="gdq-break-bids">
 	<template>
 		<style>
 			:host {
 				height: 371px;
-				width: 610px;
+				width: 590px;
 				@apply --layout-vertical;
 				@apply --layout-center;
 			}
@@ -52,8 +53,8 @@
 		</style>
 
 		<div id="description">
-			<div id="game-name"></div>
-			<div id="description-actual"></div>
+			<sc-fitted-text id="game-name" max-width="590"></sc-fitted-text>
+			<sc-fitted-text id="description-actual" max-width="590"></sc-fitted-text>
 		</div>
 
 		<iron-selector id="content" selected="-1"></iron-selector>
