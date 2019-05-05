@@ -66,8 +66,7 @@
 
 			#info {
 				height: 32px;
-				padding: 3px;
-				padding-bottom: 0px;
+				padding: 5px 3px 0 3px;
 				box-sizing: border-box;
 
 				font-family: Khand;
@@ -76,9 +75,9 @@
 				text-align: center;
 				line-height: 1.3;
 
-				@apply --layout-horizontal;
-				@apply --layout-center;
-				@apply --layout-justified;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
 			}
 
 			/* .colon elements being relatively positioned seems to break inheritance of this bg image clipping. */
