@@ -28,11 +28,9 @@ interface ChannelObject {
 }
 
 const gameAudioChannelsRep = nodecg.Replicant<MixerGameAudioChannels>('mixer_gameAudioChannels', {persistent: false});
-const adsChannelRep = nodecg.Replicant<ChannelObject>('mixer_adsChannel', {persistent: false});
 
 export const replicants = {
-	gameAudioChannels: gameAudioChannelsRep,
-	adsChannel: adsChannelRep
+	gameAudioChannels: gameAudioChannelsRep
 };
 
 const channelToReplicantMap: {[key: number]: ChannelObject} = {};
@@ -50,7 +48,6 @@ mixerConfig.gameAudioChannels.forEach((item: GameAudioChannelConfig, index) => {
 		channelToReplicantMap[item.hd] = gameAudioChannelsRep.value[index].hd;
 	}
 });
-channelToReplicantMap[mixerConfig.adsChannel] = adsChannelRep.value;
 
 const udpPort = new osc.UDPPort({
 	localAddress: '0.0.0.0',

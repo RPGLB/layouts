@@ -12,10 +12,8 @@ const nodecg = nodecgApiContext.get();
 const X32_UDP_PORT = 10023;
 const FADE_THRESHOLD = 0.1;
 const gameAudioChannelsRep = nodecg.Replicant('mixer_gameAudioChannels', { persistent: false });
-const adsChannelRep = nodecg.Replicant('mixer_adsChannel', { persistent: false });
 exports.replicants = {
-    gameAudioChannels: gameAudioChannelsRep,
-    adsChannel: adsChannelRep
+    gameAudioChannels: gameAudioChannelsRep
 };
 const channelToReplicantMap = {};
 const mixerConfig = nodecg.bundleConfig.mixer;
@@ -30,7 +28,6 @@ mixerConfig.gameAudioChannels.forEach((item, index) => {
         channelToReplicantMap[item.hd] = gameAudioChannelsRep.value[index].hd;
     }
 });
-channelToReplicantMap[mixerConfig.adsChannel] = adsChannelRep.value;
 const udpPort = new osc.UDPPort({
     localAddress: '0.0.0.0',
     localPort: 52361,
