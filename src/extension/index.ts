@@ -31,7 +31,6 @@ async function init() {
 	require('./nowplaying');
 	require('./countdown');
 	require('./sortable-list');
-	require('./caspar');
 	require('./setup-timer');
 	require('./schedule');
 	require('./bids');
