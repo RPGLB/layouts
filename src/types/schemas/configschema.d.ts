@@ -30,7 +30,6 @@ export interface Configschema {
 			hd?: number | null;
 			[k: string]: any;
 		}[];
-		adsChannel: number;
 		[k: string]: any;
 	};
 	twitter?: {

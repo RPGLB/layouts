@@ -53,21 +53,19 @@
 
 	"default": {
 		"audioEngineerDuties": [
-			{"name": "Audio duty 1", "complete": false},
-			{"name": "Audio duty 2", "complete": false}
+			{"name": "Audio Ready", "complete": false}
 		],
 		"techStationDuties": [
 			{"name": "Check Tech Notes", "complete": false},
-			{"name": "Stream Layout", "complete": false},
+			{"name": "Stream Layout + Cropping", "complete": false},
 			{"name": "Runner Info/Position", "complete": false},
-			{"name": "Camera", "complete": false}
+			{"name": "Camera Angle is Good", "complete": false}
 		],
 		"stageTechDuties": [
 			{"name": "Wipe Down Headsets", "shortName": "Wipe Headsets", "complete": false},
-			{"name": "TVs have Video", "complete": false},
+			{"name": "TVs Have Video", "complete": false},
 			{"name": "Steam Notifications Off", "shortName": "Steam Notifications", "complete": false},
-			{"name": "Restart Elgato Recording", "shortName": "Restart Elgato Rec.", "complete": false},
-			{"name": "Remove Excess Chairs", "shortName": "Remove Chairs", "complete": false}
+			{"name": "Runners / Commentators Ready", "shortName": "Runner Crew Ready", "complete": false}
 		],
 		"special": [
 			{"name": "Cycle Recordings", "complete": false}
