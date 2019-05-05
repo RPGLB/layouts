@@ -4,7 +4,7 @@ import { Countdown } from '../../../../src/types/schemas/countdown';
 const {customElement} = Polymer.decorators;
 
 const nowPlaying = nodecg.Replicant<NowPlaying>('nowPlaying');
-const countdownTimer = nodecg.Replicant<Countdown>('nowPlaying');
+const countdownTimer = nodecg.Replicant<Countdown>('countdown');
 
 @customElement('gdq-countdown')
 export default class RPGLBOmnibarBreakinfoElement extends Polymer.Element {
@@ -20,7 +20,7 @@ export default class RPGLBOmnibarBreakinfoElement extends Polymer.Element {
 			});
 			countdownTimer.on('change', ({minutes, seconds}) => {
 				this.timer = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-			})
+			});
 		});
 	}
 }
