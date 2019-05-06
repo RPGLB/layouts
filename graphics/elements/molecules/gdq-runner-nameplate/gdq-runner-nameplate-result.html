@@ -4,116 +4,66 @@
 	<template>
 		<style>
 			:host {
-				position: absolute;
-				display: block;
-				width: 154px;
+				font-family: Khand;
+				font-weight: bold;
+				color: white;
 				box-sizing: border-box;
-				will-change: transform;
-				@apply --layout-horizontal;
-				@apply --layout-center-center;
 			}
 
 			#time {
-				position: relative;
-				top: -1px;
-				font-weight: 700;
-				font-size: 24px;
-				letter-spacing: -0.05em;
-				color: transparent;
-				background-image: var(--atom-gradient-text-gradient, linear-gradient(
-					180deg,
-					#FFFFFF 0%,
-					#8CFFFF 100%
-				));
-				-webkit-background-clip: text;
+				padding: 0 8px;
+				background-color: #004ba0;
+			}
+
+			#placeWrapper {
+				position: absolute;
+				top: 0;
+				height: 35px;
+				z-index: -20;
+				display: grid;
+				justify-content: center;
+				align-content: center;
+				grid-template-columns: 20px;
+				grid-template-rows: 20px;
+				font-size: 18px;
 			}
 
 			#place {
-				position: absolute;
-				width: 15px;
-				height: 15px;
-				top: calc(50% - 7.5px);
-				background: var(--gdq-primary-color);
-				transform-origin: center;
-				will-change: transform;
-				@apply --layout-horizontal;
-				@apply --layout-center-center;
+				background-color: #1976D1;
+				display: grid;
+				justify-content: center;
+				align-content: center;
 			}
 
-			#place-text {
-				position: relative;
-				top: -0.5px;
-				font-weight: bold;
-				font-size: 11px;
-				text-align: center;
-				letter-spacing: -0.05em;
-				color: #000000;
+			:host([first-place]) {
+				color: var(--gdq-secondary-color);
 			}
 
-			#cover {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: white;
-				will-change: transform;
-			}
-
-			:host([first-place]) #time {
-				background-image: var(--atom-gradient-text-gradient, linear-gradient(
-					180deg,
-					#FFF493 0%,
-					#E4F05A 100%
-				));
-			}
-
-			:host([forfeit]) #time {
-				background-image: var(--atom-gradient-text-gradient, linear-gradient(
-					180deg,
-					#FF0000 0%,
-					#FF6666 100%
-				));
-			}
-
-			:host([forfeit]) #place {
-				background-color: #ff0000;
-			}
-
-			:host([forfeit]) #place-text {
-				color: #ffffff;
+			:host([forfeit]) {
+				color: #939393;
 			}
 
 			:host([side="left"]) {
-				left: 1px;
+				left: 0;
 			}
-
 			:host([side="right"]) {
-				right: 1px;
+				right: 0;
 			}
 
-			:host([side="left"]) #place {
-				left: -7px;
+			:host([side="left"]) #placeWrapper {
+				left: 0;
 			}
-
-			:host([side="right"]) #place {
-				right: -7px;
-			}
-
-			:host([side="left"]) #cover {
-				transform-origin: left;
-			}
-
-			:host([side="right"]) #cover {
-				transform-origin: right;
+			:host([side="right"]) #placeWrapper {
+				right: 0;
 			}
 		</style>
 
 		<div id="time">[[time]]</div>
-		<div id="place">
-			<div id="place-text">[[_calcPlaceText(place, forfeit)]]</div>
+		<div id="placeWrapper">
+			<div id="place">
+				[[place]]
+			</div>
 		</div>
-		<div id="cover"></div>
 	</template>
 
 	<script src="gdq-runner-nameplate-result.js" type="module"></script>
