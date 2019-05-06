@@ -73,7 +73,7 @@ function formatPrize(rawPrize: GDQTypes.TrackerObject) {
 		name: rawPrize.fields.name,
 		provided: rawPrize.fields.provider || rawPrize.fields.provided || 'Anonymous', // new field is "provider", but it used to be called "provided"
 		description: rawPrize.fields.shortdescription || rawPrize.fields.name,
-		image: rawPrize.fields.altimage,
+		image: rawPrize.fields.image || rawPrize.fields.altimage,
 		minimumbid: numeral(rawPrize.fields.minimumbid).format('$0,0[.]00'),
 		grand: rawPrize.fields.category__name === 'Grand',
 		sumdonations: rawPrize.fields.sumdonations,
