@@ -62,7 +62,7 @@ function formatPrize(rawPrize) {
         name: rawPrize.fields.name,
         provided: rawPrize.fields.provider || rawPrize.fields.provided || 'Anonymous',
         description: rawPrize.fields.shortdescription || rawPrize.fields.name,
-        image: rawPrize.fields.image || rawPrize.fields.altimage,
+        image: rawPrize.fields.altimage || rawPrize.fields.image,
         minimumbid: numeral(rawPrize.fields.minimumbid).format('$0,0[.]00'),
         grand: rawPrize.fields.category__name === 'Grand',
         sumdonations: rawPrize.fields.sumdonations,
