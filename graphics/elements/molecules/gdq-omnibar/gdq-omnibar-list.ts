@@ -118,7 +118,7 @@ export default class GDQOmnibarListElement extends Polymer.Element {
 	}
 
 	getListItems(): GDQOmnibarListItemElement[] {
-		return Array.from((this.$.contentSlot as HTMLSlotElement).assignedElements()) as GDQOmnibarListItemElement[];
+		return Array.from((this.$.contentSlot as HTMLSlotElement).assignedNodes()) as GDQOmnibarListItemElement[];
 	}
 
 	getPreciseElementWidth(element: HTMLElement) {
