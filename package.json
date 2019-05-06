@@ -116,6 +116,14 @@
         "file": "record-tracker.html",
         "headerColor": "#2d4e8a",
         "workspace": "Setup"
+      },
+      {
+        "name": "prize-filter",
+        "title": "Prize Filter",
+        "width": 2,
+        "file": "prize-filter.html",
+        "headerColor": "#2d4e8a",
+        "workspace": "Setup"
       }
     ],
     "graphics": [
