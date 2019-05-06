@@ -6,7 +6,6 @@ const { customElement, property } = Polymer.decorators;
 const LOOP_DURATION = nodecg.bundleConfig.displayDuration * 1000;
 
 const currentPrizes = nodecg.Replicant<Prize[]>("currentPrizes");
-const prizeFilterEnabledRep = nodecg.Replicant<boolean>("prizePictureFilterEnabled");
 
 /**
  * @customElement
@@ -23,29 +22,13 @@ export default class GDQBreakPrizesElement extends Polymer.Element {
 	@property({type: String})
 	minimal: string;
 
-	prizeFilterEnabled: boolean;
-	currentPrizes: Prize[]
-
 	private loopInterval: number;
 
 	ready() {
 		super.ready();
-		prizeFilterEnabledRep.on('change', newVal => {
-			this.prizeFilterEnabled = newVal;
-			this.handleChanges()
-		})
 		currentPrizes.on("change", newVal => {
-			this.currentPrizes = [...newVal]
-			this.handleChanges()
+			this.startLoop([...newVal].filter(item => Boolean(item.image)));
 		});
-	}
-
-	private handleChanges() {
-		if (this.prizeFilterEnabled) {
-			this.startLoop(this.currentPrizes.filter(item => Boolean(item.image)));
-		} else {
-			this.startLoop(this.currentPrizes);
-		}
 	}
 
 	private startLoop(availableItems: Prize[]) {
