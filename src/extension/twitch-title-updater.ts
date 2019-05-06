@@ -57,5 +57,29 @@ currentRun.on('change', newVal => {
 	}
 	title = title.replace('${category}', cat);
 
-	sendTitle(title, newVal.longName);
+	let game = newVal.longName;
+
+	const realGame = [
+		{"pk": 231, "name": ".hack//INFECTION - Part 1"},
+		{"pk": 232, "name": "Fire Emblem: Fuuin no Tsurugi"},
+		{"pk": 241, "name": "Star Ocean: The Last Hope"},
+		{"pk": 245, "name": "Quest for Glory I: So You Want To Be A Hero"},
+		{"pk": 248, "name": "Dragon Warrior"},
+		{"pk": 253, "name": "Hoshi wo Miru Hito"},
+		{"pk": 257, "name": "The World Ends With You"},
+		{"pk": 260, "name": "Final Fantasy"},
+		{"pk": 265, "name": "Phantasy Star IV: The End of the Millennium"},
+		{"pk": 268, "name": "Final Fantasy IV"},
+		{"pk": 273, "name": "Kingdom Hearts HD 1.5 ReMIX"}
+	];
+
+	realGame.forEach(real => {
+		if (newVal.pk !== real.pk) {
+			return;
+		}
+
+		game = real.name;
+	});
+
+	sendTitle(title, game);
 });
