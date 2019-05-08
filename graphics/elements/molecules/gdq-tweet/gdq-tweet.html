@@ -9,8 +9,9 @@
 		<style include="gdq-text-styles">
 			:host {
 				position: absolute;
-				font-weight: 400;
+				font-weight: 500;
 				box-sizing: border-box;
+				font-family: Khand;
 				@apply --layout-vertical;
 				@apply --layout-center-center;
 			}
@@ -37,6 +38,7 @@
 				padding: 25px;
 				box-sizing: border-box;
 				font-size: 21px;
+				line-height: 1.1em;
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
 				@apply --layout-flex;
@@ -45,24 +47,26 @@
 
 			#body-actual {
 				overflow: hidden;
-				color: white;
+				color: #f9f9f9;
+				text-shadow: 1px 1px #004ba0;
 			}
 
 			#name {
 				width: auto;
 				height: 34px;
 				right: 37px;
-				bottom: -6px;
-				font-size: var(--gdq-tweet-name-font-size, 21px);
+				bottom: 6px;
+				font-size: var(--gdq-tweet-name-size, 21px);
 				padding: 0 18px;
 				transform-origin: right;
 			}
 
 			.label {
 				position: absolute;
-				font-weight: 400;
-				background: var(--gdq-primary-color);
-				color: black;
+				border: 3px solid #004ba0;
+				background: #1976d2;
+				color: #f9f9f9;
+				text-shadow: 1px 1px #004ba0;
 				box-sizing: border-box;
 				line-height: 1;
 				text-transform: uppercase;
