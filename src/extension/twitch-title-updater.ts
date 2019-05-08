@@ -62,7 +62,7 @@ currentRun.on('change', newVal => {
 	const realGame = [
 		{"pk": 231, "name": ".hack//INFECTION - Part 1"},
 		{"pk": 232, "name": "Fire Emblem: Fuuin no Tsurugi"},
-		{"pk": 241, "name": "Star Ocean: The Last Hope"},
+		{"pk": 238, "name": "Star Ocean: The Last Hope"},
 		{"pk": 245, "name": "Quest for Glory I: So You Want To Be A Hero"},
 		{"pk": 248, "name": "Dragon Warrior"},
 		{"pk": 253, "name": "Hoshi wo Miru Hito"},
