@@ -450,7 +450,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		this.setContent(tl, milestoneTrackerElement);
 
-		tl.add(this.showLabel('Milestone Progress'), '+=0.03');
+		tl.add(this.showLabel('PB PACE'), '+=0.03');
 
 		this.showContent(tl, milestoneTrackerElement);
 		this.hideContent(tl, milestoneTrackerElement);

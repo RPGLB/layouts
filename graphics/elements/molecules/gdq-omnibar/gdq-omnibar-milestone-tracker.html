@@ -6,7 +6,9 @@
 	<template>
 		<style>
 			:host {
-				font-family: Khand 600;
+				font-family: Khand;
+				font-weight: 600;
+				margin-left: 4px;
 				will-change: opacity;
 				@apply --layout-horizontal;
 				@apply --layout-flex;
@@ -31,7 +33,7 @@
 			}
 
 			#start {
-				--gdq-omnibar-milestone-tracker-point-color: #FF70C7;
+				--gdq-omnibar-milestone-tracker-point-color: var(--gdq-primary-color);
 				@apply --layout-flex-none;
 			}
 
@@ -42,7 +44,7 @@
 			}
 
 			#end {
-				--gdq-omnibar-milestone-tracker-point-color: var(--gdq-primary-color);
+				--gdq-omnibar-milestone-tracker-point-color: var(--gdq-secondary-color);
 				margin-right: 9px;
 				@apply --layout-flex-none;
 			}
