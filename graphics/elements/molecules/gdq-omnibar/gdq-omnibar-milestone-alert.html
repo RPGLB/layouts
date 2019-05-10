@@ -17,17 +17,19 @@
 				text-transform: uppercase;
 				will-change: clip-path;
 				clip-path: inset(0 100% 0 0%);
-				color: black;
+				color: #f9f9f9;
 				@apply --layout-horizontal;
 				@apply --layout-center-center;
 			}
 
 			.teal {
 				background-color: var(--gdq-primary-color);
+				text-shadow: 3px 3px #004ba0;
 			}
 
 			.green {
 				background-color: var(--gdq-secondary-color);
+				text-shadow: 3px 3px #c56200;
 			}
 
 			b {
@@ -36,11 +38,11 @@
 		</style>
 
 		<div id="layer1" class="layer teal">
-			New PB!&nbsp;<b>Surpassed [[displayingMilestone.name]]</b>
+			GOAL REACHED!&nbsp;<b>Surpassed [[displayingMilestone.name]]</b>
 		</div>
 
 		<div id="layer2" class="layer green">
-			[[_formatTotal(displayingMilestone.total)]]
+			<b>[[_formatTotal(displayingMilestone.total)]]</b>
 		</div>
 
 		<html-echo

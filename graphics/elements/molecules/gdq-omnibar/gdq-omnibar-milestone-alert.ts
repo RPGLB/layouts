@@ -114,7 +114,7 @@ export default class GDQOmnibarMilestoneAlertElement extends Polymer.Element {
 
 	_calcLayer3Message(succeedingMilestone: Milestone) {
 		if (succeedingMilestone) {
-			return `NEXT MILESTONE:&nbsp;<b>${succeedingMilestone.name} - ${this._formatTotal(succeedingMilestone.total)}</b>`;
+			return `NEXT GOAL:&nbsp;<b>${succeedingMilestone.name} - ${this._formatTotal(succeedingMilestone.total)}</b>`;
 		}
 
 		return '<b>NEW RPG LIMIT BREAK PB!</b>';
