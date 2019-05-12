@@ -61,7 +61,47 @@ export default class GDQOmnibarMilestoneAlertElement extends Polymer.Element {
 		});
 	}
 
+	private lbInterval: number;
+
+	startLimitBreakAnim() {
+		const elems = [
+			this.$.limitbreak_1,
+			this.$.limitbreak_2,
+			this.$.limitbreak_3,
+			this.$.limitbreak_4,
+			this.$.limitbreak_5,
+			this.$.limitbreak_6,
+			this.$.limitbreak_7,
+			this.$.limitbreak_8,
+			this.$.limitbreak_9,
+			this.$.limitbreak_10,
+			this.$.limitbreak_11,
+		]
+
+		const colors = [
+			'#f00',
+			'#00f',
+			'#666',
+			'#fff',
+			'#ff0',
+			'#0ff',
+			'#7d7',
+			'#f0f',
+		]
+
+		let colorOfL = 0
+
+		this.lbInterval = window.setInterval(() => {
+			for(let i = 0; i < elems.length; i++) {
+				const elem = elems[i] as HTMLElement
+				elem.style.color = colors[(colorOfL + i) % colors.length]
+			}
+			colorOfL += 1
+		}, 100)
+	}
+
 	alertMilestonePassed(milestone: Milestone) {
+		this.startLimitBreakAnim()
 		const tl = new TimelineLite();
 
 		tl.call(() => {
@@ -77,6 +117,10 @@ export default class GDQOmnibarMilestoneAlertElement extends Polymer.Element {
 			clipPath: 'inset(0 0% 0 0%)',
 			ease: Power3.easeInOut
 		}, `+=${SLIDE_HOLD_DURATION}`);
+
+		tl.call(() => {
+			clearInterval(this.lbInterval)
+		}, undefined, `+=${SLIDE_HOLD_DURATION}`)
 
 		tl.to(this.$.layer3, 0.5, {
 			clipPath: 'inset(0 0% 0 0%)',
@@ -117,6 +161,6 @@ export default class GDQOmnibarMilestoneAlertElement extends Polymer.Element {
 			return `NEXT GOAL:&nbsp;<b>${succeedingMilestone.name} - ${this._formatTotal(succeedingMilestone.total)}</b>`;
 		}
 
-		return '<b>NEW RPG LIMIT BREAK PB!</b>';
+		return '<b>THANK YOU ALL FOR YOUR SUPPORT!</b>';
 	}
 }

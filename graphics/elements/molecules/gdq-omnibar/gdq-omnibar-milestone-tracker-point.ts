@@ -30,6 +30,10 @@ export default class GDQOmnibarMilestoneTrackerPointElement extends Polymer.Elem
 	_formatAmount(amount: number) {
 		let amountString = String(amount).substr(0, 4);
 
+		if (amountString.endsWith('.')) {
+			return amountString.slice(0, -1)
+		}
+
 		if (this.dropTrailingZeroes) {
 			while (
 				(amountString.endsWith('0') || amountString.endsWith('.')) &&
