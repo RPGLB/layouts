@@ -62,7 +62,8 @@ currentRun.on('change', newVal => {
         { "pk": 260, "name": "Final Fantasy" },
         { "pk": 265, "name": "Phantasy Star IV: The End of the Millennium" },
         { "pk": 268, "name": "Final Fantasy IV" },
-        { "pk": 273, "name": "Kingdom Hearts HD 1.5 ReMIX" }
+        { "pk": 273, "name": "Kingdom Hearts HD 1.5 ReMIX" },
+        { "pk": 274, "name": "Pokemon: Let's Go, Pikachu!/Eevee!" }
     ];
     realGame.forEach(real => {
         if (newVal.pk !== real.pk) {
