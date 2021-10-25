@@ -10,7 +10,7 @@
     "Chris Hanel <chrishanel@gmail.com>"
   ],
   "dependencies": {
-    "@createjs/easeljs": "github:Lange/createjs-EaselJS#405387865ebb4816507a5a38c7f9680a04a8d0eb",
+    "@createjs/easeljs": "2.0.0-beta.4",
     "bluebird": "^3.4.0",
     "body-parser": "^1.18.3",
     "bower-npm-resolver": "^0.10.0",
@@ -31,7 +31,7 @@
     "lodash.merge": "^4.4.0",
     "milliseconds": "^1.0.3",
     "moment": "github:dfahlander/moment#patch-1",
-    "nodecg-utility-obs": "^5.0.6",
+    "nodecg-utility-obs": "^6.1.7",
     "numeral": "^2.0.6",
     "object-path": "^0.11.3",
     "osc": "^2.2.1",
@@ -81,7 +81,7 @@
     "glob": "^7.1.3",
     "istanbul": "^0.4.3",
     "json-schema-to-typescript": "^6.0.1",
-    "nodecg-screenshot-tester": "^2.2.0",
+    "nodecg-screenshot-tester": "^5.0.3",
     "trash-cli": "^1.4.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
