@@ -50,5 +50,6 @@ export interface CurrentIntermission {
 				subject: string;
 				suborder: number;
 				type: 'interview';
-		  })[];
+		  }
+	)[];
 }
