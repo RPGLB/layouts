@@ -11,8 +11,8 @@
 	<template>
 		<style>
 			:host {
-				height: 371px;
-				width: 590px;
+				height: 556px;
+				width: 915px;
 				@apply --layout-vertical;
 				@apply --layout-center;
 			}
@@ -39,22 +39,22 @@
 			}
 
 			#game-name {
-				padding: 15px 0px 10px 0px;
+				padding: 20px 0px 10px 0px;
 				font-weight: bold;
-				font-size: 48px;
+				font-size: 72px;
 				height: 2ex;
 			}
 
 			#description-actual {
 				position: relative;
 				font-weight: 600;
-				font-size: 32px;
+				font-size: 48px;
 			}
 		</style>
 
 		<div id="description">
-			<sc-fitted-text id="game-name" max-width="590"></sc-fitted-text>
-			<sc-fitted-text id="description-actual" max-width="590"></sc-fitted-text>
+			<sc-fitted-text id="game-name" max-width="900"></sc-fitted-text>
+			<sc-fitted-text id="description-actual" max-width="900"></sc-fitted-text>
 		</div>
 
 		<iron-selector id="content" selected="-1"></iron-selector>
