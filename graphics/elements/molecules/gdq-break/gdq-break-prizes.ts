@@ -49,6 +49,9 @@ export default class GDQBreakPrizesElement extends Polymer.Element {
 	}
 
 	private startLoop(availableItems: Prize[]) {
+		if (!availableItems) {
+			return;
+		}
 		clearInterval(this.loopInterval);
 
 		const firstItem = availableItems.shift();
