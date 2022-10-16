@@ -78,11 +78,8 @@ export default class GDQTimerElement extends Polymer.Element {
 	currentRunChanged(newVal: Run) {
 		this.console = newVal.console;
 		this.estimate = newVal.estimate;
-		this.releaseYear =
-			typeof newVal.releaseYear === "number"
-				? String(newVal.releaseYear)
-				: "";
-	}
+		this.releaseYear = String(newVal.releaseYear)
+		}
 
 	_lessThanEqZero(num: number) {
 		return num <= 0;
