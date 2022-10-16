@@ -11,7 +11,7 @@ let GDQOmnibarContentLabelElement = class GDQOmnibarContentLabelElement extends 
         labelHtml = this.processLabelHtml(labelHtml); // tslint:disable-line:no-parameter-reassignment
         const tl = new TimelineLite();
         tl.fromTo(this.$.body, ANCHOR_TWEEN_DURATION, {
-            y: 55
+            y: 84
         }, {
             y: 0,
             ease: Power2.easeOut,
@@ -26,7 +26,7 @@ let GDQOmnibarContentLabelElement = class GDQOmnibarContentLabelElement extends 
         labelHtml = this.processLabelHtml(labelHtml); // tslint:disable-line:no-parameter-reassignment
         const tl = new TimelineLite();
         tl.to(this.$.body, ANCHOR_TWEEN_DURATION, {
-            y: 55,
+            y: 84,
             ease: Power2.easeIn,
             onComplete: () => {
                 const textElem = this.$.text;
@@ -43,7 +43,7 @@ let GDQOmnibarContentLabelElement = class GDQOmnibarContentLabelElement extends 
     exit() {
         const tl = new TimelineLite();
         tl.to(this, ANCHOR_TWEEN_DURATION, {
-            y: 55,
+            y: 84,
             ease: Power3.easeInOut
         });
         return tl;

@@ -20,7 +20,6 @@ const MILESTONES = [
 	{name: 'RPGLB 2016', total: 75194.33},
 	{name: 'RPGLB 2017', total: 111773.56},
 	{name: 'RPGLB 2018', total: 164099.31},
-	{name: 'BREAK DONATION LIMIT', total: 200000},
 ].sort((a, b) => {
 	return a.total - b.total;
 }).map((milestone, index, array) => {
@@ -142,7 +141,7 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 		async function promisifyTimeline(tl: TimelineLite) {
 			return new Promise(resolve => {
-				tl.call(resolve, undefined, null, '+=0.03');
+				tl.call(() => {resolve(undefined)}, undefined, null, '+=0.03');
 			});
 		}
 

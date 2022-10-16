@@ -19,7 +19,7 @@ let GDQOmnibarLabelElement = class GDQOmnibarLabelElement extends Polymer.Elemen
         const showTL = new TimelineLite();
         showTL.set(this.$['flag-text'], { textContent: text });
         showTL.fromTo(this.$.flag, FLAG_ENTRANCE_DURATION, {
-            y: 55,
+            y: 84,
             opacity: 0
         }, {
             y: 0,
@@ -41,7 +41,7 @@ let GDQOmnibarLabelElement = class GDQOmnibarLabelElement extends Polymer.Elemen
     change(text) {
         const changeTL = new TimelineLite();
         changeTL.to(this.$.flag, FLAG_ENTRANCE_DURATION, {
-            y: 55,
+            y: 84,
             ease: Sine.easeInOut
         });
         changeTL.set(this.$['flag-text'], { textContent: text });
@@ -58,7 +58,7 @@ let GDQOmnibarLabelElement = class GDQOmnibarLabelElement extends Polymer.Elemen
     hide() {
         const hideTL = new TimelineLite();
         hideTL.to(this.$.flag, FLAG_ENTRANCE_DURATION, {
-            y: 55,
+            y: 84,
             opacity: 0,
             ease: Sine.easeInOut
         });

@@ -12,7 +12,7 @@ let GDQOmnibarListItemElement = class GDQOmnibarListItemElement extends Polymer.
     enter() {
         const enterTL = new TimelineLite();
         enterTL.fromTo(this, 0.234, {
-            y: 55,
+            y: 84,
             opacity: 0
         }, {
             y: 0,
@@ -24,7 +24,7 @@ let GDQOmnibarListItemElement = class GDQOmnibarListItemElement extends Polymer.
     exit() {
         const exitTL = new TimelineLite();
         exitTL.to(this, 0.465, {
-            y: 55,
+            y: 84,
             opacity: 0,
             ease: Sine.easeIn
         });

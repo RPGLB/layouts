@@ -27,7 +27,7 @@ export default class GDQOmnibarLabelElement extends Polymer.Element {
 		showTL.set(this.$['flag-text'], {textContent: text});
 
 		showTL.fromTo(this.$.flag, FLAG_ENTRANCE_DURATION, {
-			y: 55,
+			y: 84,
 			opacity: 0
 		}, {
 			y: 0,
@@ -53,7 +53,7 @@ export default class GDQOmnibarLabelElement extends Polymer.Element {
 		const changeTL = new TimelineLite();
 
 		changeTL.to(this.$.flag, FLAG_ENTRANCE_DURATION, {
-			y: 55,
+			y: 84,
 			ease: Sine.easeInOut
 		});
 
@@ -75,7 +75,7 @@ export default class GDQOmnibarLabelElement extends Polymer.Element {
 		const hideTL = new TimelineLite();
 
 		hideTL.to(this.$.flag, FLAG_ENTRANCE_DURATION, {
-			y: 55,
+			y: 84,
 			opacity: 0,
 			ease: Sine.easeInOut
 		});

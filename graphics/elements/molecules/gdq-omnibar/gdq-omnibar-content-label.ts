@@ -15,7 +15,7 @@ export default class GDQOmnibarContentLabelElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		tl.fromTo(this.$.body, ANCHOR_TWEEN_DURATION, {
-			y: 55
+			y: 84
 		}, {
 			y: 0,
 			ease: Power2.easeOut,
@@ -34,7 +34,7 @@ export default class GDQOmnibarContentLabelElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		tl.to(this.$.body, ANCHOR_TWEEN_DURATION, {
-			y: 55,
+			y: 84,
 			ease: Power2.easeIn,
 			onComplete: () => {
 				const textElem = this.$.text as HTMLDivElement;
@@ -55,7 +55,7 @@ export default class GDQOmnibarContentLabelElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		tl.to(this, ANCHOR_TWEEN_DURATION, {
-			y: 55,
+			y: 84,
 			ease: Power3.easeInOut
 		});
 

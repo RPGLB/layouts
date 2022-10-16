@@ -52,7 +52,7 @@ export default class RPGLBOmnibarChallengeElement extends Polymer.Element {
 		tl.add(progressBar.reset());
 
 		tl.fromTo(this, 0.234, {
-			y: 55,
+			y: 84,
 			opacity: 0
 		}, {
 			y: 0,
@@ -93,7 +93,7 @@ export default class RPGLBOmnibarChallengeElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		tl.to(this, 0.465, {
-			y: 55,
+			y: 84,
 			opacity: 0,
 			ease: Sine.easeIn
 		});

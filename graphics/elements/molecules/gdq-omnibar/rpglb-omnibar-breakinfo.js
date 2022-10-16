@@ -24,7 +24,7 @@ let RPGLBOmnibarBreakinfoElement = class RPGLBOmnibarBreakinfoElement extends Po
             return;
         }
         return TweenLite.fromTo(this, 0.466, {
-            y: 55,
+            y: 84,
             opacity: 0
         }, {
             y: 0,
@@ -43,7 +43,7 @@ let RPGLBOmnibarBreakinfoElement = class RPGLBOmnibarBreakinfoElement extends Po
             y: 0,
             opacity: 1,
         }, {
-            y: 55,
+            y: 84,
             opacity: 0,
             ease: Sine.easeInOut,
             onStart: () => {
