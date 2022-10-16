@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Widescreen, 1 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runinfo {
+				left: 517px;
+				top: 807px;
+				width: 689px;
+				height: 181px;
+			}
+
+			gdq-timer {
+				left: 1217px;
+				top: 810px;
+				height: 178px;
+				width: 692px;
+				--gdq-timer-size: 60px;
+			}
+
+			#panel {
+				position: absolute;
+				left: 10px;
+				top: 360px;
+				bottom: 10px;
+				width: 480px;
+				@apply --layout-vertical;
+			}
+
+			#runners {
+				@apply --layout-vertical;
+				@apply --layout-start;
+
+				position: relative;
+				margin-bottom: 10px;
+			}
+
+			gdq-runner-nameplate {
+				position: relative;
+				height: 55px;
+				width: 100%;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				padding-bottom: 8px;
+			}
+
+			#sponsorsAndTwitter {
+				position: relative;
+				@apply --layout-flex;
+			}
+
+			gdq-tweet {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_HD_cam.png" />
+		<gdq-runinfo max-name-size="50"></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<div id="panel">
+			<div id="runners">
+				<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+				<gdq-runner-nameplate index="1" no-audio></gdq-runner-nameplate>
+			</div>
+			<div id="sponsorsAndTwitter">
+				<gdq-sponsors></gdq-sponsors>
+				<gdq-tweet></gdq-tweet>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
