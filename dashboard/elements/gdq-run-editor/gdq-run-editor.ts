@@ -42,7 +42,7 @@ export default class GDQRunEditorElement extends Polymer.MutableData(Polymer.Ele
 		this.releaseYear = String(run.releaseYear);
 		this.runners = run.runners.map(runner => {
 			if (runner) {
-				return {name: runner.name, stream: runner.stream};
+				return {name: runner.name, stream: runner.stream, pronouns: runner.pronouns};
 			}
 
 			return;

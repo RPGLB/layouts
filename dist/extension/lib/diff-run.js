@@ -60,7 +60,7 @@ function calcOriginalValues(run, original) {
                     }
                     switch (difference.item.kind) {
                         case 'N':
-                            originalValues.runners[difference.index] = { name: '', stream: '' };
+                            originalValues.runners[difference.index] = { name: '', stream: '', pronouns: '' };
                             break;
                         case 'D':
                             originalValues.runners[difference.index] = clone(original.runners[difference.index]);

@@ -21,4 +21,5 @@ export interface Run {
 export interface Runner {
 	name: string | undefined;
 	stream: string | undefined;
+	pronouns: string | undefined;
 }

@@ -196,7 +196,8 @@ async function update() {
         runnersJSON.forEach((obj) => {
             formattedRunners[obj.pk] = {
                 stream: obj.fields.stream.split('/').filter(Boolean).pop(),
-                name: obj.fields.name
+                name: obj.fields.name,
+                pronouns: obj.fields.pronouns,
             };
         });
         if (!deepEqual(formattedRunners, runnersRep.value)) {

@@ -118,8 +118,10 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 		const runner = runners[this.index];
 		let alias;
 		let twitchAlias;
+		let pronouns;
 		if (runner) {
 			alias = runner.name;
+			pronouns = runner.pronouns
 
 			if (runner.stream) {
 				twitchAlias = runner.stream;
@@ -131,7 +133,7 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 			twitchAlias = '?';
 		}
 
-		(this.$.nameplate as AtomNameplateElement).updateName({alias, twitchAlias, rotate: !canConflateAllRunners});
+		(this.$.nameplate as AtomNameplateElement).updateName({alias, pronouns, twitchAlias, rotate: !canConflateAllRunners});
 	}
 
 	stopwatchChanged(newVal: Stopwatch) {
