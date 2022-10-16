@@ -3,31 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Widescreen, 1 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
 			gdq-runinfo {
-				left: 346px;
-				top: 543px;
-				width: 457px;
-				height: 112px;
+				left: 517px;
+				top: 807px;
+				width: 689px;
+				height: 181px;
 			}
 
 			gdq-timer {
-				left: 813px;
-				top: 543px;
-				height: 112px;
-				width: 457px;
+				left: 1217px;
+				top: 810px;
+				height: 178px;
+				width: 692px;
 				--gdq-timer-size: 60px;
 			}
 
 			#panel {
 				position: absolute;
 				left: 10px;
-				top: 258px;
+				top: 360px;
 				bottom: 10px;
-				width: 314px;
+				width: 480px;
 				@apply --layout-vertical;
 			}
 
@@ -59,8 +60,8 @@
 </head>
 <body>
 	<div id="container">
-		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_HD.png" />
-		<gdq-runinfo max-name-size="35"></gdq-runinfo>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_HD_cam.png" />
+		<gdq-runinfo max-name-size="50"></gdq-runinfo>
 		<gdq-timer></gdq-timer>
 		<div id="panel">
 			<div id="runners">
