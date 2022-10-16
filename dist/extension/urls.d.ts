@@ -5,7 +5,7 @@ export interface IGDQUrls {
     readonly currentPrizes: string;
     readonly runners: string;
     readonly runs: string;
-    readonly total: string;
+    readonly events: string;
 }
 export declare const GDQUrls: IGDQUrls;
 //# sourceMappingURL=urls.d.ts.map

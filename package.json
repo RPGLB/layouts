@@ -43,7 +43,7 @@
     "twemoji": "^2.0.5",
     "twitchps": "^0.5.5",
     "usb-detection": "^4.0.0",
-    "ws": "^5.2.0"
+    "ws": "^5.2.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
