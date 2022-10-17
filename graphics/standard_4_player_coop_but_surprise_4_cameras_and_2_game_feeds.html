@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 2 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runner-nameplate {
+				position: relative;
+				width: 230px;
+			}
+			gdq-runner-nameplate:nth-of-type(2n + 1) {
+				padding-right: 16px;
+			}
+			gdq-runner-nameplate:nth-of-type(2n + 2) {
+				padding-left: 16px;
+			}
+
+			#runners {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+
+				height: 275px;
+				display: grid;
+				grid-template-rows: repeat(4, auto);
+				align-content: space-between;
+				align-items: center;
+			}
+
+			gdq-runinfo {
+				top: 805px;
+				left: 73px;
+				width: 568px;
+				height: 173px;
+			}
+
+			gdq-timer {
+				top: 805px;
+				right: 73px;
+				height: 175px;
+				width: 570px;
+				--gdq-timer-size: 90px;
+			}
+
+			#left-game-label {
+				position: absolute;
+				left: 16px;
+				top: 721px;
+				width: 240px;
+			}
+
+			#right-game-label {
+				position: absolute;
+				right: 16px;
+				top: 721px;
+				width: 240px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_SD2_nocam.png" />
+		<gdq-runinfo max-name-size="58"></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<div id="runners">
+			<gdq-runner-nameplate index="0" coop></gdq-runner-nameplate>
+			<gdq-runner-nameplate index="1" coop right></gdq-runner-nameplate>
+			<gdq-runner-nameplate index="2" coop></gdq-runner-nameplate>
+			<gdq-runner-nameplate index="3" coop right></gdq-runner-nameplate>
+		</div>
+		<!-- <gdq-runner-nameplate id="left-game-label" index="0" coop no-cap no-icon no-twitch></gdq-runner-nameplate>
+		<gdq-runner-nameplate id="right-game-label" index="1" coop no-cap no-icon no-twitch></gdq-runner-nameplate> -->
+	</div>
+
+
+</body>
+</html>

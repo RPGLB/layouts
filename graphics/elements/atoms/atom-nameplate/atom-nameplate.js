@@ -91,7 +91,7 @@ let AtomNameplateElement = class AtomNameplateElement extends Polymer.Element {
     }
     fitName() {
         Polymer.flush();
-        const MAX_NAME_WIDTH = this.$.names.clientWidth - 32;
+        const MAX_NAME_WIDTH = this.$.names.clientWidth - 20;
         const MAX_TWITCH_WIDTH = MAX_NAME_WIDTH - 20;
         const twitchText = this.$.namesTwitch.querySelector('sc-fitted-text');
         this.$.namesName.maxWidth = MAX_NAME_WIDTH;

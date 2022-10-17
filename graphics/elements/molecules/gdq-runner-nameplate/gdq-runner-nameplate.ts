@@ -21,6 +21,15 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 	@property({type: Boolean, reflectToAttribute: true})
 	noRightCap = false;
 
+	@property({type: Boolean, reflectToAttribute: true})
+	noCap = false;
+
+	@property({type: Boolean, reflectToAttribute: true})
+	noIcon = false;
+
+	@property({type: Boolean})
+	noTwitch = false;
+
 	@property({type: Number})
 	index: number;
 
@@ -133,7 +142,7 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 			twitchAlias = '?';
 		}
 
-		(this.$.nameplate as AtomNameplateElement).updateName({alias, pronouns, twitchAlias, rotate: !canConflateAllRunners});
+		(this.$.nameplate as AtomNameplateElement).updateName({alias, pronouns, twitchAlias: this.noTwitch ? undefined : twitchAlias, rotate: !canConflateAllRunners});
 	}
 
 	stopwatchChanged(newVal: Stopwatch) {
