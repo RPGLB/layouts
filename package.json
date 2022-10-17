@@ -260,6 +260,11 @@
         "file": "test_omnibar.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "remote-interview.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "assetCategories": [
