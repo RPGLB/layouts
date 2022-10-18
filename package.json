@@ -162,6 +162,11 @@
         "height": 996
       },
       {
+        "file": "standard_1_nocam.html",
+        "width": 1920,
+        "height": 996
+      },
+      {
         "file": "standard_2.html",
         "width": 1920,
         "height": 996
@@ -193,6 +198,11 @@
       },
       {
         "file": "widescreen_1_coop.html",
+        "width": 1920,
+        "height": 996
+      },
+      {
+        "file": "widescreen_1_no_cam.html",
         "width": 1920,
         "height": 996
       },
@@ -278,6 +288,11 @@
       },
       {
         "file": "pokemon-crystal-rando.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "ff1-rando.html",
         "width": 1920,
         "height": 1080
       }
