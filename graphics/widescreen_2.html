@@ -3,43 +3,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Widescreen, 2 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
 			gdq-runner-nameplate {
-				top: 371px;
+				top: 540px;
 				width: 412px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 858px;
+				right: 1400px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 858px;
+				left: 1400px;
 			}
 
 			gdq-runinfo {
-				top: 434px;
-				left: 28px;
-				width: 372px;
-				height: 112px;
+				top: 640px;
+				left: 40px;
+				width: 562px;
+				height: 173px;
 			}
 
 			gdq-timer {
-				left: 28px;
-				top: 543px;
-				height: 92px;
-				width: 372px;
+				left: 40px;
+				top: 808px;
+				height: 143px;
+				width: 562px;
 				--gdq-timer-size: 54px;
 			}
 
 			gdq-tweet, gdq-sponsors {
-				top: 416px;
-				left: 858px;
-				bottom: 10px;
-				width: 412px;
+				top: 625px;
+				left: 1272px;
+				width: 647px;
+				height: 368px;
 			}
 
 			gdq-tweet {
@@ -48,19 +49,13 @@
 					font-size: 16px;
 				};
 			}
-
-			gdq-sponsors {
-				border: 1px solid var(--gdq-primary-color);
-				box-sizing: border-box;
-				box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.66);
-			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
-		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2019_HD2.png" />
-		<gdq-runinfo max-name-size="45"></gdq-runinfo>
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_HD2.png" />
+		<gdq-runinfo max-name-size="60"></gdq-runinfo>
 		<gdq-sponsors></gdq-sponsors>
 		<gdq-tweet></gdq-tweet>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="right"></gdq-runner-nameplate>
