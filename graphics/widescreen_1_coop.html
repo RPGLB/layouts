@@ -46,7 +46,7 @@
 				width: 100%;
 			}
 
-			gdq-runner-nameplate:nth-of-type(1) {
+			gdq-runner-nameplate:not(:nth-last-of-type(1)) {
 				padding-bottom: 8px;
 			}
 
@@ -71,6 +71,8 @@
 			<div id="runners">
 				<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
 				<gdq-runner-nameplate index="1" no-audio></gdq-runner-nameplate>
+				<gdq-runner-nameplate index="2" no-audio></gdq-runner-nameplate>
+				<gdq-runner-nameplate index="3" no-audio></gdq-runner-nameplate>
 			</div>
 			<div id="sponsorsAndTwitter">
 				<gdq-sponsors></gdq-sponsors>
@@ -78,6 +80,24 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		const nameplates = document.querySelectorAll('gdq-runner-nameplate')
+		nodecg.Replicant('currentRun').on('change', currentRun => {
+			if (!currentRun) {
+				return
+			}
+			const runnersNum = currentRun.runners.filter(runner => runner.name).length
+			nameplates.forEach((nameplate, index) => {
+				console.log(index, runnersNum)
+				if (index < runnersNum) {
+					nameplate.style.display = undefined
+				} else {
+					nameplate.style.display = 'none'
+				}
+			})
+		})
+	</script>
 
 
 </body>
