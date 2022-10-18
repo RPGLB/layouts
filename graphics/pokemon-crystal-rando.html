@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 3 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#runners {
+				position: absolute;
+				top: 507px;
+				left: 560px;
+				width: 520px;
+				height: 186px;
+
+				display: grid;
+				grid-auto-flow: row;
+				align-content: space-between;
+			}
+
+			gdq-runner-nameplate {
+				position: relative;
+			}
+
+			gdq-runinfo {
+				left: 558px;
+				top: 710px;
+				width: 525px;
+				height: 147px;
+			}
+
+			gdq-timer {
+				left: 558px;
+				top: 852px;
+				height: 132px;
+				width: 524px;
+				--gdq-timer-size: 52px;
+			}
+
+			gdq-tweet {
+				--gdq-tweet-name-font-size: 16px;
+				--gdq-tweet-body: {
+					font-size: 18px;
+				};
+			}
+
+			gdq-tweet,
+			gdq-sponsors {
+				position: absolute;
+				top: 755px;
+				left: 1113px;
+				height: 228px;
+				width: 778px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_Crystal.png" />
+		<gdq-runinfo></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<div id="runners">
+			<gdq-runner-nameplate index="0" co-op></gdq-runner-nameplate>
+			<gdq-runner-nameplate index="1" co-op></gdq-runner-nameplate>
+			<gdq-runner-nameplate index="2" co-op></gdq-runner-nameplate>
+		</div>
+	</div>
+
+
+</body>
+</html>
