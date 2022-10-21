@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 2 Player</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runner-nameplate {
+				top: 550px;
+				width: 562px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				left: 30px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				right: 30px;
+			}
+
+			gdq-runinfo {
+				top: 635px;
+				left: 30px;
+				width: 562px;
+				height: 173px;
+			}
+
+			gdq-timer {
+				left: 30px;
+				top: 802px;
+				height: 140px;
+				width: 565px;
+				--gdq-timer-size: 82px;
+			}
+
+			gdq-sponsors {
+				position: absolute;
+				top: 632px;
+				right: 30px;
+				width: 562px;
+				height: 340px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img src="/bundles/rpglb19-layouts/graphics/img/bg/RPGLB2022_FF1.png" />
+		<gdq-runinfo max-name-size="58"></gdq-runinfo>
+		<gdq-runner-nameplate index="0" result-side="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" result-side="right"></gdq-runner-nameplate>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+	</div>
+
+
+</body>
+</html>

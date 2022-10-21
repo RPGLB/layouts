@@ -290,6 +290,11 @@
         "file": "pokemon-crystal-rando.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "ff1-rando.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "assetCategories": [
