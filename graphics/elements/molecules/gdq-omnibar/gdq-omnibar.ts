@@ -64,6 +64,9 @@ export default class GDQOmnibarElement extends Polymer.Element {
 	@property({type: Boolean, reflectToAttribute: true})
 	skipLabelAnims = false;
 
+	@property({type: Boolean})
+	flashWarning = false;
+
 	ready() {
 		super.ready();
 
@@ -117,14 +120,16 @@ export default class GDQOmnibarElement extends Polymer.Element {
 		}
 
 		// For development, comment out whichever parts you don't want to see right now.
-		const parts = [
-			this.showCTA,
-			this.showUpNext,
-			this.showChallenges,
-			this.showChoices,
-			this.showCurrentPrizes,
-			this.showMilestoneProgress
-		];
+		const parts = this.flashWarning ?
+			[this.showFlashWarning] :
+			[
+				this.showCTA,
+				this.showUpNext,
+				this.showChallenges,
+				this.showChoices,
+				this.showCurrentPrizes,
+				this.showMilestoneProgress
+			];
 
 		function processNextPart() {
 			if (parts.length > 0) {
@@ -219,6 +224,14 @@ export default class GDQOmnibarElement extends Polymer.Element {
 			const elementExitAnim = (element as any).exit();
 			elementExitAnim.call(tl.resume, null, tl);
 		});
+	}
+
+	showFlashWarning() {
+		this.hideLabel();
+		this.$.content.innerHTML = '';
+		if (this.$.flash instanceof HTMLElement) {
+			this.$.flash.style.display = 'grid'
+		}
 	}
 
 	showCTA() {
